@@ -1,0 +1,9 @@
+var euclidus := func (a, b)
+    while a /= 0 and b /= 0
+    loop
+      if a > b then a := a - b
+      else  b := b - a
+      end
+    end
+    return a + b
+end

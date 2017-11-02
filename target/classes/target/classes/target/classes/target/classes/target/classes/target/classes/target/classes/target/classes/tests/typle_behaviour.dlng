@@ -1,0 +1,2 @@
+var productList := [[1,2,3,4], [" banana", " apple", " orange", " butter"]];
+print(productList[1],"  ", productList[2], "  ", productList[3], "  ", productList[4])
