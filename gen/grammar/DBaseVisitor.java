@@ -2,6 +2,11 @@
 package grammar;
 
 import org.runtime.tree.AbstractParseTreeVisitor;
+import org.runtime.tree.ParseTree;
+import org.runtime.tree.RuleNode;
+
+import javax.net.ssl.SSLContext;
+import java.util.List;
 
 /**
  * This class provides an empty implementation of {@link DVisitor},
@@ -20,6 +25,7 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
      */
     @Override
     public T visitCompilation_unit(DParser.Compilation_unitContext ctx) {
+        System.out.println("Compilation unit");
         return visitChildren(ctx);
     }
 
@@ -31,6 +37,7 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
      */
     @Override
     public T visitProgram(DParser.ProgramContext ctx) {
+        System.out.println("ScopeStack stack = new ScopeStackImpl();");
         return visitChildren(ctx);
     }
 
@@ -42,6 +49,7 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
      */
     @Override
     public T visitScope(DParser.ScopeContext ctx) {
+        System.out.println("stack.newScope();");
         return visitChildren(ctx);
     }
 
@@ -53,6 +61,7 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
      */
     @Override
     public T visitStatement(DParser.StatementContext ctx) {
+
         return visitChildren(ctx);
     }
 
@@ -119,7 +128,16 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
      */
     @Override
     public T visitAssignment(DParser.AssignmentContext ctx) {
-        return visitChildren(ctx);
+
+        DParser.ReferenceContext reference = ctx.reference();
+        DParser.ExpressionContext expression = ctx.expression();
+        String output = "assign(\"" + reference.IDENT() + "\", ";
+        System.out.print(output);
+        visitExpression(expression);
+        System.out.print(");\n");
+
+
+        return null;
     }
 
     /**
@@ -141,6 +159,9 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
      */
     @Override
     public T visitVar_definition(DParser.Var_definitionContext ctx) {
+        System.out.println("stack.add(\"" + ctx.IDENT() + "\");");
+
+
         return visitChildren(ctx);
     }
 
@@ -152,6 +173,7 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
      */
     @Override
     public T visitReference(DParser.ReferenceContext ctx) {
+        System.out.print(ctx.IDENT() + "\n");
         return visitChildren(ctx);
     }
 
@@ -262,6 +284,7 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
      */
     @Override
     public T visitLiteral(DParser.LiteralContext ctx) {
+        System.out.print(ctx.getChild(0).toString());
         return visitChildren(ctx);
     }
 

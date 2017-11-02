@@ -1,6 +1,5 @@
 // Generated from /home/ilya/Documents/Compilers/Compiler project/src/grammar/D.g4 by ANTLR 4.7
 package grammar;
-
 import org.runtime.Lexer;
 import org.runtime.CharStream;
 import org.runtime.Token;
