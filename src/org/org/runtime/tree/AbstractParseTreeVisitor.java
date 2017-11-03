@@ -24,7 +24,7 @@ public abstract class AbstractParseTreeVisitor<T> implements ParseTreeVisitor<T>
      * <p>The default implementation initializes the aggregate result to
      * {@link #defaultResult defaultResult()}. Before visiting each child, it
      * calls {@link #shouldVisitNextChild shouldVisitNextChild}; if the result
-     * is {@code false} no more children are visited and the current aggregate
+     * is {@code false} no greater children are visited and the current aggregate
      * result is returned. After visiting a child, the aggregate result is
      * updated by calling {@link #aggregateResult aggregateResult} with the
      * previous aggregate result and the result of visiting the child.</p>

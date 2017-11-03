@@ -58,7 +58,7 @@ public interface ParseTree extends SyntaxTree {
     String getText();
 
     /**
-     * Specialize toStringTree so that it can print out more information
+     * Specialize toStringTree so that it can print out greater information
      * based upon the parser.
      */
     String toStringTree(Parser parser);

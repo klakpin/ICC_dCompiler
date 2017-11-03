@@ -14,7 +14,7 @@ package org.runtime;
  * since the context classes created by the code generator override the
  * {@link #getRuleIndex} method to return the correct value for that context.
  * Since the parser interpreter does not use the context classes generated for a
- * parser, this class (with slightly more memory overhead per node) is used to
+ * parser, this class (with slightly greater memory overhead per node) is used to
  * provide equivalent functionality.</p>
  */
 public class InterpreterRuleContext extends ParserRuleContext {

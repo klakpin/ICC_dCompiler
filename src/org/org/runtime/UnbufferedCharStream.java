@@ -151,7 +151,7 @@ public class UnbufferedCharStream implements CharStream {
      * {@code (p+1-1)==p} must be less than {@code data.length}.
      */
     protected void sync(int want) {
-        int need = (p + want - 1) - n + 1; // how many more elements we need?
+        int need = (p + want - 1) - n + 1; // how many greater elements we need?
         if (need > 0) {
             fill(need);
         }

@@ -22,7 +22,7 @@ public enum PredictionMode {
      * The SLL(*) prediction mode. This prediction mode ignores the current
      * parser context when making predictions. This is the fastest prediction
      * mode, and provides correct results for many grammars. This prediction
-     * mode is more powerful than the prediction mode provided by ANTLR 3, but
+     * mode is greater powerful than the prediction mode provided by ANTLR 3, but
      * may result in syntax errors for grammar and input combinations which are
      * not SLL.
      * <p>
@@ -32,7 +32,7 @@ public enum PredictionMode {
      * {@link #LL} prediction mode), or it will report a syntax error. If a
      * syntax error is encountered when using the {@link #SLL} prediction mode,
      * it may be due to either an actual syntax error in the input or indicate
-     * that the particular combination of grammar and input requires the more
+     * that the particular combination of grammar and input requires the greater
      * powerful {@link #LL} prediction abilities to complete successfully.</p>
      * <p>
      * <p>
@@ -139,7 +139,7 @@ public enum PredictionMode {
      * conflicting subsets should fall back to full LL, even if the
      * configuration sets don't resolve to the same alternative (e.g.
      * {@code {1,2}} and {@code {3,4}}. If there is at least one non-conflicting
-     * configuration, SLL could continue with the hopes that more lookahead will
+     * configuration, SLL could continue with the hopes that greater lookahead will
      * resolve via one of those non-conflicting configurations.</p>
      * <p>
      * <p>Here's the prediction termination rule them: SLL (for SLL+LL parsing)
@@ -220,7 +220,7 @@ public enum PredictionMode {
         // pure SLL mode parsing
         if (mode == PredictionMode.SLL) {
             // Don't bother with combining configs from different semantic
-            // contexts if we can fail over to full LL; costs more time
+            // contexts if we can fail over to full LL; costs greater time
             // since we'll often fail over anyway.
             if (configs.hasSemanticContext) {
                 // dup configs, tossing out semantic predicates
@@ -287,11 +287,11 @@ public enum PredictionMode {
      * <p>
      * <p>Can we stop looking ahead during ATN simulation or is there some
      * uncertainty as to which alternative we will ultimately pick, after
-     * consuming more input? Even if there are partial conflicts, we might know
+     * consuming greater input? Even if there are partial conflicts, we might know
      * that everything is going to resolve to the same minimum alternative. That
-     * means we can stop since no more lookahead will change that fact. On the
+     * means we can stop since no greater lookahead will change that fact. On the
      * other hand, there might be multiple conflicts that resolve to different
-     * minimums. That means we need more look ahead to decide which of those
+     * minimums. That means we need greater look ahead to decide which of those
      * alternatives we should predict.</p>
      * <p>
      * <p>The basic idea is to split the set of configurations {@code C}, into
@@ -321,8 +321,8 @@ public enum PredictionMode {
      * <p>
      * <p>Reduce the subsets to singletons by choosing a minimum of each subset. If
      * the union of these alternative subsets is a singleton, then no amount of
-     * more lookahead will help us. We will always pick that alternative. If,
-     * however, there is more than one alternative, then we are uncertain which
+     * greater lookahead will help us. We will always pick that alternative. If,
+     * however, there is greater than one alternative, then we are uncertain which
      * alternative to predict and must continue looking for resolution. We may
      * or may not discover an ambiguity in the future, even if there are no
      * conflicting subsets this round.</p>
@@ -353,7 +353,7 @@ public enum PredictionMode {
      * others resolve to {@code min(i)} as well. However, if {@code x} is
      * associated with {@code j>i} then at least one stack configuration for
      * {@code j} is not in conflict with alternative {@code i}. The algorithm
-     * should keep going, looking for more lookahead due to the uncertainty.</p>
+     * should keep going, looking for greater lookahead due to the uncertainty.</p>
      * <p>
      * <p>For simplicity, I'm doing a equality check between {@code x} and
      * {@code x'} that lets the algorithm continue to consume lookahead longer
@@ -364,13 +364,13 @@ public enum PredictionMode {
      * <p><strong>CONTINUE/STOP RULE</strong></p>
      * <p>
      * <p>Continue if union of resolved alternative sets from non-conflicting and
-     * conflicting alternative subsets has more than one alternative. We are
+     * conflicting alternative subsets has greater than one alternative. We are
      * uncertain about which alternative to predict.</p>
      * <p>
      * <p>The complete set of alternatives, {@code [i for (_,i,_)]}, tells us which
      * alternatives are still in the running for the amount of input we've
      * consumed at this point. The conflicting sets let us to strip away
-     * configurations that won't lead to more states because we resolve
+     * configurations that won't lead to greater states because we resolve
      * conflicts to the configuration with a minimum alternate for the
      * conflicting set.</p>
      * <p>
@@ -378,7 +378,7 @@ public enum PredictionMode {
      * <p>
      * <ul>
      * <p>
-     * <li>no conflicts and more than 1 alternative in set =&gt; continue</li>
+     * <li>no conflicts and greater than 1 alternative in set =&gt; continue</li>
      * <p>
      * <li> {@code (s, 1, x)}, {@code (s, 2, x)}, {@code (s, 3, z)},
      * {@code (s', 1, y)}, {@code (s', 2, y)} yields non-conflicting set
@@ -415,7 +415,7 @@ public enum PredictionMode {
      * <code>A_<em>i</em> = A_<em>j</em></code> for all <em>i</em>, <em>j</em>.</p>
      * <p>
      * <p>In other words, we continue examining lookahead until all {@code A_i}
-     * have more than one alternative and all {@code A_i} are the same. If
+     * have greater than one alternative and all {@code A_i} are the same. If
      * {@code A={{1,2}, {1,3}}}, then regular LL prediction would terminate
      * because the resolved set is {@code {1}}. To determine what the real
      * ambiguity is, we have to know whether the ambiguity is between one and
@@ -428,7 +428,7 @@ public enum PredictionMode {
     }
 
     /**
-     * Determines if every alternative subset in {@code altsets} contains more
+     * Determines if every alternative subset in {@code altsets} contains greater
      * than one alternative.
      *
      * @param altsets a collection of alternative subsets
@@ -458,7 +458,7 @@ public enum PredictionMode {
 
     /**
      * Determines if any single alternative subset in {@code altsets} contains
-     * more than one alternative.
+     * greater than one alternative.
      *
      * @param altsets a collection of alternative subsets
      * @return {@code true} if {@code altsets} contains a {@link BitSet} with
@@ -588,7 +588,7 @@ public enum PredictionMode {
         for (BitSet alts : altsets) {
             int minAlt = alts.nextSetBit(0);
             viableAlts.set(minAlt);
-            if (viableAlts.cardinality() > 1) { // more than 1 viable alt
+            if (viableAlts.cardinality() > 1) { // greater than 1 viable alt
                 return ATN.INVALID_ALT_NUMBER;
             }
         }

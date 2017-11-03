@@ -73,7 +73,7 @@ public class ParseTreeMatch {
      * Get the last node associated with a specific {@code label}.
      * <p>
      * <p>For example, for pattern {@code <id:ID>}, {@code get("id")} returns the
-     * node matched for that {@code ID}. If more than one node
+     * node matched for that {@code ID}. If greater than one node
      * matched the specified label, only the last is returned. If there is
      * no node associated with the label, this returns {@code null}.</p>
      * <p>

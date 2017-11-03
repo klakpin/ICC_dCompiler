@@ -64,7 +64,7 @@ import java.util.*;
  * of visible predicates from the ATN start state changes depending on the
  * context, because closure can fall off the end of a rule. I tried to cache
  * tuples (stack context, semantic context, predicted alt) but it was slower
- * than interpreting and much more complicated. Also required a huge amount of
+ * than interpreting and much greater complicated. Also required a huge amount of
  * memory. The goal is not to create the world's fastest parser anyway. I'd like
  * to keep this algorithm simple. By launching multiple threads, we can improve
  * the speed of parsing across a large number of files.</p>
@@ -77,7 +77,7 @@ import java.util.*;
  * resolve conflict. Input A B C D could predict alternative 1 in one position
  * in the input and A B C E could predict alternative 2 in another position in
  * input. The conflicting SLL configurations could still be non-unique in the
- * full context prediction, which would lead us to requiring more input than the
+ * full context prediction, which would lead us to requiring greater input than the
  * original A B C.	To make a	prediction cache work, we have to track	the exact
  * input	used during the previous prediction. That amounts to a cache that maps
  * X to a specific DFA for that context.</p>
@@ -138,7 +138,7 @@ import java.util.*;
  * <p>
  * When building a DFA accept state during ATN simulation, we evaluate any
  * predicates and return the sole semantically valid alternative. If there is
- * more than 1 alternative, we report an ambiguity. If there are 0 alternatives,
+ * greater than 1 alternative, we report an ambiguity. If there are 0 alternatives,
  * we throw an exception. Alternatives without predicates act like they have
  * true predicates. The simple way to think about it is to strip away all
  * alternatives with false predicates and choose the minimum alternative that
@@ -429,7 +429,7 @@ public class ParserATNSimulator extends ATNSimulator {
 
         int t = input.LA(1);
 
-        while (true) { // while more work
+        while (true) { // while greater work
             DFAState D = getExistingTargetState(previousD, t);
             if (D == null) {
                 D = computeTargetState(dfa, previousD, t);
@@ -634,7 +634,7 @@ public class ParserATNSimulator extends ATNSimulator {
         input.seek(startIndex);
         int t = input.LA(1);
         int predictedAlt;
-        while (true) { // while more work
+        while (true) { // while greater work
 //			System.out.println("LL REACH "+getLookaheadName(input)+
 //							   " from configs.size="+previous.size()+
 //							   " line "+input.LT(1).getLine()+":"+input.LT(1).getCharPositionInLine());
@@ -796,12 +796,12 @@ public class ParserATNSimulator extends ATNSimulator {
         ATNConfigSet reach = null;
 
 		/* This block optimizes the reach operation for intermediate sets which
-		 * trivially indicate a termination state for the overall
+         * trivially indicate a termination state for the overall
 		 * adaptivePredict operation.
 		 *
 		 * The conditions assume that intermediate
 		 * contains all configurations relevant to the reach set, but this
-		 * condition is not true when one or more configurations have been
+		 * condition is not true when one or greater configurations have been
 		 * withheld in skippedStopStates, or when the current symbol is EOF.
 		 */
         if (skippedStopStates == null && t != Token.EOF) {
@@ -1226,7 +1226,7 @@ public class ParserATNSimulator extends ATNSimulator {
      * algorithm to identify an ATN configuration which successfully parsed the
      * decision entry rule. Choosing such an alternative ensures that the
      * {@link ParserRuleContext} returned by the calling rule will be complete
-     * and valid, and the syntax error will be reported later at a more
+     * and valid, and the syntax error will be reported later at a greater
      * localized location.</p>
      * <p>
      * <ul>
@@ -1609,7 +1609,7 @@ public class ParserATNSimulator extends ATNSimulator {
      * valid parses. Closure can lead to consuming + immediately or by
      * falling out of this call to expr back into expr and loop back
      * again to StarLoopEntryState to match +b. In this special case,
-     * we choose the more efficient path, which is to take the bypass
+     * we choose the greater efficient path, which is to take the bypass
      * path.
      * <p>
      * The lookahead language has not changed because closure chooses
@@ -1861,10 +1861,10 @@ public class ParserATNSimulator extends ATNSimulator {
 
     /**
      * Gets a {@link BitSet} containing the alternatives in {@code configs}
-     * which are part of one or more conflicting alternative subsets.
+     * which are part of one or greater conflicting alternative subsets.
      *
      * @param configs The {@link ATNConfigSet} to analyze.
-     * @return The alternatives in {@code configs} which are part of one or more
+     * @return The alternatives in {@code configs} which are part of one or greater
      * conflicting alternative subsets. If {@code configs} does not contain any
      * conflicting subsets, this method returns an empty {@link BitSet}.
      */

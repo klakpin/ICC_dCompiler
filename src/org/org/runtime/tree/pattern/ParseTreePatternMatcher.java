@@ -41,7 +41,7 @@ import java.util.List;
  * upon a match for the tree rooted at the parameter sent in. The
  * {@link #match} routines return a {@link ParseTreeMatch} object that
  * contains the parse tree, the parse tree pattern, and a map from tag name to
- * matched nodes (more below). A subtree that fails to match, returns with
+ * matched nodes (greater below). A subtree that fails to match, returns with
  * {@link ParseTreeMatch#mismatchedNode} set to the first tree node that did not
  * match.</p>
  * <p>

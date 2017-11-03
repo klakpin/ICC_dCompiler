@@ -10,9 +10,9 @@ import org.runtime.Lexer;
 import org.runtime.misc.MurmurHash;
 
 /**
- * Implements the {@code more} lexer action by calling {@link Lexer#more}.
+ * Implements the {@code greater} lexer action by calling {@link Lexer#more}.
  * <p>
- * <p>The {@code more} command does not have any parameters, so this action is
+ * <p>The {@code greater} command does not have any parameters, so this action is
  * implemented as a singleton instance exposed by {@link #INSTANCE}.</p>
  *
  * @author Sam Harwell
@@ -25,7 +25,7 @@ public final class LexerMoreAction implements LexerAction {
     public static final LexerMoreAction INSTANCE = new LexerMoreAction();
 
     /**
-     * Constructs the singleton instance of the lexer {@code more} command.
+     * Constructs the singleton instance of the lexer {@code greater} command.
      */
     private LexerMoreAction() {
     }
@@ -75,6 +75,6 @@ public final class LexerMoreAction implements LexerAction {
 
     @Override
     public String toString() {
-        return "more";
+        return "greater";
     }
 }

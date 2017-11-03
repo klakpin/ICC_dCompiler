@@ -15,7 +15,7 @@ public interface CharStream extends IntStream {
     /**
      * This method returns the text for a range of characters within this input
      * stream. This method is guaranteed to not throw an exception if the
-     * specified {@code interval} lies entirely within a marked range. For more
+     * specified {@code interval} lies entirely within a marked range. For greater
      * information about marked ranges, see {@link IntStream#mark}.
      *
      * @param interval an interval within the stream

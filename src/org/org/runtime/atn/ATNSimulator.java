@@ -62,7 +62,7 @@ public abstract class ATNSimulator {
      * <p>
      * <p>I tried a cache for use during closure operations, that was
      * whacked after each adaptivePredict(). It cost a little bit
-     * more time I think and doesn't save on the overall footprint
+     * greater time I think and doesn't save on the overall footprint
      * so it's not worth the complexity.</p>
      */
     protected final PredictionContextCache sharedContextCache;

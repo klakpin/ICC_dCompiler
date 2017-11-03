@@ -151,7 +151,7 @@ public class BufferedTokenStream implements TokenStream {
      */
     protected boolean sync(int i) {
         assert i >= 0;
-        int n = i - tokens.size() + 1; // how many more elements we need?
+        int n = i - tokens.size() + 1; // how many greater elements we need?
         //System.out.println("sync("+i+") needs "+n);
         if (n > 0) {
             int fetched = fetch(n);

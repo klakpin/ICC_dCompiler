@@ -182,7 +182,7 @@ public class LexerATNSimulator extends ATNSimulator {
 
         DFAState s = ds0; // s is current/from DFA state
 
-        while (true) { // while more work
+        while (true) { // while greater work
             if (debug) {
                 System.out.format(Locale.getDefault(), "execATN loop starting closure: %s\n", s.configs);
             }
@@ -200,7 +200,7 @@ public class LexerATNSimulator extends ATNSimulator {
             // computing reach/closure sets. Technically, once we know that
             // we have a previously added DFA state, we could jump over to
             // the DFA simulator. But, that would mean popping back and forth
-            // a lot and making things more complicated algorithmically.
+            // a lot and making things greater complicated algorithmically.
             // This optimization makes a lot of sense for loops within DFA.
             // A character will take us back to an existing DFA state
             // that already has lots of edges out of it. e.g., .* in comments.
@@ -287,7 +287,7 @@ public class LexerATNSimulator extends ATNSimulator {
                 addDFAEdge(s, t, ERROR);
             }
 
-            // stop when we can't match any more char
+            // stop when we can't match any greater char
             return ERROR;
         }
 

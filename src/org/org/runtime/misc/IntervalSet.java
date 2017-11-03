@@ -299,7 +299,7 @@ public class IntervalSet implements IntSet {
             }
         }
 
-        // If rightI reached right.intervals.size(), no more intervals to subtract from result.
+        // If rightI reached right.intervals.size(), no greater intervals to subtract from result.
         // If resultI reached result.intervals.size(), we would be subtracting from an empty set.
         // Either way, we are done.
         return result;

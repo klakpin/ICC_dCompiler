@@ -31,8 +31,8 @@ public interface LexerAction {
      * index at the time the action is executed.
      * <p>
      * <p>Many lexer commands, including {@code type}, {@code skip}, and
-     * {@code more}, do not check the input index during their execution.
-     * Actions like this are position-independent, and may be stored more
+     * {@code greater}, do not check the input index during their execution.
+     * Actions like this are position-independent, and may be stored greater
      * efficiently as part of the {@link LexerATNConfig#lexerActionExecutor}.</p>
      *
      * @return {@code true} if the lexer action semantics can be affected by the

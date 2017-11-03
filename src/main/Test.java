@@ -29,6 +29,17 @@ public class Test {
         checkEuclidus(24, 24);
         checkEuclidus(0, 0);
         checkEuclidus(5, 10);
+
+
+        int a = 25;
+        st:
+        {
+            a++;
+            System.out.println("pivas");
+            if (a < 27) {
+                break st;
+            }
+        }
     }
 
     public static int gcd(int a, int b) {

@@ -27,7 +27,7 @@ import java.util.*;
  * construct in one of the forms below.</li>
  * <p>
  * <li>Nodes showing multiple outgoing alternatives with a {@code ...} support
- * any number of alternatives (one or more). Nodes without the {@code ...} only
+ * any number of alternatives (one or greater). Nodes without the {@code ...} only
  * support the exact number of alternatives shown in the diagram.</li>
  * <p>
  * </ul>
@@ -38,7 +38,7 @@ import java.util.*;
  * <p>
  * <embed src="images/Rule.svg" type="image/svg+xml"/>
  * <p>
- * <h3>Block of 1 or more alternatives</h3>
+ * <h3>Block of 1 or greater alternatives</h3>
  * <p>
  * <embed src="images/Block.svg" type="image/svg+xml"/>
  * <p>

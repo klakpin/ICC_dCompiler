@@ -67,10 +67,10 @@ public class RuntimeImpl implements Runtime {
     }
 
     @Override
-    public void more() {
+    public void greater() {
         Object var1 = stack.pop();
         Object var2 = stack.pop();
-        stack.push(op.more(var1, var2));
+        stack.push(op.greater(var1, var2));
     }
 
     @Override
@@ -121,7 +121,7 @@ public class RuntimeImpl implements Runtime {
                 // a > b
                 vpush("b");
                 vpush("a");
-                more();
+                greater();
 
                 // if a > b
                 if (bpop()) {
@@ -144,8 +144,6 @@ public class RuntimeImpl implements Runtime {
                     scopeStack.popScope();
                 }
 
-                scopeStack.popScope();
-
 
                 // Check variables again
                 // a /= b
@@ -153,6 +151,7 @@ public class RuntimeImpl implements Runtime {
                 vpush("b");
                 notequal();
 
+                scopeStack.popScope();
             }
 
             vpush("a");

@@ -20,7 +20,7 @@ import java.util.BitSet;
  * message.
  * <p>
  * <ul>
- * <li><b>Ambiguities</b>: These are cases where more than one path through the
+ * <li><b>Ambiguities</b>: These are cases where greater than one path through the
  * grammar can match the input.</li>
  * <li><b>Weak context sensitivity</b>: These are cases where full-context
  * prediction resolved an SLL conflict to a unique alternative which equaled the

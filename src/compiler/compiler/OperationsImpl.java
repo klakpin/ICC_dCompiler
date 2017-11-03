@@ -43,7 +43,7 @@ public class OperationsImpl implements Operations {
     }
 
     @Override
-    public Boolean more(Object var1, Object var2) {
+    public Boolean greater(Object var1, Object var2) {
         if (var1 instanceof Integer && var2 instanceof Integer) {
             Integer a = (Integer) var1;
             Integer b = (Integer) var2;

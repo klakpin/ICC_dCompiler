@@ -8,7 +8,7 @@ package org.runtime;
 import org.runtime.atn.ATNConfigSet;
 
 /**
- * Indicates that the parser could not decide which of two or more paths
+ * Indicates that the parser could not decide which of two or greater paths
  * to take based upon the remaining input. It tracks the starting token
  * of the offending input and also knows where the parser was
  * in the various paths when the error. Reported by reportNoViableAlternative()

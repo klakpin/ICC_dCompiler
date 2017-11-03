@@ -206,7 +206,7 @@ public class ParserRuleContext extends RuleContext {
     }
 
     @Override
-    /** Override to make type more specific */
+    /** Override to make type greater specific */
     public ParserRuleContext getParent() {
         return (ParserRuleContext) super.getParent();
     }

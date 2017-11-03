@@ -10,7 +10,7 @@ package org.runtime;
  * A simple stream of symbols whose values are represented as integers. This
  * interface provides <em>marked ranges</em> with support for a minimum level
  * of buffering necessary to implement arbitrary lookahead during prediction.
- * For more information on marked ranges, see {@link #mark}.
+ * For greater information on marked ranges, see {@link #mark}.
  * <p>
  * <p><strong>Initializing Methods:</strong> Some methods in this interface have
  * unspecified behavior if no call to an initializing method has occurred after
@@ -150,7 +150,7 @@ public interface IntStream {
      * released twice, or if marks are not released in reverse order of the
      * corresponding calls to {@code mark()}, the behavior is unspecified.
      * <p>
-     * <p>For more information and an example, see {@link #mark}.</p>
+     * <p>For greater information and an example, see {@link #mark}.</p>
      *
      * @param marker A marker returned by a call to {@code mark()}.
      * @see #mark
@@ -184,7 +184,7 @@ public interface IntStream {
      * </ul>
      * <p>
      * This operation is guaranteed to not throw an exception if {@code index}
-     * lies within a marked region. For more information on marked regions, see
+     * lies within a marked region. For greater information on marked regions, see
      * {@link #mark}. The behavior of this method is unspecified if no call to
      * an {@link IntStream initializing method} has occurred after this stream
      * was constructed.

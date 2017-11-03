@@ -104,7 +104,7 @@ public interface ANTLRErrorListener {
      * This method is called when an SLL conflict occurs and the parser is about
      * to use the full context information to make an LL decision.
      * <p>
-     * <p>If one or more configurations in {@code configs} contains a semantic
+     * <p>If one or greater configurations in {@code configs} contains a semantic
      * predicate, the predicates are evaluated before this method is called. The
      * subset of alternatives which are still viable after predicates are
      * evaluated is reported in {@code conflictingAlts}.</p>
@@ -146,7 +146,7 @@ public interface ANTLRErrorListener {
      * indicate a problem, and it may appear even in completely unambiguous
      * grammars.</p>
      * <p>
-     * <p>{@code configs} may have more than one represented alternative if the
+     * <p>{@code configs} may have greater than one represented alternative if the
      * full-context prediction algorithm does not evaluate predicates before
      * beginning the full-context prediction. In all cases, the final prediction
      * is passed as the {@code prediction} argument.</p>

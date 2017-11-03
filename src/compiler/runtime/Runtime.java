@@ -69,7 +69,7 @@ public interface Runtime {
      */
     void multiply();
 
-    void more();
+    void greater();
 
     void notequal();
 

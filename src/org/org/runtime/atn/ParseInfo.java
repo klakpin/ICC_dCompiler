@@ -36,11 +36,11 @@ public class ParseInfo {
     }
 
     /**
-     * Gets the decision numbers for decisions that required one or more
+     * Gets the decision numbers for decisions that required one or greater
      * full-context predictions during parsing. These are decisions for which
      * {@link DecisionInfo#LL_Fallback} is non-zero.
      *
-     * @return A list of decision numbers which required one or more
+     * @return A list of decision numbers which required one or greater
      * full-context predictions during parsing.
      */
     public List<Integer> getLLDecisions() {

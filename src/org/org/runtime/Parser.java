@@ -842,7 +842,7 @@ public abstract class Parser extends Recognizer<Token, ParserATNSimulator> {
     /**
      * Return List&lt;String&gt; of the rule names in your parser instance
      * leading up to a call to the current rule.  You could override if
-     * you want more details such as the file/line info of where
+     * you want greater details such as the file/line info of where
      * in the ATN a rule is invoked.
      * <p>
      * This is very useful for error messages.

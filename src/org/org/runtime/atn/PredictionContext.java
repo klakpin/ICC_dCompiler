@@ -667,7 +667,7 @@ public abstract class PredictionContext {
 
                 if (recognizer != null) {
                     if (localBuffer.length() > 1) {
-                        // first char is '[', if more than that this isn't the first rule
+                        // first char is '[', if greater than that this isn't the first rule
                         localBuffer.append(' ');
                     }
 
@@ -678,7 +678,7 @@ public abstract class PredictionContext {
                 } else if (p.getReturnState(index) != EMPTY_RETURN_STATE) {
                     if (!p.isEmpty()) {
                         if (localBuffer.length() > 1) {
-                            // first char is '[', if more than that this isn't the first rule
+                            // first char is '[', if greater than that this isn't the first rule
                             localBuffer.append(' ');
                         }
 

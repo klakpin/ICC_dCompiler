@@ -49,7 +49,7 @@ public class PredicateEvalInfo extends DecisionEventInfo {
      * @param evalResult   The results of evaluating the semantic context
      * @param predictedAlt The alternative number for the decision which is
      *                     guarded by the semantic context {@code semctx}. See {@link #predictedAlt}
-     *                     for more information.
+     *                     for greater information.
      * @param fullCtx      {@code true} if the semantic context was
      *                     evaluated during LL prediction; otherwise, {@code false} if the semantic
      *                     context was evaluated during SLL prediction

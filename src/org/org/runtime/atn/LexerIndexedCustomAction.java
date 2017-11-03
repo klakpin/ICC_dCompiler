@@ -16,7 +16,7 @@ import org.runtime.misc.MurmurHash;
  * <p>
  * <p>This action is not serialized as part of the ATN, and is only required for
  * position-dependent lexer actions which appear at a location other than the
- * end of a rule. For more information about DFA optimizations employed for
+ * end of a rule. For greater information about DFA optimizations employed for
  * lexer actions, see {@link LexerActionExecutor#append} and
  * {@link LexerActionExecutor#fixOffsetBeforeMatch}.</p>
  *

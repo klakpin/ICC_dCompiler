@@ -20,7 +20,7 @@ public interface Operations {
 
     Boolean equals(Object var1, Object var2);
 
-    Boolean more(Object var1, Object var2);
+    Boolean greater(Object var1, Object var2);
 
     Boolean less(Object var1, Object var2);
 

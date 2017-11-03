@@ -24,6 +24,12 @@ public interface ScopeStack {
 
     void assign(String variable, Object value);
 
+    /**
+     * Search through tables for object
+     *
+     * @param variable
+     * @return
+     */
     Object get(String variable);
 
     void invoke(String name);
