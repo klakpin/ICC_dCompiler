@@ -1,5 +1,6 @@
 package compiler;
 
+import org.runtime.tree.ParseTree;
 import runtime.ScopeStack;
 import runtime.SymTable;
 import types.Function;
@@ -21,37 +22,49 @@ public class ScopeStackImpl implements ScopeStack {
     }
 
     @Override
+    public void newScope(SymTable table) {
+        symTablesStack.add(new SymTableImpl(table));
+    }
+
+    @Override
     public void popScope() {
         symTablesStack.remove(symTablesStack.size() - 1);
     }
 
     @Override
-    public void add(String variable) {
-        symTablesStack.get(symTablesStack.size() - 1).add(variable);
+    public void add(String name) {
+        symTablesStack.get(symTablesStack.size() - 1).add(name);
     }
 
     @Override
-    public void assign(String variable, Object value) {
-        for (int i = symTablesStack.size() - 1; i >= 0; i--) {
-            if (symTablesStack.get(i).contains(variable)) {
-                symTablesStack.get(i).assign(variable, value);
-            }
+    public void assign(String name, Object value) throws Exception {
+        SymTable currentScope = symTablesStack.get(symTablesStack.size() - 1);
+        while (!currentScope.contains(name) && currentScope.getOrigin() != null) {
+            currentScope = currentScope.getOrigin();
+        }
+        if (currentScope != null) {
+            currentScope.assign(name, value);
+        } else {
+            throw new Exception("Variable " + name + " was not found in any scope");
         }
     }
 
     @Override
-    public Object get(String variable) {
-        for (int i = symTablesStack.size() - 1; i >= 0; i--) {
-            if (symTablesStack.get(i).contains(variable)) {
-                return symTablesStack.get(i).get(variable);
-            }
+    public Object get(String name) throws Exception {
+        SymTable currentScope = symTablesStack.get(symTablesStack.size() - 1);
+        while (!currentScope.contains(name) && currentScope.getOrigin() != null) {
+            currentScope = currentScope.getOrigin();
         }
-        return null;
+        //noinspection ConstantConditions
+        if (currentScope != null) {
+            return currentScope.get(name);
+        } else {
+            throw new Exception("Variable " + name + " was not found in any scope.");
+        }
     }
 
     @Override
-    public void invoke(String name) {
-        Function func = (Function) get(name);
-        func.run();
+    public SymTable getScope() {
+        return symTablesStack.get(symTablesStack.size() - 1);
     }
 }

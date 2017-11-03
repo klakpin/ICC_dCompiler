@@ -1,5 +1,5 @@
 package runtime;
 
 public interface Runnable {
-    void run();
+    void run() throws Exception;
 }

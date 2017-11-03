@@ -9,7 +9,7 @@ public class Function {
         this.action = action;
     }
 
-    public void run() {
+    public void run() throws Exception {
         action.run();
     }
 }

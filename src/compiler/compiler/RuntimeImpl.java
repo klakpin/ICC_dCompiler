@@ -1,9 +1,7 @@
 package compiler;
 
-import runtime.Operations;
+import runtime.*;
 import runtime.Runtime;
-import runtime.ScopeStack;
-import runtime.Stack;
 import types.Function;
 
 public class RuntimeImpl implements Runtime {
@@ -21,7 +19,7 @@ public class RuntimeImpl implements Runtime {
     }
 
     @Override
-    public void vpush(String name) {
+    public void vpush(String name) throws Exception {
         stack.push(scopeStack.get(name));
     }
 
@@ -31,18 +29,43 @@ public class RuntimeImpl implements Runtime {
     }
 
     @Override
-    public void assign(String name) {
+    public void assign(String name) throws Exception {
         assign(name, stack.pop());
     }
 
     @Override
-    public void assign(String name, Object val) {
+    public void assign(String name, Object val) throws Exception {
         scopeStack.assign(name, val);
     }
 
     @Override
-    public void invoke(String name) {
-        scopeStack.invoke(name);
+    public void invoke(Object object) throws Exception {
+        Function runnable = (Function) object;
+        SymTable origin = scopeStack.getScope();
+        scopeStack.newScope(origin);
+        runnable.run();
+        scopeStack.popScope();
+    }
+
+    @Override
+    public void enterScope() {
+        SymTable origin = scopeStack.getScope();
+        scopeStack.newScope(origin);
+    }
+
+    @Override
+    public void exitScope() {
+        scopeStack.popScope();
+    }
+
+    @Override
+    public void invoke(String name) throws Exception {
+        invoke(scopeStack.get(name));
+    }
+
+    @Override
+    public void invoke() throws Exception {
+        invoke(stack.pop());
     }
 
     @Override
@@ -95,14 +118,13 @@ public class RuntimeImpl implements Runtime {
     /**
      * Iterative euclidus algorithm
      */
-    public int euclidus(int var1, int var2) {
+    public int euclidus(int var1, int var2) throws Exception {
         scopeStack.newScope();
 
         // var euclidus := func ...
         add("euclidus");
         vpush(new Function(() -> {
             // a, b initialization
-            scopeStack.newScope();
             add("b");
             assign("b");
             add("a");
@@ -116,8 +138,7 @@ public class RuntimeImpl implements Runtime {
 
 
             while (bpop()) {
-                scopeStack.newScope();
-
+                enterScope();
                 // a > b
                 vpush("b");
                 vpush("a");
@@ -125,7 +146,7 @@ public class RuntimeImpl implements Runtime {
 
                 // if a > b
                 if (bpop()) {
-                    scopeStack.newScope();
+                    enterScope();
 
                     // a := a - b
                     vpush("b");
@@ -133,15 +154,15 @@ public class RuntimeImpl implements Runtime {
                     minus();
                     assign("a");
 
-                    scopeStack.popScope();
+                    exitScope();
                 } else {
-                    scopeStack.newScope();
+                    enterScope();
                     // b := b - a
                     vpush("a");
                     vpush("b");
                     minus();
                     assign("b");
-                    scopeStack.popScope();
+                    exitScope();
                 }
 
 
@@ -150,12 +171,10 @@ public class RuntimeImpl implements Runtime {
                 vpush("a");
                 vpush("b");
                 notequal();
-
-                scopeStack.popScope();
+                exitScope();
             }
 
             vpush("a");
-            scopeStack.popScope();
         }));
         assign("euclidus");
 
@@ -164,7 +183,8 @@ public class RuntimeImpl implements Runtime {
         add("res");
         vpush(var1);
         vpush(var2);
-        invoke("euclidus");
+        vpush("euclidus");
+        invoke();
         assign("res");
 
         //print res

@@ -9,6 +9,8 @@ public interface SymTable {
 
     void assign(String name, Object value);
 
+    SymTable getOrigin();
+
     Object get(String name);
 
     boolean contains(String name);

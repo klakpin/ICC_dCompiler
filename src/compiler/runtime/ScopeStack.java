@@ -6,9 +6,16 @@ package runtime;
 public interface ScopeStack {
 
     /**
-     * Add new scope onto stack
+     * Add new symbol table onto stack
      */
     void newScope();
+
+    /**
+     * Add new symbol table onto stack and set the origin of new sybol table
+     *
+     * @param table origin of symbol table
+     */
+    void newScope(SymTable table);
 
     /**
      * Removes scope from stack
@@ -16,21 +23,30 @@ public interface ScopeStack {
     void popScope();
 
     /**
-     * Assign variable to symbol table on top of stack
+     * Returns symbol table but don't removes it from stack
+     */
+    SymTable getScope();
+
+    /**
+     * Add (declare) variable to symbol table on top of stack
      *
-     * @param variable
+     * @param variable name of variable
      */
     void add(String variable);
 
-    void assign(String variable, Object value);
+    /**
+     * Assign value to variable
+     *
+     * @param variable name of variable
+     * @param value    value to be assigned
+     */
+    void assign(String variable, Object value) throws Exception;
 
     /**
      * Search through tables for object
      *
-     * @param variable
-     * @return
+     * @param variable name of variable to find
+     * @return found variable
      */
-    Object get(String variable);
-
-    void invoke(String name);
+    Object get(String variable) throws Exception;
 }

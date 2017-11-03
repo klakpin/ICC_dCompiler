@@ -16,7 +16,7 @@ public interface Runtime {
      *
      * @param name name of variable to be pushed in stack
      */
-    void vpush(String name);
+    void vpush(String name) throws Exception;
 
     /**
      * Add variable name to the symbol table of current scope
@@ -30,7 +30,7 @@ public interface Runtime {
      *
      * @param name
      */
-    void assign(String name);
+    void assign(String name) throws Exception;
 
     /**
      * Assign value to variable in the scope, i.e. add it into current symbol table
@@ -38,14 +38,25 @@ public interface Runtime {
      * @param name
      * @param val
      */
-    void assign(String name, Object val);
+    void assign(String name, Object val) throws Exception;
+
+    void invoke(Object object) throws Exception;
+
+    void enterScope();
+
+    void exitScope();
 
     /**
      * Invokes function with given name
      *
      * @param name name of function
      */
-    void invoke(String name);
+    void invoke(String name) throws Exception;
+
+    /**
+     * Take function from top of stack and invokes it
+     */
+    void invoke() throws Exception;
 
     /**
      * Pop variable from top of stack and converts it into boolean value

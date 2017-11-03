@@ -9,8 +9,20 @@ public class SymTableImpl implements SymTable {
 
     HashMap<String, Object> values;
 
+    SymTable origin;
+
     public SymTableImpl() {
         values = new HashMap<>();
+    }
+
+    public SymTableImpl(SymTable table) {
+        values = new HashMap<>();
+        origin = table;
+    }
+
+    @Override
+    public SymTable getOrigin() {
+        return origin;
     }
 
     @Override
