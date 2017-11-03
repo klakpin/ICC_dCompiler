@@ -2,3 +2,4 @@ var a;
 var c;
 a := 5;
 a:=10;
+a:="heloooooolol"

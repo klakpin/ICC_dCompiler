@@ -1,4 +1,4 @@
-var fact := func(x)
+var fact := func(n)
         if n < 0 then
             print "No negative numbers"
             return 0

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="org">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../antlr4-master/runtime/Java/src/org" />
+    </SOURCES>
+  </library>
+</component>

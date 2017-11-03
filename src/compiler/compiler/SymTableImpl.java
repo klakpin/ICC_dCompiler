@@ -1,12 +1,13 @@
 package compiler;
 
-import java.util.ArrayList;
+import runtime.Runnable;
+import runtime.SymTable;
+
 import java.util.HashMap;
 
 public class SymTableImpl implements SymTable {
 
-
-    HashMap<String, Integer> values;
+    HashMap<String, Object> values;
 
     public SymTableImpl() {
         values = new HashMap<>();
@@ -18,12 +19,12 @@ public class SymTableImpl implements SymTable {
     }
 
     @Override
-    public void assign(String name, int value) {
+    public void assign(String name, Object value) {
         values.put(name, value);
     }
 
     @Override
-    public int get(String name) {
+    public Object get(String name) {
         return values.get(name);
     }
 

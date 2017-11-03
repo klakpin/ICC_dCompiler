@@ -1,18 +1,47 @@
 package src;
 
-import compiler.ScopeStack;
-import compiler.ScopeStackImpl;
 import grammar.DBaseVisitor;
 import grammar.DLexer;
 import grammar.DParser;
 import org.runtime.*;
 import org.runtime.tree.*;
+import compiler.RuntimeImpl;
 
 import java.io.IOException;
 
 public class Test {
 
-    public static void main(String[] args) throws IOException {
+    public static void checkEuclidus(int a, int b) throws Exception {
+        RuntimeImpl runtime = new RuntimeImpl();
+
+
+        if (runtime.euclidus(a, b) != gcd(a, b)) {
+            throw new Exception("Euclidus don't work");
+        }
+
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        checkEuclidus(1, 10);
+        checkEuclidus(5, 10);
+        checkEuclidus(24, 24);
+        checkEuclidus(0, 0);
+        checkEuclidus(5, 10);
+    }
+
+    public static int gcd(int a, int b) {
+        while (a != b) {
+            if (a > b) {
+                a = a - b;
+            } else {
+                b = b - a;
+            }
+        }
+        return a;
+    }
+
+    public static void antlrTesting(String[] args) throws IOException {
 
         CharStream stream = CharStreams.fromFileName("input");
         DLexer lexer = new DLexer(stream);
@@ -23,33 +52,11 @@ public class Test {
 
         ParseTree tree = parser.compilation_unit();
 
-        System.out.println(tree.toStringTree(parser));
+//        System.out.println(tree.toStringTree(parser));
 
         DBaseVisitor visitor = new DBaseVisitor<>();
 
-        tree.accept(visitor);
-
-        checkScope();
-
-    }
-
-    public static void checkScope() {
-        ScopeStack stack = new ScopeStackImpl();
-
-        stack.newScope();
-
-        stack.add("a");                     // var a
-        stack.assign("a", 25); // a := 25
-
-
-        stack.newScope();                   // new scope created
-        stack.add("b");                     // var b;
-        stack.assign("b", stack.get("a"));
-        stack.assign("b", 33);
-
-        stack.newScope();                   // new scope created
-        stack.add("c");                     // var b;
-        stack.assign("c", stack.get("b"));
+//        tree.accept(visitor);
 
     }
 }

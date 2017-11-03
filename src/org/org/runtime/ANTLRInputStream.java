@@ -100,7 +100,7 @@ public class ANTLRInputStream implements CharStream {
         if (readChunkSize <= 0) {
             readChunkSize = READ_BUFFER_SIZE;
         }
-        // System.out.println("load "+size+" in chunks of "+readChunkSize);
+        // System.out.println("vpush "+size+" in chunks of "+readChunkSize);
         try {
             // alloc initial buffer size.
             data = new char[size];

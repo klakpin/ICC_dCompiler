@@ -186,7 +186,7 @@ public abstract class Recognizer<Symbol, ATNInterpreter extends ATNSimulator> {
      * your token objects because you don't have to go modify your lexer
      * so that it creates a new Java type.
      *
-     * @deprecated This method is not called by the ANTLR 4 Runtime. Specific
+     * @deprecated This method is not called by the ANTLR 4 RuntimeImpl. Specific
      * implementations of {@link ANTLRErrorStrategy} may provide a similar
      * feature when necessary. For example, see
      * {@link DefaultErrorStrategy#getTokenErrorDisplay}.

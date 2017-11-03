@@ -1,2 +1,5 @@
-var a := 0;
-var b := a;
+var a;
+var c;
+a := 5;
+a:=10;
+a:="heloooooolol"

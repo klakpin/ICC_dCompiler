@@ -1,43 +1,57 @@
 package compiler;
 
+import runtime.ScopeStack;
+import runtime.SymTable;
+import types.Function;
+
 import java.util.ArrayList;
 
 public class ScopeStackImpl implements ScopeStack {
 
-    ArrayList<SymTable> stack;
+
+    private ArrayList<SymTable> symTablesStack;
 
     public ScopeStackImpl() {
-        stack = new ArrayList<>();
+        symTablesStack = new ArrayList<>();
     }
 
     @Override
     public void newScope() {
-        stack.add(new SymTableImpl());
+        symTablesStack.add(new SymTableImpl());
     }
 
     @Override
     public void popScope() {
-        stack.remove(stack.size() - 1);
+        symTablesStack.remove(symTablesStack.size() - 1);
     }
 
     @Override
     public void add(String variable) {
-        stack.get(stack.size() - 1).add(variable);
+        symTablesStack.get(symTablesStack.size() - 1).add(variable);
     }
 
     @Override
-    public void assign(String variable, int value) {
-        stack.get(stack.size() - 1).assign(variable, value);
-
-    }
-
-    @Override
-    public int get(String variable) {
-        for (int i = stack.size() - 1; i >= 0; i--) {
-            if (stack.get(i).contains(variable)) {
-                return stack.get(i).get(variable);
+    public void assign(String variable, Object value) {
+        for (int i = symTablesStack.size() - 1; i >= 0; i--) {
+            if (symTablesStack.get(i).contains(variable)) {
+                symTablesStack.get(i).assign(variable, value);
             }
         }
-        return 0;
+    }
+
+    @Override
+    public Object get(String variable) {
+        for (int i = symTablesStack.size() - 1; i >= 0; i--) {
+            if (symTablesStack.get(i).contains(variable)) {
+                return symTablesStack.get(i).get(variable);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void invoke(String name) {
+        Function func = (Function) get(name);
+        func.run();
     }
 }
