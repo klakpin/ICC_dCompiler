@@ -1,4 +1,4 @@
-package src;
+package main;
 
 import grammar.DBaseVisitor;
 import grammar.DLexer;
@@ -17,8 +17,9 @@ public class Test {
 
         if (runtime.euclidus(a, b) != gcd(a, b)) {
             throw new Exception("Euclidus don't work");
+        } else {
+            System.out.println("Euclidus algorithm with input " + a + " " + b + " test passed!");
         }
-
     }
 
     public static void main(String[] args) throws Exception {
