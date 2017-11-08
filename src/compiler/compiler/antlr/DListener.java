@@ -1,5 +1,6 @@
 // Generated from /home/ilya/Documents/Compilers/Compiler project/src/grammar/D.g4 by ANTLR 4.7
-package grammar;
+package compiler.antlr;
+
 import org.runtime.tree.ParseTreeListener;
 
 /**

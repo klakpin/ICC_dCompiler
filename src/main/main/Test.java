@@ -1,8 +1,8 @@
 package main;
 
-import grammar.DBaseVisitor;
-import grammar.DLexer;
-import grammar.DParser;
+import compiler.antlr.DBaseVisitor;
+import compiler.antlr.DLexer;
+import compiler.antlr.DParser;
 import org.runtime.*;
 import org.runtime.tree.*;
 import compiler.RuntimeImpl;
@@ -28,11 +28,11 @@ public class Test {
 
         ParseTree tree = parser.compilation_unit();
 
-//        System.out.println(tree.toStringTree(parser));
+        System.out.println(tree.toStringTree(parser));
 
-//        DBaseVisitor visitor = new DBaseVisitor<>();
+        DBaseVisitor visitor = new DBaseVisitor<>();
 
-//        tree.accept(visitor);
+        tree.accept(visitor);
 
     }
 }

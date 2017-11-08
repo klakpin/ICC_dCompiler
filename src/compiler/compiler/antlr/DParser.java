@@ -1,13 +1,12 @@
 // Generated from /home/ilya/Documents/Compilers/Compiler project/src/grammar/D.g4 by ANTLR 4.7
-package grammar;
+package compiler.antlr;
+
 import org.runtime.atn.*;
 import org.runtime.dfa.DFA;
 import org.runtime.*;
-import org.runtime.misc.*;
 import org.runtime.tree.*;
+
 import java.util.List;
-import java.util.Iterator;
-import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class DParser extends Parser {

@@ -1,6 +1,6 @@
 package compiler;
 
-import grammar.DParser;
+import compiler.antlr.DParser;
 
 public class CodeGen {
     String result = "";

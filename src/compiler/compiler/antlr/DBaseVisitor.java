@@ -1,4 +1,4 @@
-package grammar;
+package compiler.antlr;
 
 import compiler.CodeGen;
 import org.runtime.tree.AbstractParseTreeVisitor;
@@ -14,7 +14,7 @@ import org.runtime.tree.AbstractParseTreeVisitor;
  */
 public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVisitor<T> {
 
-    CodeGen generator;
+    CodeGen generator = new CodeGen();
 
     /**
      * {@inheritDoc}
