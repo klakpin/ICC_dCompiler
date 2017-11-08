@@ -52,7 +52,7 @@ public abstract class AbstractParseTreeVisitor<T> implements ParseTreeVisitor<T>
 
     /**
      * {@inheritDoc}
-     * <p>
+     * 1
      * <p>The default implementation returns the result of
      * {@link #defaultResult defaultResult}.</p>
      */

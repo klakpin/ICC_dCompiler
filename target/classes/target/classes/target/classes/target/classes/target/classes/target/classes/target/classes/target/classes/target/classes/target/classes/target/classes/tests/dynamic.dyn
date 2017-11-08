@@ -1,5 +1,0 @@
-var a := 5;
-
-var b := func(x) => x*x;
-
-var aa := b(a);

@@ -1,5 +1,13 @@
-var a;
-var c;
-a := 5;
-a:=10;
-a:="heloooooolol"
+var euclidus := func (a, b)
+    while a /= b
+    loop
+      if a > b then a := a - b
+      else  b := b - a
+      end
+    end
+    return a
+end
+
+var res := euclidus(5, 10)
+print res
+

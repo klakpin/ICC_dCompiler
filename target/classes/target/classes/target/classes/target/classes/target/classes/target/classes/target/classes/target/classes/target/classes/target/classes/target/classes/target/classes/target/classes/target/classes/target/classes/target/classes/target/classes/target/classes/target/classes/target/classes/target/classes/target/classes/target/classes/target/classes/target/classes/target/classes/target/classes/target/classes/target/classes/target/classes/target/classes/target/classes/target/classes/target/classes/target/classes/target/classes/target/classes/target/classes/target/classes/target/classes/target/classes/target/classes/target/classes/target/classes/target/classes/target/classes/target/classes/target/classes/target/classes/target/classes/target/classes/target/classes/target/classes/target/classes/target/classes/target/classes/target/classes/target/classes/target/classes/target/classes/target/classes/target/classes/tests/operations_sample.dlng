@@ -1,9 +1,0 @@
-var a:=5;
-var b:=5.5;
-a:=a+a*b-b*a;
-a:=10;
-b:=3;
-a:=a/b;
-var bool1:=a<b;
-var bool2:=a=b;
-a:=(bool1 and bool2) or (bool1 xor bool2);

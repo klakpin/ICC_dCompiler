@@ -33,6 +33,31 @@ public interface Runtime {
     void assign(String name) throws Exception;
 
     /**
+     * Takes value from array by index and put result in stack.
+     * First value on stack is array index, second value is array itself.
+     */
+    void readcort();
+
+    /**
+     * Takes object from stack, takes index value (int) from stack, takes cortaige from stack, assign object to array cell
+     * with certain index
+     */
+    void assigncort();
+
+    /**
+     * Takes value from object by index (string) and put result in stack.
+     * First value on stack is index, second value is object itself.
+     */
+    void readobj();
+
+    /**
+     * Takes object from stack, takes index name (string) from stack, takes structure from stack,
+     * assign object to var in structure
+     * with certain index
+     */
+    void assignobj();
+
+    /**
      * Assign value to variable in the scope, i.e. add it into current symbol table
      *
      * @param name

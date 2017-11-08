@@ -34,6 +34,29 @@ public class RuntimeImpl implements Runtime {
     }
 
     @Override
+    public void readcort() {
+        //TODO implement
+    }
+
+    @Override
+    public void assigncort() {
+        //TODO implement
+
+    }
+
+    @Override
+    public void readobj() {
+        //TODO implement
+
+    }
+
+    @Override
+    public void assignobj() {
+        //TODO implement
+
+    }
+
+    @Override
     public void assign(String name, Object val) throws Exception {
         scopeStack.assign(name, val);
     }
@@ -112,87 +135,5 @@ public class RuntimeImpl implements Runtime {
 
     @Override
     public void run() {
-
-    }
-
-    /**
-     * Iterative euclidus algorithm
-     */
-    public int euclidus(int var1, int var2) throws Exception {
-        scopeStack.newScope();
-
-        // var euclidus := func ...
-        add("euclidus");
-        vpush(new Function(() -> {
-            // a, b initialization
-            add("b");
-            assign("b");
-            add("a");
-            assign("a");
-
-
-            // a /= b
-            vpush("a");
-            vpush("b");
-            notequal();
-
-
-            while (bpop()) {
-                enterScope();
-                // a > b
-                vpush("b");
-                vpush("a");
-                greater();
-
-                // if a > b
-                if (bpop()) {
-                    enterScope();
-
-                    // a := a - b
-                    vpush("b");
-                    vpush("a");
-                    minus();
-                    assign("a");
-
-                    exitScope();
-                } else {
-                    enterScope();
-                    // b := b - a
-                    vpush("a");
-                    vpush("b");
-                    minus();
-                    assign("b");
-                    exitScope();
-                }
-
-
-                // Check variables again
-                // a /= b
-                vpush("a");
-                vpush("b");
-                notequal();
-                exitScope();
-            }
-
-            vpush("a");
-        }));
-        assign("euclidus");
-
-
-        // var res := euclidus(5, 10)
-        add("res");
-        vpush(var1);
-        vpush(var2);
-        vpush("euclidus");
-        invoke();
-        assign("res");
-
-        //print res
-        vpush("res");
-
-        scopeStack.popScope();
-
-        Integer res = (Integer) stack.pop();
-        return res;
     }
 }

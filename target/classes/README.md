@@ -1,3 +1,4 @@
-# ICC_dCompiler
+# Dynamic language compiler
 
-Introduction to compiler course project.
+Introduction to compiler construction course project.
+
