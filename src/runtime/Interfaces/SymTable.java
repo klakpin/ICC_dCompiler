@@ -1,4 +1,4 @@
-package runtime;
+package Interfaces;
 
 /**
  * Symbol table that contains all variables

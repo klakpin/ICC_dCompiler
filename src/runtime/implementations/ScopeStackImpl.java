@@ -1,9 +1,7 @@
-package compiler;
+package implementations;
 
-import org.runtime.tree.ParseTree;
-import runtime.ScopeStack;
-import runtime.SymTable;
-import types.Function;
+import Interfaces.ScopeStack;
+import Interfaces.SymTable;
 
 import java.util.ArrayList;
 

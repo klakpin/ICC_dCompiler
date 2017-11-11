@@ -1,4 +1,4 @@
-package runtime;
+package Interfaces;
 
 /**
  * Stack that contains variables, like JVM stack

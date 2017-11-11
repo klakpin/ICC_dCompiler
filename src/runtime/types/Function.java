@@ -1,6 +1,6 @@
 package types;
 
-import runtime.Runnable;
+import Interfaces.Runnable;
 
 public class Function {
     Runnable action;

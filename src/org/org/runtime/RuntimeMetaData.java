@@ -96,7 +96,7 @@ public class RuntimeMetaData {
      * <ul>
      * <li>The ANTLR Tool version used for code generation does not match the
      * currently executing runtime version.</li>
-     * <li>The ANTLR RuntimeImpl version referenced at the time a parser was
+     * <li>The ANTLR implementations.RuntimeImpl version referenced at the time a parser was
      * compiled does not match the currently executing runtime version.</li>
      * </ul>
      * <p>
@@ -161,7 +161,7 @@ public class RuntimeMetaData {
                     generatingToolVersion, runtimeVersion);
         }
         if (runtimeConflictsWithCompileTimeTool) {
-            System.err.printf("ANTLR RuntimeImpl version %s used for parser compilation does not match the current runtime version %s",
+            System.err.printf("ANTLR implementations.RuntimeImpl version %s used for parser compilation does not match the current runtime version %s",
                     compileTimeVersion, runtimeVersion);
         }
     }

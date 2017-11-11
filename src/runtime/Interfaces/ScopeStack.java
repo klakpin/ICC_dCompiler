@@ -1,4 +1,4 @@
-package runtime;
+package Interfaces;
 
 /**
  * Stack of scopes. For operations performing should traverse through all symbols tables starting from latest.
@@ -11,7 +11,7 @@ public interface ScopeStack {
     void newScope();
 
     /**
-     * Add new symbol table onto stack and set the origin of new sybol table
+     * Add new symbol table onto stack and set the origin of new symbol table
      *
      * @param table origin of symbol table
      */

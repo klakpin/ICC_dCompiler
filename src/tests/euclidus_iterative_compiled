@@ -2,7 +2,7 @@ public int euclidus(int var1, int var2) throws Exception {
         scopeStack.newScope();
 
         // var euclidus := func ...
-        add("euclidus");
+        add("euclidus");v
         vpush(new Function(() -> {
             // a, b initialization
             add("b");

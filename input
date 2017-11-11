@@ -1,13 +1,14 @@
-var euclidus := func (a, b)
-    while a /= b
-    loop
-      if a > b then a := a - b
-      else  b := b - a
-      end
+var fact := func(n)
+        if n < 0 then
+            print "No negative numbers"
+            return 0
+        end
+
+        var ans := 1
+        for i in 1 .. n loop
+            ans := ans * i
+        end
+
+        return ans
     end
-    return a
-end
-
-var res := euclidus(5, 10)
-print res
-
+var res := fact(5);

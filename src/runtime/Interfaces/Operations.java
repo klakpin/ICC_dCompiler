@@ -1,4 +1,4 @@
-package runtime;
+package Interfaces;
 
 /**
  * All operations were taken from language description

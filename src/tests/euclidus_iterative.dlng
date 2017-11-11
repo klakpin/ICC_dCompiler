@@ -10,4 +10,3 @@ end
 
 var res := euclidus(5, 10)
 print res
-

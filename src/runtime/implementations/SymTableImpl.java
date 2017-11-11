@@ -1,7 +1,6 @@
-package compiler;
+package implementations;
 
-import runtime.Runnable;
-import runtime.SymTable;
+import Interfaces.SymTable;
 
 import java.util.HashMap;
 

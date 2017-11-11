@@ -12,6 +12,7 @@
       <sourceFolder url="file://$MODULE_DIR$/gen/grammar" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/grammar" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/runtime" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />

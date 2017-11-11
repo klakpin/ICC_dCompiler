@@ -1,4 +1,4 @@
-package runtime;
+package Interfaces;
 
 /**
  * List of assembler-like commands
@@ -36,13 +36,13 @@ public interface Runtime {
      * Takes value from array by index and put result in stack.
      * First value on stack is array index, second value is array itself.
      */
-    void readcort();
+    void readcort() throws Exception;
 
     /**
      * Takes object from stack, takes index value (int) from stack, takes cortaige from stack, assign object to array cell
-     * with certain index
+     * with certain index.
      */
-    void assigncort();
+    void assigncort() throws Exception;
 
     /**
      * Takes value from object by index (string) and put result in stack.
@@ -105,9 +105,29 @@ public interface Runtime {
      */
     void multiply();
 
+    void divide();
+
     void greater();
 
     void notequal();
 
-    void run();
+    void or();
+
+    void and();
+
+    void xor();
+
+    /**
+     * Duplicates value on stack
+     */
+    void dup();
+
+    /**
+     * Swap elements on top of stack
+     */
+    void swap();
+
+    void cprint();
+
+    void run() throws Exception;
 }

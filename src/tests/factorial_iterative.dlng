@@ -11,3 +11,4 @@ var fact := func(n)
 
         return ans
     end
+var res := fact(5);

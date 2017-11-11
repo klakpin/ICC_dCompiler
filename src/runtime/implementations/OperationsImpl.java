@@ -1,6 +1,6 @@
-package compiler;
+package implementations;
 
-import runtime.Operations;
+import Interfaces.Operations;
 
 //TODO implement everything
 public class OperationsImpl implements Operations {
@@ -39,7 +39,14 @@ public class OperationsImpl implements Operations {
 
     @Override
     public Object divide(Object var1, Object var2) {
+        if (var1 instanceof Integer && var2 instanceof Integer) {
+            Integer a = (Integer) var1;
+            Integer b = (Integer) var2;
+            return a / b;
+        }
+        //TODO write all possible operations
         return null;
+
     }
 
     @Override

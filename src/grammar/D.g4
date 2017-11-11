@@ -40,12 +40,16 @@ reference : IDENT
           | reference '(' expression (',' expression)* ')'
           | reference '.' IDENT;
 
+// Ready
 expression : relation (('or'|'and'|'xor') relation)*;
 
+// Ready
 relation : simple (('<'|'<='|'>'|'>='|'='|'/=') simple)?;
 
-simple : summand (('+'|'-')? summand)*;
+// Ready
+simple : summand ( ('+'|'-')summand)*;
 
+// Ready
 summand : factor (('*'|'/') factor)*;
 
 factor : reference
@@ -92,11 +96,11 @@ tuple : '[' (expression (',' expression)*)? ']';
 //------------------TOKENS----------------------------------
 //----------------------------------------------------------
 
-INTEGER : '-'?[0-9]+;
+INTEGER : [0-9]+;
 REAL : [0-9]+'.'[0-9]+;
 STRING : '"'[a-zA-Z ]*'"';
 BOOLEAN : 'true'|'false';
 EMPTY : 'empty';
 
 IDENT : [A-Za-z][_a-zA-Z0-9]*;
- WS: [ \n\t\r]+ -> skip ;
+ WS: [\n\t\r ]+ -> skip;
