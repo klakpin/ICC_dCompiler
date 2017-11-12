@@ -24,7 +24,7 @@ r_if : 'if' expression 'then' scope ('else' scope)? 'end';
 
 r_while : 'while' expression 'loop' scope 'end';
 
-r_for : 'for' (IDENT 'in')? (expression '..' expression)? 'loop' scope 'end';
+r_for : 'for' IDENT 'in' (expression '..' expression)? 'loop' scope 'end';
 
 print : 'print' expression (',' expression)*;
 

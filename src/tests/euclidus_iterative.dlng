@@ -10,3 +10,20 @@ end
 
 var res := euclidus(5, 10)
 print res
+
+
+for i in 1..10
+loop
+i := i +1;
+end
+
+
+
+for 1..10
+loop
+i := i +1;
+end
+
+for i in
+loop
+end

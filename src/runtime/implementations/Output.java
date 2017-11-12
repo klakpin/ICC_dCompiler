@@ -223,48 +223,51 @@ public class Output implements Runtime {
     @Override
     public void run() throws Exception {
         scopeStack.newScope();
-        add("fact");
+        add("euclidus");
         vpush(new Function(() -> {
-            add("n");
-            assign("n");
-            vpush(0);
-            vpush("n");
-            less();
-            if (bpop()) {
+            add("b");
+            assign("b");
+            add("a");
+            assign("a");
+            vpush("b");
+            vpush("a");
+            notequal();
+            while (bpop()) {
                 enterScope();
-                vpush(new String("No negative numbers"));
-                cprint();
-                vpush(0);
-                exitfunc();
-                if (true) {
-                    return;
+                vpush("b");
+                vpush("a");
+                greater();
+                if (bpop()) {
+                    enterScope();
+                    vpush("b");
+                    vpush("a");
+                    minus();
+                    assign("a");
+                    exitScope();
+                } else {
+                    enterScope();
+                    vpush("a");
+                    vpush("b");
+                    minus();
+                    assign("b");
+                    exitScope();
                 }
                 exitScope();
+                vpush("b");
+                vpush("a");
+                notequal();
             }
-            add("ans");
-            vpush(1);
-            assign("ans");
-            vpush(1);
-            vpush("n");
-            enterScope();
-            vpush("i");
-            vpush("ans");
-            multiply();
-            assign("ans");
-            exitScope();
-            vpush("ans");
+            vpush("a");
             exitfunc();
             if (true) {
                 return;
             }
-            if (true) {
-                return;
-            }
         }));
-        assign("fact");
+        assign("euclidus");
         add("res");
         vpush(5);
-        vpush("fact");
+        vpush(10);
+        vpush("euclidus");
         invoke();
         assign("res");
         vpush("res");

@@ -98,10 +98,10 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
         switch (ctx.children.get(4).getText()) {
             case "..":
                 // for i in 1..10 loop %scope% end
-
                 break;
             case "loop":
                 // for 1..10 loop %scope% end
+
                 //TODO implement
                 System.out.println("--------------------------------------------\ncase loop");
                 break;
@@ -334,7 +334,6 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
     public T visitFunction_literal(DParser.Function_literalContext ctx) {
         generator.add("vpush(new Function(() -> {");
         visitScopeFromFunction(ctx.body().scope(), ctx.IDENT());
-        generator.add("if (true) {return;}");
         generator.add("}));");
         return null;
     }
@@ -370,7 +369,6 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
     @Override
     public T visitTuple(DParser.TupleContext ctx) {
         generator.add("vpush(new Cortaige());");
-
         for (int i = 1; i <= ctx.expression().size(); i++) {
             generator.add("dup();");
             visitExpression(ctx.expression(i - 1));
