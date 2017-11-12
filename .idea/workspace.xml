@@ -5,36 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="05f8ce83-6d24-403f-9291-c058c3e2d9ef" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/runtime/main/Main.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/translator/translator/ArgumentParser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/translator/translator/Translator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/translator/translator/codegen/CodeGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/translator/translator/codegen/CodeGeneratorToFile.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/translator/translator/codegen/CodeGeneratorToStdout.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/translator/translator/codegen/RuntimeTemplate.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/compiler/compiler/ArgumentParser.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/compiler/compiler/codegen/CodeGenerator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/compiler/compiler/codegen/RuntimeTemplate.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/input" afterPath="$PROJECT_DIR$/input.dlan" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/compiler/antlr/D.tokens" afterPath="$PROJECT_DIR$/src/translator/translator/antlr/D.tokens" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/compiler/antlr/DBaseListener.java" afterPath="$PROJECT_DIR$/src/translator/translator/antlr/DBaseListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/compiler/antlr/DBaseVisitor.java" afterPath="$PROJECT_DIR$/src/translator/translator/antlr/DBaseVisitor.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/compiler/antlr/DLexer.java" afterPath="$PROJECT_DIR$/src/translator/translator/antlr/DLexer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/compiler/antlr/DLexer.tokens" afterPath="$PROJECT_DIR$/src/translator/translator/antlr/DLexer.tokens" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/compiler/antlr/DListener.java" afterPath="$PROJECT_DIR$/src/translator/translator/antlr/DListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/compiler/antlr/DParser.java" afterPath="$PROJECT_DIR$/src/translator/translator/antlr/DParser.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/compiler/antlr/DVisitor.java" afterPath="$PROJECT_DIR$/src/translator/translator/antlr/DVisitor.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/grammar/D.g4" afterPath="$PROJECT_DIR$/src/translator/translator/antlr/D.g4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/runtime/implementations/Output.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Compiler project.iml" afterPath="$PROJECT_DIR$/Compiler project.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/args" afterPath="$PROJECT_DIR$/args" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/main/Test.java" afterPath="$PROJECT_DIR$/src/main/main/Test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/org/runtime/CharStreams.java" afterPath="$PROJECT_DIR$/src/org/org/runtime/CharStreams.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/runtime/Interfaces/Operations.java" afterPath="$PROJECT_DIR$/src/runtime/Interfaces/Operations.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/runtime/Interfaces/Runtime.java" afterPath="$PROJECT_DIR$/src/runtime/Interfaces/Runtime.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/runtime/implementations/OperationsImpl.java" afterPath="$PROJECT_DIR$/src/runtime/implementations/OperationsImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/runtime/implementations/RuntimeImpl.java" afterPath="$PROJECT_DIR$/src/runtime/implementations/RuntimeImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/input.dlan" afterPath="$PROJECT_DIR$/input.dlan" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/ArtifactId/target/" />
@@ -77,6 +50,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/main/Test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="42" column="44" lean-forward="true" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+              <folding>
+                <element signature="method#compilationTest#0;class#Test#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Output.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/runtime/implementations/Output.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="13" column="47" lean-forward="true" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="euclidus_iterative.dlng" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tests/euclidus_iterative.dlng">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="11" column="9" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="DBaseVisitor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/translator/translator/antlr/DBaseVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -87,11 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="input.dlan" pinned="false" current-in-tab="true">
+      <file leaf-file-name="input.dlan" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/input.dlan">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="13" column="19" lean-forward="true" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+            <state relative-caret-position="198">
+              <caret line="11" column="9" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -219,7 +224,6 @@
         <option value="$PROJECT_DIR$/src/translator/translator/codegen/CodeGeneratorToStdout.java" />
         <option value="$PROJECT_DIR$/src/translator/translator/Translator.java" />
         <option value="$PROJECT_DIR$/src/main/main/Test.java" />
-        <option value="$PROJECT_DIR$/input.dlan" />
         <option value="$PROJECT_DIR$/src/runtime/implementations/OperationsImpl.java" />
         <option value="$PROJECT_DIR$/src/runtime/Interfaces/Runtime.java" />
         <option value="$PROJECT_DIR$/src/runtime/implementations/RuntimeImpl.java" />
@@ -227,6 +231,7 @@
         <option value="$PROJECT_DIR$/src/runtime/implementations/Output.java" />
         <option value="$PROJECT_DIR$/src/runtime/Interfaces/Operations.java" />
         <option value="$PROJECT_DIR$/src/translator/translator/antlr/DBaseVisitor.java" />
+        <option value="$PROJECT_DIR$/input.dlan" />
       </list>
     </option>
   </component>
@@ -324,52 +329,33 @@
             <path>
               <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
-              <item name="gen" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
-              <item name="gen" type="462c0819:PsiDirectoryNode" />
-              <item name="implementations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="runtime" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="runtime" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="runtime" type="462c0819:PsiDirectoryNode" />
               <item name="implementations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="translator" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="translator" type="462c0819:PsiDirectoryNode" />
-              <item name="translator" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="translator" type="462c0819:PsiDirectoryNode" />
-              <item name="translator" type="462c0819:PsiDirectoryNode" />
-              <item name="codegen" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -619,7 +605,7 @@
       <workItem from="1510268000395" duration="43852000" />
       <workItem from="1510364539528" duration="8576000" />
       <workItem from="1510461089817" duration="38000" />
-      <workItem from="1510461142800" duration="8377000" />
+      <workItem from="1510461142800" duration="8784000" />
     </task>
     <task id="LOCAL-00001" summary="Parser bugfixes">
       <created>1509322728010</created>
@@ -698,11 +684,18 @@
       <option name="project" value="LOCAL" />
       <updated>1510365966240</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Structure reorganised again, visitors">
+      <created>1510495902274</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1510495902274</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="178468000" />
+    <option name="totallyTimeSpent" value="178875000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -794,7 +787,8 @@
     <MESSAGE value="Gitignore file fixes" />
     <MESSAGE value="Reorganised structure" />
     <MESSAGE value="Structure reorganised again, part of visitors partially implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="Structure reorganised again, part of visitors partially implemented" />
+    <MESSAGE value="Structure reorganised again, visitors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Structure reorganised again, visitors" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -936,13 +930,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="109">
           <caret line="194" column="27" lean-forward="false" selection-start-line="194" selection-start-column="27" selection-end-line="194" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/euclidus_iterative.dlng">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="9" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1124,14 +1111,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/implementations/Output.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="240" column="17" lean-forward="true" selection-start-line="240" selection-start-column="17" selection-end-line="240" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/translator/translator/codegen/RuntimeTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1145,16 +1124,6 @@
         <state relative-caret-position="72">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="223" selection-end-column="40" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/main/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="57" column="62" lean-forward="false" selection-start-line="57" selection-start-column="62" selection-end-line="57" selection-end-column="62" />
-          <folding>
-            <element signature="method#compilationTest#0;class#Test#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1182,10 +1151,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/tests/euclidus_iterative.dlng">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="9" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/input.dlan">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="19" lean-forward="true" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+        <state relative-caret-position="198">
+          <caret line="11" column="9" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/main/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="42" column="44" lean-forward="true" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+          <folding>
+            <element signature="method#compilationTest#0;class#Test#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/implementations/Output.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="13" column="47" lean-forward="true" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
           <folding />
         </state>
       </provider>

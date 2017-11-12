@@ -1,15 +1,12 @@
-var fact := func(n)
-        if n < 0 then
-            print "No negative numbers"
-            return 0
-        end
-
-        var ans := 1
-        for i in 1 .. n loop
-            ans := ans * i
-        end
-
-        return ans
+var euclidus := func (a, b)
+    while a /= b
+    loop
+      if a > b then a := a - b
+      else  b := b - a
+      end
     end
-var res := fact(5);
-print res;
+    return a
+end
+
+var res := euclidus(5, 10)
+print res
