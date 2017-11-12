@@ -72,6 +72,11 @@ public interface Runtime {
     void exitScope();
 
     /**
+     * Go to scope from which function was called.
+     */
+    void exitfunc();
+
+    /**
      * Invokes function with given name
      *
      * @param name name of function
@@ -108,6 +113,8 @@ public interface Runtime {
     void divide();
 
     void greater();
+
+    void less();
 
     void notequal();
 

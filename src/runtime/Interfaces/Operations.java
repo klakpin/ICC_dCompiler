@@ -17,7 +17,6 @@ public interface Operations {
 
     Object multiply(Object var1, Object var2);
 
-
     Boolean equals(Object var1, Object var2);
 
     Boolean greater(Object var1, Object var2);

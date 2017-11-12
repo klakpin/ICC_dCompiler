@@ -1,45 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/runtime/Interfaces/Runtime.java" line="127" mnemonic="0" />
+    <bookmark url="file://$PROJECT_DIR$/src/runtime/Interfaces/Runtime.java" line="74" mnemonic="0" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="05f8ce83-6d24-403f-9291-c058c3e2d9ef" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/args" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/compiler/compiler/ArgumentParser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/compiler/compiler/codegen/CodeGenerator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/compiler/compiler/codegen/RuntimeTemplate.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/runtime/implementations/RuntimeImpl.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/compiler/compiler/CodeGen.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/compiler/compiler/RuntimeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/compiler/compiler/Writer.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/compiler/OperationsImpl.java" afterPath="$PROJECT_DIR$/src/runtime/implementations/OperationsImpl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/compiler/ScopeStackImpl.java" afterPath="$PROJECT_DIR$/src/runtime/implementations/ScopeStackImpl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/compiler/StackImpl.java" afterPath="$PROJECT_DIR$/src/runtime/implementations/StackImpl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/compiler/SymTableImpl.java" afterPath="$PROJECT_DIR$/src/runtime/implementations/SymTableImpl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/runtime/InputOutput.java" afterPath="$PROJECT_DIR$/src/runtime/Interfaces/InputOutput.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/runtime/Operations.java" afterPath="$PROJECT_DIR$/src/runtime/Interfaces/Operations.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/runtime/Runnable.java" afterPath="$PROJECT_DIR$/src/runtime/Interfaces/Runnable.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/runtime/Runtime.java" afterPath="$PROJECT_DIR$/src/runtime/Interfaces/Runtime.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/runtime/ScopeStack.java" afterPath="$PROJECT_DIR$/src/runtime/Interfaces/ScopeStack.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/runtime/Stack.java" afterPath="$PROJECT_DIR$/src/runtime/Interfaces/Stack.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/runtime/SymTable.java" afterPath="$PROJECT_DIR$/src/runtime/Interfaces/SymTable.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/types/Cortaige.java" afterPath="$PROJECT_DIR$/src/runtime/types/Cortaige.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/types/Function.java" afterPath="$PROJECT_DIR$/src/runtime/types/Function.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/types/Structure.java" afterPath="$PROJECT_DIR$/src/runtime/types/Structure.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/runtime/main/Main.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/translator/translator/ArgumentParser.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/translator/translator/Translator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/translator/translator/codegen/CodeGenerator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/translator/translator/codegen/CodeGeneratorToFile.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/translator/translator/codegen/CodeGeneratorToStdout.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/translator/translator/codegen/RuntimeTemplate.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/compiler/compiler/ArgumentParser.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/compiler/compiler/codegen/CodeGenerator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/compiler/compiler/codegen/RuntimeTemplate.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/input" afterPath="$PROJECT_DIR$/input.dlan" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/compiler/antlr/D.tokens" afterPath="$PROJECT_DIR$/src/translator/translator/antlr/D.tokens" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/compiler/antlr/DBaseListener.java" afterPath="$PROJECT_DIR$/src/translator/translator/antlr/DBaseListener.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/compiler/antlr/DBaseVisitor.java" afterPath="$PROJECT_DIR$/src/translator/translator/antlr/DBaseVisitor.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/compiler/antlr/DLexer.java" afterPath="$PROJECT_DIR$/src/translator/translator/antlr/DLexer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/compiler/antlr/DLexer.tokens" afterPath="$PROJECT_DIR$/src/translator/translator/antlr/DLexer.tokens" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/compiler/antlr/DListener.java" afterPath="$PROJECT_DIR$/src/translator/translator/antlr/DListener.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/compiler/antlr/DParser.java" afterPath="$PROJECT_DIR$/src/translator/translator/antlr/DParser.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/compiler/compiler/antlr/DVisitor.java" afterPath="$PROJECT_DIR$/src/translator/translator/antlr/DVisitor.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/grammar/D.g4" afterPath="$PROJECT_DIR$/src/translator/translator/antlr/D.g4" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Compiler project.iml" afterPath="$PROJECT_DIR$/Compiler project.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/input" afterPath="$PROJECT_DIR$/input" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/compiler/antlr/DBaseVisitor.java" afterPath="$PROJECT_DIR$/src/compiler/compiler/antlr/DBaseVisitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/compiler/antlr/DLexer.java" afterPath="$PROJECT_DIR$/src/compiler/compiler/antlr/DLexer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/compiler/compiler/antlr/DParser.java" afterPath="$PROJECT_DIR$/src/compiler/compiler/antlr/DParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/D.g4" afterPath="$PROJECT_DIR$/src/grammar/D.g4" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/args" afterPath="$PROJECT_DIR$/args" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/main/Test.java" afterPath="$PROJECT_DIR$/src/main/main/Test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/org/runtime/RuntimeMetaData.java" afterPath="$PROJECT_DIR$/src/org/org/runtime/RuntimeMetaData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/bubble.d" afterPath="$PROJECT_DIR$/src/tests/bubble.d" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/euclidus_iterative.dlng" afterPath="$PROJECT_DIR$/src/tests/euclidus_iterative.dlng" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/euclidus_iterative_compiled" afterPath="$PROJECT_DIR$/src/tests/euclidus_iterative_compiled" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/factorial_iterative.dlng" afterPath="$PROJECT_DIR$/src/tests/factorial_iterative.dlng" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/org/runtime/CharStreams.java" afterPath="$PROJECT_DIR$/src/org/org/runtime/CharStreams.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/runtime/Interfaces/Operations.java" afterPath="$PROJECT_DIR$/src/runtime/Interfaces/Operations.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/runtime/Interfaces/Runtime.java" afterPath="$PROJECT_DIR$/src/runtime/Interfaces/Runtime.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/runtime/implementations/OperationsImpl.java" afterPath="$PROJECT_DIR$/src/runtime/implementations/OperationsImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/runtime/implementations/RuntimeImpl.java" afterPath="$PROJECT_DIR$/src/runtime/implementations/RuntimeImpl.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/ArtifactId/target/" />
@@ -82,29 +77,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/main/Test.java">
+      <file leaf-file-name="DBaseVisitor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/translator/translator/antlr/DBaseVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="35" column="46" lean-forward="true" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+            <state relative-caret-position="334">
+              <caret line="106" column="22" lean-forward="true" selection-start-line="106" selection-start-column="22" selection-end-line="106" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DBaseVisitor.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/compiler/compiler/antlr/DBaseVisitor.java">
+      <file leaf-file-name="input.dlan" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/input.dlan">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-              <folding>
-                <element signature="method#visitProgram#0;class#DBaseVisitor#0" expanded="false" />
-                <element signature="method#visitScope#0;class#DBaseVisitor#0" expanded="false" />
-                <element signature="method#visitR_if#0;class#DBaseVisitor#0" expanded="false" />
-                <element signature="method#visitR_while#0;class#DBaseVisitor#0" expanded="false" />
-                <element signature="method#visitRelation#0;class#DBaseVisitor#0" expanded="false" />
-                <element signature="method#visitFunction_literal#0;class#DBaseVisitor#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="234">
+              <caret line="13" column="19" lean-forward="true" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="D.g4" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/translator/translator/antlr/D.g4">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="26" column="51" lean-forward="true" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -114,34 +112,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sim</find>
-      <find>print</find>
-      <find>antlr.v4.</find>
-      <find>minus</find>
-      <find>hell</find>
-      <find>TODO</find>
-      <find>state</find>
-      <find>var_de</find>
-      <find>or</find>
-      <find>tup</find>
-      <find>tu</find>
-      <find>vpush</find>
-      <find>vpush(</find>
-      <find>d</find>
-      <find>visitPrin</find>
-      <find>visitExpre</find>
-      <find>visitPri</find>
-      <find>readcort</find>
-      <find>visitReference</find>
-      <find>visitC</find>
-      <find>Op</find>
       <find>reference</find>
       <find>assignCort</find>
       <find>visit</find>
@@ -151,10 +128,32 @@
       <find>assignc</find>
       <find>dunn</find>
       <find>runtime.</find>
+      <find>System.out.</find>
+      <find>System.out.print</find>
+      <find>-classpath</find>
+      <find>return</find>
+      <find>visitr_Re</find>
+      <find>r_R</find>
+      <find>invo</find>
+      <find>invoke</find>
+      <find>r_if</find>
+      <find>invok</find>
+      <find>File he</find>
+      <find>r_f</find>
+      <find>visitFu</find>
+      <find>r_ret</find>
+      <find>visitFun</find>
+      <find>funct</find>
+      <find>&quot;return</find>
+      <find>INTEGE</find>
+      <find>express</find>
+      <find>greater</find>
+      <find>r_for</find>
     </findStrings>
     <replaceStrings>
       <replace>public</replace>
       <replace />
+      <replace>generator.add</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/org/org</dir>
@@ -177,20 +176,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/gen/grammar/DBaseListener.java" />
-        <option value="$PROJECT_DIR$/src/gen/grammar/DBaseListener.java" />
-        <option value="$PROJECT_DIR$/src/compiler/compiler/antlr/DBaseListener.java" />
-        <option value="$PROJECT_DIR$/src/compiler/runtime/ScopeStack.java" />
-        <option value="$PROJECT_DIR$/src/compiler/runtime/Runtime.java" />
-        <option value="$PROJECT_DIR$/src/tests/euclidus_iterative_compiled" />
-        <option value="$PROJECT_DIR$/src/compiler/compiler/OperationsImpl.java" />
-        <option value="$PROJECT_DIR$/gen/DParser.java" />
-        <option value="$PROJECT_DIR$/src/compiler/compiler/antlr/DParser.java" />
-        <option value="$PROJECT_DIR$/gen/DLexer.java" />
-        <option value="$PROJECT_DIR$/src/compiler/compiler/antlr/DLexer.java" />
-        <option value="$PROJECT_DIR$/src/compiler/compiler/RuntimeImpl.java" />
-        <option value="$PROJECT_DIR$/src/tests/euclidus_iterative.dlng" />
-        <option value="$PROJECT_DIR$/src/compiler/compiler/CodeGen.java" />
         <option value="$PROJECT_DIR$/src/compiler/compiler/codegeneration/CodeGen.java" />
         <option value="$PROJECT_DIR$/src/compiler/ArgumentParser.java" />
         <option value="$PROJECT_DIR$/src/compiler/compiler/Interfaces/SymTable.java" />
@@ -207,27 +192,41 @@
         <option value="$PROJECT_DIR$/src/compiler/compiler/Interfaces/Runtime.java" />
         <option value="$PROJECT_DIR$/src/tests/factorial_iterative.dlng" />
         <option value="$PROJECT_DIR$/input" />
-        <option value="$PROJECT_DIR$/src/compiler/compiler/codegen/CodeGenerator.java" />
-        <option value="$PROJECT_DIR$/src/compiler/compiler/codegen/RuntimeTemplate.java" />
         <option value="$PROJECT_DIR$/src/compiler/runtime/RuntimeImpl.java" />
         <option value="$PROJECT_DIR$/src/runtime/Interfaces/InputOutput.java" />
         <option value="$PROJECT_DIR$/src/runtime/Interfaces/SymTable.java" />
         <option value="$PROJECT_DIR$/src/runtime/Interfaces/Stack.java" />
         <option value="$PROJECT_DIR$/src/runtime/Interfaces/ScopeStack.java" />
         <option value="$PROJECT_DIR$/src/runtime/Interfaces/Runnable.java" />
-        <option value="$PROJECT_DIR$/src/runtime/Interfaces/Operations.java" />
         <option value="$PROJECT_DIR$/src/runtime/types/Cortaige.java" />
         <option value="$PROJECT_DIR$/src/runtime/types/Function.java" />
         <option value="$PROJECT_DIR$/src/runtime/types/Structure.java" />
         <option value="$PROJECT_DIR$/src/runtime/OperationsImpl.java" />
-        <option value="$PROJECT_DIR$/src/runtime/Interfaces/Runtime.java" />
         <option value="$PROJECT_DIR$/src/runtime/RuntimeImpl.java" />
         <option value="$PROJECT_DIR$/src/runtime/ScopeStackImpl.java" />
         <option value="$PROJECT_DIR$/src/runtime/StackImpl.java" />
         <option value="$PROJECT_DIR$/src/runtime/SymTableImpl.java" />
         <option value="$PROJECT_DIR$/src/runtime/implementations/SymTableImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/main/Test.java" />
         <option value="$PROJECT_DIR$/src/compiler/compiler/antlr/DBaseVisitor.java" />
+        <option value="$PROJECT_DIR$/src/compiler/compiler/codegen/RuntimeTemplate.java" />
+        <option value="$PROJECT_DIR$/src/compiler/compiler/codegen/CodeGenerator.java" />
+        <option value="$PROJECT_DIR$/src/translator/compiler/ArgumentParser.java" />
+        <option value="$PROJECT_DIR$/src/translator/compiler/Translator.java" />
+        <option value="$PROJECT_DIR$/src/org/org/runtime/CommonTokenStream.java" />
+        <option value="$PROJECT_DIR$/src/runtime/main/Main.java" />
+        <option value="$PROJECT_DIR$/src/translator/translator/codegen/CodeGenerator.java" />
+        <option value="$PROJECT_DIR$/src/translator/translator/codegen/CodeGeneratorToFile.java" />
+        <option value="$PROJECT_DIR$/src/translator/translator/codegen/CodeGeneratorToStdout.java" />
+        <option value="$PROJECT_DIR$/src/translator/translator/Translator.java" />
+        <option value="$PROJECT_DIR$/src/main/main/Test.java" />
+        <option value="$PROJECT_DIR$/input.dlan" />
+        <option value="$PROJECT_DIR$/src/runtime/implementations/OperationsImpl.java" />
+        <option value="$PROJECT_DIR$/src/runtime/Interfaces/Runtime.java" />
+        <option value="$PROJECT_DIR$/src/runtime/implementations/RuntimeImpl.java" />
+        <option value="$PROJECT_DIR$/src/translator/translator/codegen/RuntimeTemplate.java" />
+        <option value="$PROJECT_DIR$/src/runtime/implementations/Output.java" />
+        <option value="$PROJECT_DIR$/src/runtime/Interfaces/Operations.java" />
+        <option value="$PROJECT_DIR$/src/translator/translator/antlr/DBaseVisitor.java" />
       </list>
     </option>
   </component>
@@ -261,10 +260,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="116" />
     <option name="y" value="27" />
-    <option name="width" value="1260" />
-    <option name="height" value="796" />
+    <option name="width" value="1920" />
+    <option name="height" value="1053" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -304,17 +302,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Compiler project" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Compiler project" type="616d4139:PackageViewModuleNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -326,6 +313,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -336,28 +324,18 @@
             <path>
               <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="gen" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
+              <item name="gen" type="462c0819:PsiDirectoryNode" />
+              <item name="implementations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="compiler" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="compiler" type="462c0819:PsiDirectoryNode" />
-              <item name="compiler" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="compiler" type="462c0819:PsiDirectoryNode" />
-              <item name="compiler" type="462c0819:PsiDirectoryNode" />
-              <item name="codegen" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
@@ -365,11 +343,38 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="runtime" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="runtime" type="462c0819:PsiDirectoryNode" />
+              <item name="implementations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="translator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="translator" type="462c0819:PsiDirectoryNode" />
+              <item name="translator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="translator" type="462c0819:PsiDirectoryNode" />
+              <item name="translator" type="462c0819:PsiDirectoryNode" />
+              <item name="codegen" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -381,6 +386,17 @@
               <item name="Compiler project" type="1abcf292:AndroidViewProjectNode" />
               <item name="Compiler project" type="1039202d:NonAndroidModuleNode" />
               <item name="java" type="b5c1fe26:NonAndroidSourceTypeNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Compiler project" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Compiler project" type="616d4139:PackageViewModuleNode" />
             </path>
           </expand>
           <select />
@@ -465,7 +481,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="main.Test" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="input.dlan" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -601,7 +617,9 @@
       <workItem from="1510128340396" duration="312000" />
       <workItem from="1510181423604" duration="1507000" />
       <workItem from="1510268000395" duration="43852000" />
-      <workItem from="1510364539528" duration="690000" />
+      <workItem from="1510364539528" duration="8576000" />
+      <workItem from="1510461089817" duration="38000" />
+      <workItem from="1510461142800" duration="8377000" />
     </task>
     <task id="LOCAL-00001" summary="Parser bugfixes">
       <created>1509322728010</created>
@@ -673,11 +691,18 @@
       <option name="project" value="LOCAL" />
       <updated>1510183266064</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Structure reorganised again, part of visitors partially implemented">
+      <created>1510365966240</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1510365966240</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162167000" />
+    <option name="totallyTimeSpent" value="178468000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -689,7 +714,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="116" y="27" width="1920" height="1053" extended-state="6" />
+    <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -699,7 +724,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="1.0" sideWeight="0.49786323" order="9" side_tool="false" content_ui="tabs" x="116" y="96" width="1751" height="984" />
+      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.66923076" sideWeight="0.49786323" order="9" side_tool="false" content_ui="tabs" x="116" y="96" width="1751" height="984" />
       <window_info id="ASM" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.48314607" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -768,12 +793,13 @@
     <MESSAGE value="Scoping fixed" />
     <MESSAGE value="Gitignore file fixes" />
     <MESSAGE value="Reorganised structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reorganised structure" />
+    <MESSAGE value="Structure reorganised again, part of visitors partially implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Structure reorganised again, part of visitors partially implemented" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="24" />
+      <option name="time" value="30" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -782,242 +808,8 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/compiler/compiler/Antlr.java" />
-    <entry file="file://$PROJECT_DIR$/src/compiler/compiler/antlr/D.tokens">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="21" lean-forward="false" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Compiler project.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/compiler/antlr/DBaseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="15" column="54" lean-forward="true" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/org/runtime/RuleContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2466">
-          <caret line="34" column="46" lean-forward="false" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="46" />
-          <folding>
-            <element signature="e#5196#5197#0" expanded="false" />
-            <element signature="e#5241#5242#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/DBaseVisitor.java" />
-    <entry file="file://$PROJECT_DIR$/gen/DParser.java" />
-    <entry file="file://$PROJECT_DIR$/src/compiler/compiler/antlr/DParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10">
-          <caret line="2075" column="58" lean-forward="false" selection-start-line="2075" selection-start-column="58" selection-end-line="2075" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#249#318#0" expanded="false" />
-            <element signature="e#3941#3942#0" expanded="false" />
-            <element signature="e#3974#3975#0" expanded="false" />
-            <element signature="e#4030#4031#0" expanded="false" />
-            <element signature="e#4063#4064#0" expanded="false" />
-            <element signature="e#4618#4619#0" expanded="false" />
-            <element signature="e#4687#4688#0" expanded="false" />
-            <element signature="e#4844#4845#0" expanded="false" />
-            <element signature="e#4896#4897#0" expanded="false" />
-            <element signature="e#6436#6437#0" expanded="false" />
-            <element signature="e#6503#6504#0" expanded="false" />
-            <element signature="e#6580#6581#0" expanded="false" />
-            <element signature="e#6632#6633#0" expanded="false" />
-            <element signature="e#8043#8044#0" expanded="false" />
-            <element signature="e#8113#8114#0" expanded="false" />
-            <element signature="e#8164#8165#0" expanded="false" />
-            <element signature="e#8235#8236#0" expanded="false" />
-            <element signature="e#8310#8311#0" expanded="false" />
-            <element signature="e#8362#8363#0" expanded="false" />
-            <element signature="e#10707#10708#0" expanded="false" />
-            <element signature="e#10780#10781#0" expanded="false" />
-            <element signature="e#10828#10829#0" expanded="false" />
-            <element signature="e#10900#10901#0" expanded="false" />
-            <element signature="e#10936#10937#0" expanded="false" />
-            <element signature="e#11002#11003#0" expanded="false" />
-            <element signature="e#11044#11045#0" expanded="false" />
-            <element signature="e#11113#11114#0" expanded="false" />
-            <element signature="e#11151#11152#0" expanded="false" />
-            <element signature="e#11218#11219#0" expanded="false" />
-            <element signature="e#11262#11263#0" expanded="false" />
-            <element signature="e#11332#11333#0" expanded="false" />
-            <element signature="e#11370#11371#0" expanded="false" />
-            <element signature="e#11437#11438#0" expanded="false" />
-            <element signature="e#11516#11517#0" expanded="false" />
-            <element signature="e#11568#11569#0" expanded="false" />
-            <element signature="e#14468#14469#0" expanded="false" />
-            <element signature="e#14540#14541#0" expanded="false" />
-            <element signature="e#14584#14585#0" expanded="false" />
-            <element signature="e#14650#14651#0" expanded="false" />
-            <element signature="e#14693#14694#0" expanded="false" />
-            <element signature="e#14760#14761#0" expanded="false" />
-            <element signature="e#14834#14835#0" expanded="false" />
-            <element signature="e#14886#14887#0" expanded="false" />
-            <element signature="e#16870#16871#0" expanded="false" />
-            <element signature="e#16942#16943#0" expanded="false" />
-            <element signature="e#16980#16981#0" expanded="false" />
-            <element signature="e#17047#17048#0" expanded="false" />
-            <element signature="e#17124#17125#0" expanded="false" />
-            <element signature="e#17176#17177#0" expanded="false" />
-            <element signature="e#18811#18812#0" expanded="false" />
-            <element signature="e#18878#18879#0" expanded="false" />
-            <element signature="e#19007#19008#0" expanded="false" />
-            <element signature="e#19078#19079#0" expanded="false" />
-            <element signature="e#19131#19132#0" expanded="false" />
-            <element signature="e#19203#19204#0" expanded="false" />
-            <element signature="e#19278#19279#0" expanded="false" />
-            <element signature="e#19330#19331#0" expanded="false" />
-            <element signature="e#22047#22048#0" expanded="false" />
-            <element signature="e#22118#22119#0" expanded="false" />
-            <element signature="e#22171#22172#0" expanded="false" />
-            <element signature="e#22243#22244#0" expanded="false" />
-            <element signature="e#22318#22319#0" expanded="false" />
-            <element signature="e#22370#22371#0" expanded="false" />
-            <element signature="e#24394#24395#0" expanded="false" />
-            <element signature="e#24466#24467#0" expanded="false" />
-            <element signature="e#24544#24545#0" expanded="false" />
-            <element signature="e#24596#24597#0" expanded="false" />
-            <element signature="e#26364#26365#0" expanded="false" />
-            <element signature="e#26435#26436#0" expanded="false" />
-            <element signature="e#26483#26484#0" expanded="false" />
-            <element signature="e#26555#26556#0" expanded="false" />
-            <element signature="e#26635#26636#0" expanded="false" />
-            <element signature="e#26687#26688#0" expanded="false" />
-            <element signature="e#28270#28271#0" expanded="false" />
-            <element signature="e#28345#28346#0" expanded="false" />
-            <element signature="e#28406#28407#0" expanded="false" />
-            <element signature="e#28482#28483#0" expanded="false" />
-            <element signature="e#28563#28564#0" expanded="false" />
-            <element signature="e#28615#28616#0" expanded="false" />
-            <element signature="e#30782#30783#0" expanded="false" />
-            <element signature="e#30854#30855#0" expanded="false" />
-            <element signature="e#30938#30939#0" expanded="false" />
-            <element signature="e#30990#30991#0" expanded="false" />
-            <element signature="e#32919#32920#0" expanded="false" />
-            <element signature="e#32990#32991#0" expanded="false" />
-            <element signature="e#33044#33045#0" expanded="false" />
-            <element signature="e#33115#33116#0" expanded="false" />
-            <element signature="e#33168#33169#0" expanded="false" />
-            <element signature="e#33240#33241#0" expanded="false" />
-            <element signature="e#33319#33320#0" expanded="false" />
-            <element signature="e#33371#33372#0" expanded="false" />
-            <element signature="e#39336#39337#0" expanded="false" />
-            <element signature="e#39405#39406#0" expanded="false" />
-            <element signature="e#39454#39455#0" expanded="false" />
-            <element signature="e#39524#39525#0" expanded="false" />
-            <element signature="e#39604#39605#0" expanded="false" />
-            <element signature="e#39656#39657#0" expanded="false" />
-            <element signature="e#42413#42414#0" expanded="false" />
-            <element signature="e#42480#42481#0" expanded="false" />
-            <element signature="e#42525#42526#0" expanded="false" />
-            <element signature="e#42593#42594#0" expanded="false" />
-            <element signature="e#42671#42672#0" expanded="false" />
-            <element signature="e#42723#42724#0" expanded="false" />
-            <element signature="e#45081#45082#0" expanded="false" />
-            <element signature="e#45149#45150#0" expanded="false" />
-            <element signature="e#45196#45197#0" expanded="false" />
-            <element signature="e#45265#45266#0" expanded="false" />
-            <element signature="e#45341#45342#0" expanded="false" />
-            <element signature="e#45393#45394#0" expanded="false" />
-            <element signature="e#48041#48042#0" expanded="false" />
-            <element signature="e#48108#48109#0" expanded="false" />
-            <element signature="e#48153#48154#0" expanded="false" />
-            <element signature="e#48221#48222#0" expanded="false" />
-            <element signature="e#48298#48299#0" expanded="false" />
-            <element signature="e#48350#48351#0" expanded="false" />
-            <element signature="e#51004#51005#0" expanded="false" />
-            <element signature="e#51075#51076#0" expanded="false" />
-            <element signature="e#51131#51132#0" expanded="false" />
-            <element signature="e#51207#51208#0" expanded="false" />
-            <element signature="e#51255#51256#0" expanded="false" />
-            <element signature="e#51327#51328#0" expanded="false" />
-            <element signature="e#51369#51370#0" expanded="false" />
-            <element signature="e#51438#51439#0" expanded="false" />
-            <element signature="e#51514#51515#0" expanded="false" />
-            <element signature="e#51566#51567#0" expanded="false" />
-            <element signature="e#54976#54977#0" expanded="false" />
-            <element signature="e#55045#55046#0" expanded="false" />
-            <element signature="e#55105#55106#0" expanded="false" />
-            <element signature="e#55183#55184#0" expanded="false" />
-            <element signature="e#55237#55238#0" expanded="false" />
-            <element signature="e#55308#55309#0" expanded="false" />
-            <element signature="e#55361#55362#0" expanded="false" />
-            <element signature="e#55433#55434#0" expanded="false" />
-            <element signature="e#55510#55511#0" expanded="false" />
-            <element signature="e#55562#55563#0" expanded="false" />
-            <element signature="e#58446#58447#0" expanded="false" />
-            <element signature="e#58512#58513#0" expanded="false" />
-            <element signature="e#58634#58635#0" expanded="false" />
-            <element signature="e#58691#58692#0" expanded="false" />
-            <element signature="e#58777#58778#0" expanded="false" />
-            <element signature="e#58829#58830#0" expanded="false" />
-            <element signature="e#61495#61496#0" expanded="false" />
-            <element signature="e#61562#61563#0" expanded="false" />
-            <element signature="e#61610#61611#0" expanded="false" />
-            <element signature="e#61682#61683#0" expanded="false" />
-            <element signature="e#61756#61757#0" expanded="false" />
-            <element signature="e#61808#61809#0" expanded="false" />
-            <element signature="e#64040#64041#0" expanded="false" />
-            <element signature="e#64092#64093#0" expanded="false" />
-            <element signature="e#67715#67716#0" expanded="false" />
-            <element signature="e#67783#67784#0" expanded="false" />
-            <element signature="e#67821#67822#0" expanded="false" />
-            <element signature="e#67888#67889#0" expanded="false" />
-            <element signature="e#67965#67966#0" expanded="false" />
-            <element signature="e#68017#68018#0" expanded="false" />
-            <element signature="e#70946#70947#0" expanded="false" />
-            <element signature="e#71021#71022#0" expanded="false" />
-            <element signature="e#71082#71083#0" expanded="false" />
-            <element signature="e#71158#71159#0" expanded="false" />
-            <element signature="e#71234#71235#0" expanded="false" />
-            <element signature="e#71286#71287#0" expanded="false" />
-            <element signature="e#73391#73392#0" expanded="false" />
-            <element signature="e#73462#73463#0" expanded="false" />
-            <element signature="e#73515#73516#0" expanded="false" />
-            <element signature="e#73587#73588#0" expanded="false" />
-            <element signature="e#73662#73663#0" expanded="false" />
-            <element signature="e#73714#73715#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/DParser.java" />
-    <entry file="file://$PROJECT_DIR$/src/compiler/compiler/antlr/DLexer.tokens">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/compiler/antlr/DLexer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="809">
-          <caret line="223" column="0" lean-forward="false" selection-start-line="223" selection-start-column="0" selection-end-line="223" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gen/DLexer.java" />
-    <entry file="file://$PROJECT_DIR$/src/compiler/compiler/antlr/DVisitor.java">
+    <entry file="file://$PROJECT_DIR$/src/translator/translator/antlr/DVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
           <caret line="147" column="6" lean-forward="false" selection-start-line="147" selection-start-column="6" selection-end-line="147" selection-end-column="6" />
@@ -1026,22 +818,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/compiler/codegeneration.java" />
     <entry file="file://$PROJECT_DIR$/src/compiler/compiler/Writer.java" />
-    <entry file="file://$PROJECT_DIR$/args">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/compiler/codegeneration/CodeGen.java" />
     <entry file="file://$PROJECT_DIR$/src/compiler/compiler/codegeneration/Writer.java" />
-    <entry file="file://$PROJECT_DIR$/src/compiler/compiler/ArgumentParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tests/operations_sample.dlng">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1091,24 +869,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/euclidus_iterative.dlng">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/grammar/D.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="11" lean-forward="true" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tests/factorial_iterative.dlng">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="13" column="19" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="13" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/Interfaces/Runnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/Interfaces/InputOutput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/Interfaces/Stack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/Interfaces/SymTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/types/Structure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/types/Cortaige.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/implementations/SymTableImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/implementations/StackImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/args">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="194" column="27" lean-forward="false" selection-start-line="194" selection-start-column="27" selection-end-line="194" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tests/euclidus_iterative.dlng">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="9" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1119,173 +953,240 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/input">
+    <entry file="file://$PROJECT_DIR$/src/org/org/runtime/CommonTokenStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="19" lean-forward="false" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/compiler/codegen/CodeGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/compiler/codegen/RuntimeTemplate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/Interfaces/Runnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+        <state relative-caret-position="-1178">
+          <caret line="32" column="13" lean-forward="false" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/Interfaces/Operations.java">
+    <entry file="file://$PROJECT_DIR$/src/translator/translator/ArgumentParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
-          <folding />
+        <state relative-caret-position="72">
+          <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/Interfaces/InputOutput.java">
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/lang/ClassLoader.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state relative-caret-position="383">
+          <caret line="201" column="0" lean-forward="false" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/implementations/Output.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/implementations/Output.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-509">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/runtime/Interfaces/ScopeStack.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+        <state relative-caret-position="323">
+          <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/Interfaces/Stack.java">
+    <entry file="file://$PROJECT_DIR$/src/runtime/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+        <state relative-caret-position="36">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/Interfaces/SymTable.java">
+    <entry file="file://$PROJECT_DIR$/src/translator/translator/antlr/DParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="189" column="0" lean-forward="false" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/translator/translator/codegen/CodeGeneratorToStdout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="82" lean-forward="false" selection-start-line="20" selection-start-column="82" selection-end-line="20" selection-end-column="82" />
+          <folding>
+            <element signature="e#457#458#0" expanded="false" />
+            <element signature="e#499#500#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/translator/translator/codegen/CodeGeneratorToFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Compiler project.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/implementations/ScopeStackImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/translator/translator/Translator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="28" column="22" lean-forward="false" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/translator/translator/codegen/CodeGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="30" lean-forward="false" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/org/runtime/tree/AbstractParseTreeVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="38" column="1" lean-forward="false" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/runtime/Interfaces/Runtime.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/types/Structure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/types/Function.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/types/Cortaige.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/implementations/SymTableImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/implementations/StackImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="332">
+          <caret line="109" column="7" lean-forward="true" selection-start-line="109" selection-start-column="7" selection-end-line="109" selection-end-column="7" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/implementations/ScopeStackImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/implementations/RuntimeImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Runtime#0" expanded="false" />
+            <element signature="docComment;method#vpush#0;class#Runtime#0" expanded="false" />
+            <element signature="docComment;method#vpush#1;class#Runtime#0" expanded="false" />
+            <element signature="docComment;method#add#0;class#Runtime#0" expanded="false" />
+            <element signature="docComment;method#assign#0;class#Runtime#0" expanded="false" />
+            <element signature="docComment;method#readcort#0;class#Runtime#0" expanded="false" />
+            <element signature="docComment;method#assigncort#0;class#Runtime#0" expanded="false" />
+            <element signature="docComment;method#readobj#0;class#Runtime#0" expanded="false" />
+            <element signature="docComment;method#assignobj#0;class#Runtime#0" expanded="false" />
+            <element signature="docComment;method#assign#1;class#Runtime#0" expanded="false" />
+            <element signature="docComment;method#exitfunc#0;class#Runtime#0" expanded="false" />
+            <element signature="docComment;method#invoke#1;class#Runtime#0" expanded="false" />
+            <element signature="docComment;method#invoke#2;class#Runtime#0" expanded="false" />
+            <element signature="docComment;method#bpop#0;class#Runtime#0" expanded="false" />
+            <element signature="docComment;method#plus#0;class#Runtime#0" expanded="false" />
+            <element signature="docComment;method#minus#0;class#Runtime#0" expanded="false" />
+            <element signature="docComment;method#multiply#0;class#Runtime#0" expanded="false" />
+            <element signature="docComment;method#dup#0;class#Runtime#0" expanded="false" />
+            <element signature="docComment;method#swap#0;class#Runtime#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/runtime/implementations/OperationsImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="306">
+          <caret line="40" column="45" lean-forward="false" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
+          <folding>
+            <element signature="e#269#270#0" expanded="false" />
+            <element signature="e#296#297#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/Interfaces/Operations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/implementations/Output.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="240" column="17" lean-forward="true" selection-start-line="240" selection-start-column="17" selection-end-line="240" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/translator/translator/codegen/RuntimeTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="38" lean-forward="true" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/implementations/RuntimeImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="223" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/main/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="35" column="46" lean-forward="true" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+        <state relative-caret-position="568">
+          <caret line="57" column="62" lean-forward="false" selection-start-line="57" selection-start-column="62" selection-end-line="57" selection-end-column="62" />
+          <folding>
+            <element signature="method#compilationTest#0;class#Test#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/types/Function.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/compiler/antlr/DBaseVisitor.java">
+    <entry file="file://$PROJECT_DIR$/src/translator/translator/antlr/D.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-          <folding>
-            <element signature="method#visitProgram#0;class#DBaseVisitor#0" expanded="false" />
-            <element signature="method#visitScope#0;class#DBaseVisitor#0" expanded="false" />
-            <element signature="method#visitR_if#0;class#DBaseVisitor#0" expanded="false" />
-            <element signature="method#visitR_while#0;class#DBaseVisitor#0" expanded="false" />
-            <element signature="method#visitRelation#0;class#DBaseVisitor#0" expanded="false" />
-            <element signature="method#visitFunction_literal#0;class#DBaseVisitor#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="198">
+          <caret line="26" column="51" lean-forward="true" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/translator/translator/antlr/DBaseVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="106" column="22" lean-forward="true" selection-start-line="106" selection-start-column="22" selection-end-line="106" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/input.dlan">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="19" lean-forward="true" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>

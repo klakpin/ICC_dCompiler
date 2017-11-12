@@ -1,13 +1,10 @@
-package compiler.antlr;// Generated from /home/ilya/Documents/Compilers/Compiler project/src/grammar/D.g4 by ANTLR 4.7
+package translator.antlr;// Generated from /home/ilya/Documents/Compilers/Compiler project/src/grammar/D.g4 by ANTLR 4.7
 
 import org.runtime.Lexer;
 import org.runtime.CharStream;
-import org.runtime.Token;
-import org.runtime.TokenStream;
 import org.runtime.*;
 import org.runtime.atn.*;
 import org.runtime.dfa.DFA;
-import org.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class DLexer extends Lexer {
@@ -100,7 +97,7 @@ public class DLexer extends Lexer {
 
     @Override
     public String getGrammarFileName() {
-        return "D.g4";
+        return "translator/antlr/D.g4";
     }
 
     @Override

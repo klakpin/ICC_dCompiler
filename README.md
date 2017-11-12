@@ -1,4 +1,4 @@
-# Dynamic language compiler
+# Dynamic language translator
 
-Introduction to compiler construction course project.
+Introduction to translator construction course project.
 

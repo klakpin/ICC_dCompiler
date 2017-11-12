@@ -62,6 +62,12 @@ public class OperationsImpl implements Operations {
 
     @Override
     public Boolean less(Object var1, Object var2) {
+        if (var1 instanceof Integer && var2 instanceof Integer) {
+            Integer a = (Integer) var1;
+            Integer b = (Integer) var2;
+            return a < b;
+        }
+        //TODO write all operations
         return null;
     }
 

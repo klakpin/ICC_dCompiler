@@ -123,7 +123,6 @@ public class RuntimeImpl implements Runtime {
         SymTable origin = scopeStack.getScope();
         scopeStack.newScope(origin);
         runnable.run();
-        scopeStack.popScope();
     }
 
     @Override
@@ -185,6 +184,13 @@ public class RuntimeImpl implements Runtime {
     }
 
     @Override
+    public void less() {
+        Object var1 = stack.pop();
+        Object var2 = stack.pop();
+        stack.push(op.less(var1, var2));
+    }
+
+    @Override
     public void notequal() {
         Object var1 = stack.pop();
         Object var2 = stack.pop();
@@ -204,6 +210,14 @@ public class RuntimeImpl implements Runtime {
         Object var2 = stack.pop();
         stack.push(var1);
         stack.push(var2);
+    }
+
+    @Override
+    public void exitfunc() {
+        SymTable currTable = scopeStack.getScope();
+        while (currTable.getOrigin() != scopeStack.getScope()) {
+            scopeStack.popScope();
+        }
     }
 
     @Override
@@ -244,6 +258,7 @@ public class RuntimeImpl implements Runtime {
                 notequal();
             }
             vpush("a");
+            exitfunc();
         }));
         assign("euclidus");
         add("res");

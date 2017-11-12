@@ -32,7 +32,7 @@ import java.nio.file.Paths;
  * a nontrivial performance degradation. This speed hit is because the
  * {@link Lexer}'s internal code goes from a monomorphic to megamorphic
  * dynamic dispatch to get characters from the input stream. Java's
- * on-the-fly compiler (JIT) is unable to perform the same optimizations
+ * on-the-fly translator (JIT) is unable to perform the same optimizations
  * so stick with either the old or the new streams, if performance is
  * a primary concern. See the extreme debugging and spelunking
  * needed to identify this issue in our timing rig:

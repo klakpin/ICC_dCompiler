@@ -1,4 +1,4 @@
-package compiler.antlr;// Generated from /home/ilya/Documents/Compilers/Compiler project/src/grammar/D.g4 by ANTLR 4.7
+package translator.antlr;// Generated from /home/ilya/Documents/Compilers/Compiler project/src/grammar/D.g4 by ANTLR 4.7
 
 import org.runtime.ParserRuleContext;
 import org.runtime.tree.ErrorNode;

@@ -1,5 +1,5 @@
 // Generated from /home/ilya/Documents/Compilers/Compiler project/src/grammar/D.g4 by ANTLR 4.7
-package compiler.antlr;
+package translator.antlr;
 
 import org.runtime.atn.*;
 import org.runtime.dfa.DFA;
@@ -91,7 +91,7 @@ public class DParser extends Parser {
 
     @Override
     public String getGrammarFileName() {
-        return "D.g4";
+        return "translator/antlr/D.g4";
     }
 
     @Override
