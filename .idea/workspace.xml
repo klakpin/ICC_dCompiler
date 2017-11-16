@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="05f8ce83-6d24-403f-9291-c058c3e2d9ef" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/input.dlan" afterPath="$PROJECT_DIR$/input.dlan" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/main/Test.java" afterPath="$PROJECT_DIR$/src/main/main/Test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/runtime/implementations/Output.java" afterPath="$PROJECT_DIR$/src/runtime/implementations/Output.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/runtime/implementations/RuntimeImpl.java" afterPath="$PROJECT_DIR$/src/runtime/implementations/RuntimeImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/fib_iterative.dlng" afterPath="$PROJECT_DIR$/src/tests/fib_iterative.dlng" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/operations_sample.dlng" afterPath="$PROJECT_DIR$/src/tests/operations_sample.dlng" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/translator/translator/antlr/DBaseVisitor.java" afterPath="$PROJECT_DIR$/src/translator/translator/antlr/DBaseVisitor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/runtime/implementations/OperationsImpl.java" afterPath="$PROJECT_DIR$/src/runtime/implementations/OperationsImpl.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/ArtifactId/target/" />
@@ -52,7 +46,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="input.dlan" pinned="false" current-in-tab="true">
+      <file leaf-file-name="OperationsImpl.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/runtime/implementations/OperationsImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2912">
+              <caret line="191" column="5" lean-forward="true" selection-start-line="191" selection-start-column="5" selection-end-line="191" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="input.dlan" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/input.dlan">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="72">
@@ -86,7 +90,7 @@
         <entry file="file://$PROJECT_DIR$/src/runtime/implementations/Output.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="422">
-              <caret line="246" column="0" lean-forward="false" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
+              <caret line="246" column="8" lean-forward="false" selection-start-line="246" selection-start-column="8" selection-end-line="246" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -144,7 +148,6 @@
       <find>&lt;</find>
       <find>equal</find>
       <find>r_for</find>
-      <find>equal</find>
       <find>void equ</find>
       <find>real</find>
       <find>and</find>
@@ -230,7 +233,6 @@
         <option value="$PROJECT_DIR$/src/runtime/Interfaces/Runtime.java" />
         <option value="$PROJECT_DIR$/src/tests/fibonacci.d" />
         <option value="$PROJECT_DIR$/src/runtime/Interfaces/Operations.java" />
-        <option value="$PROJECT_DIR$/src/runtime/implementations/OperationsImpl.java" />
         <option value="$PROJECT_DIR$/src/runtime/implementations/StackImpl.java" />
         <option value="$PROJECT_DIR$/src/tests/fib_iterative.dlng" />
         <option value="$PROJECT_DIR$/src/tests/operations_sample.dlng" />
@@ -239,6 +241,7 @@
         <option value="$PROJECT_DIR$/src/runtime/implementations/Output.java" />
         <option value="$PROJECT_DIR$/src/translator/translator/antlr/DBaseVisitor.java" />
         <option value="$PROJECT_DIR$/input.dlan" />
+        <option value="$PROJECT_DIR$/src/runtime/implementations/OperationsImpl.java" />
       </list>
     </option>
   </component>
@@ -341,6 +344,19 @@
               <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="runtime" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Compiler project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="runtime" type="462c0819:PsiDirectoryNode" />
+              <item name="implementations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Compiler project" type="b2602c69:ProjectViewProjectNode" />
@@ -594,7 +610,7 @@
       <workItem from="1510461089817" duration="38000" />
       <workItem from="1510461142800" duration="10527000" />
       <workItem from="1510521707539" duration="81000" />
-      <workItem from="1510801370826" duration="22032000" />
+      <workItem from="1510801370826" duration="22384000" />
     </task>
     <task id="LOCAL-00001" summary="Parser bugfixes">
       <created>1509322728010</created>
@@ -701,11 +717,18 @@
       <option name="project" value="LOCAL" />
       <updated>1510824676558</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Updates">
+      <created>1510833035048</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1510833035048</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="202731000" />
+    <option name="totallyTimeSpent" value="203083000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -739,8 +762,8 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="PsiViewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32959402" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41318682" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41318682" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36263737" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12179487" sideWeight="0.52434456" order="0" side_tool="true" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31758243" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -836,7 +859,8 @@
     <MESSAGE value="Output" />
     <MESSAGE value="Tasks management" />
     <MESSAGE value="Euclidus and fibonacci passed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Euclidus and fibonacci passed" />
+    <MESSAGE value="Updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updates" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1227,34 +1251,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/Interfaces/Operations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="25" column="17" lean-forward="true" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/runtime/implementations/OperationsImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="190" column="13" lean-forward="true" selection-start-line="190" selection-start-column="13" selection-end-line="190" selection-end-column="13" />
-          <folding>
-            <element signature="method#plus#1;class#OperationsImpl#0" expanded="false" />
-            <element signature="method#minus#1;class#OperationsImpl#0" expanded="false" />
-            <element signature="method#divide#0;class#OperationsImpl#0" expanded="false" />
-            <element signature="method#greater#0;class#OperationsImpl#0" expanded="false" />
-            <element signature="method#less#0;class#OperationsImpl#0" expanded="false" />
-            <element signature="method#notequal#0;class#OperationsImpl#0" expanded="false" />
-            <element signature="method#greaterequals#0;class#OperationsImpl#0" expanded="false" />
-            <element signature="method#lessequal#0;class#OperationsImpl#0" expanded="false" />
-            <element signature="method#and#0;class#OperationsImpl#0" expanded="false" />
-            <element signature="method#xor#0;class#OperationsImpl#0" expanded="false" />
-            <element signature="method#not#0;class#OperationsImpl#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tests/selection_sort.dlng">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -1367,10 +1363,18 @@
     <entry file="file://$PROJECT_DIR$/src/runtime/implementations/Output.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
-          <caret line="246" column="0" lean-forward="false" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
+          <caret line="246" column="8" lean-forward="false" selection-start-line="246" selection-start-column="8" selection-end-line="246" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/Interfaces/Operations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="31" column="12" lean-forward="false" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1394,6 +1398,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runtime/implementations/OperationsImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2912">
+          <caret line="191" column="5" lean-forward="true" selection-start-line="191" selection-start-column="5" selection-end-line="191" selection-end-column="5" />
           <folding />
         </state>
       </provider>
