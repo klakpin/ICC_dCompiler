@@ -46,5 +46,5 @@ public interface Operations {
 
     Boolean xor(Object var1, Object var2);
 
-    Boolean not(Object var1, Object var2);
+    Boolean not(Object var1, Object var2); // why 2 arguments?
 }
