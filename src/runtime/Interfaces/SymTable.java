@@ -5,7 +5,7 @@ package Interfaces;
  */
 public interface SymTable {
 
-    void add(String name);
+    void add(String name) throws Exception;
 
     void assign(String name, Object value);
 

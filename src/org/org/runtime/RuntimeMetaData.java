@@ -53,7 +53,7 @@ public class RuntimeMetaData {
      * with the individual components defined as follows.</p>
      * <p>
      * <ul>
-     * <li><em>major</em> is a required non-negative integer, and is equal to
+     * <li><em>major</em> is a required non-negative integer, and is equals to
      * {@code 4} for ANTLR 4.</li>
      * <li><em>minor</em> is a required non-negative integer.</li>
      * <li><em>patch</em> is an optional non-negative integer. When

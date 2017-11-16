@@ -18,7 +18,10 @@ statement : declaration
           | r_for
           | r_return
           | print
+          | invocation
           ;
+
+invocation : IDENT '(' expression (',' expression)* ')';
 
 r_if : 'if' expression 'then' scope ('else' scope)? 'end';
 

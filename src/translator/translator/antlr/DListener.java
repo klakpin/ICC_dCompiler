@@ -1,6 +1,5 @@
-// Generated from /home/ilya/Documents/Compilers/Compiler project/src/grammar/D.g4 by ANTLR 4.7
+// Generated from /home/ilya/Documents/Compilers/Compiler project/src/translator/translator/antlr/D.g4 by ANTLR 4.7
 package translator.antlr;
-
 import org.runtime.tree.ParseTreeListener;
 
 /**
@@ -63,6 +62,20 @@ public interface DListener extends ParseTreeListener {
      * @param ctx the parse tree
      */
     void exitStatement(DParser.StatementContext ctx);
+
+    /**
+     * Enter a parse tree produced by {@link DParser#invocation}.
+     *
+     * @param ctx the parse tree
+     */
+    void enterInvocation(DParser.InvocationContext ctx);
+
+    /**
+     * Exit a parse tree produced by {@link DParser#invocation}.
+     *
+     * @param ctx the parse tree
+     */
+    void exitInvocation(DParser.InvocationContext ctx);
 
     /**
      * Enter a parse tree produced by {@link DParser#r_if}.

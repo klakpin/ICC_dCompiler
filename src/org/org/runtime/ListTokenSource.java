@@ -35,7 +35,7 @@ public class ListTokenSource implements TokenSource {
     /**
      * The index into {@link #tokens} of token to return by the next call to
      * {@link #nextToken}. The end of the input is indicated by this value
-     * being greater than or equal to the number of items in {@link #tokens}.
+     * being greater than or equals to the number of items in {@link #tokens}.
      */
     protected int i;
 

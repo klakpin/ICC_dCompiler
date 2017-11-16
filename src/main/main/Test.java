@@ -1,30 +1,25 @@
 package main;
 
+import Interfaces.Operations;
 import Interfaces.Runtime;
+import implementations.OperationsImpl;
 import implementations.Output;
 import translator.ArgumentParser;
 import translator.Translator;
 import translator.antlr.DBaseVisitor;
 import translator.antlr.DLexer;
 import translator.antlr.DParser;
-import implementations.RuntimeImpl;
 import org.runtime.CharStream;
 import org.runtime.CharStreams;
 import org.runtime.CommonTokenStream;
 import org.runtime.tree.ParseTree;
-import translator.codegen.CodeGeneratorToFile;
 import translator.codegen.CodeGeneratorToStdout;
 
 import javax.tools.*;
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
+import java.io.*;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Test {
 
@@ -32,6 +27,10 @@ public class Test {
 
         ArgumentParser parser = new ArgumentParser();
         parser.parseArguments(args);
+
+
+        Operations op = new OperationsImpl();
+        System.out.println(op.equals(1, 1));
 
         System.out.println("----------------------------------------------");
         System.out.println("Welcome to compiler 3000!");

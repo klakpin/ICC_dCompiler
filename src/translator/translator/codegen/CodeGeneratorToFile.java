@@ -24,7 +24,7 @@ public class CodeGeneratorToFile implements CodeGenerator {
 
     @Override
     public void start() throws IOException {
-        file.writeBytes(RuntimeTemplate.part1);
+        file.writeBytes(RuntimeTemplate.getPart1());
     }
 
     @Override
@@ -39,6 +39,6 @@ public class CodeGeneratorToFile implements CodeGenerator {
 
     @Override
     public void end() throws IOException {
-        file.writeBytes(RuntimeTemplate.part2);
+        file.writeBytes(RuntimeTemplate.getPart2());
     }
 }

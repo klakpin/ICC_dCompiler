@@ -169,8 +169,8 @@ public class IntegerList {
      * Compares the specified object with this list for equality.  Returns
      * {@code true} if and only if the specified object is also an {@link IntegerList},
      * both lists have the same size, and all corresponding pairs of elements in
-     * the two lists are equal.  In other words, two lists are defined to be
-     * equal if they contain the same elements in the same order.
+     * the two lists are equals.  In other words, two lists are defined to be
+     * equals if they contain the same elements in the same order.
      * <p>
      * This implementation first checks if the specified object is this
      * list. If so, it returns {@code true}; if not, it checks if the
@@ -181,7 +181,7 @@ public class IntegerList {
      * this method returns {@code false}.
      *
      * @param o the object to be compared for equality with this list
-     * @return {@code true} if the specified object is equal to this list
+     * @return {@code true} if the specified object is equals to this list
      */
     @Override
     public boolean equals(Object o) {

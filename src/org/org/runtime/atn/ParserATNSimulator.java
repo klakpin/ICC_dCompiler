@@ -932,7 +932,7 @@ public class ParserATNSimulator extends ATNSimulator {
     }
 
 	/* parrt internal source braindump that doesn't mess up
-	 * external API spec.
+     * external API spec.
 		context-sensitive in that they can only be properly evaluated
 		in the context of the proper prec argument. Without pruning,
 		these predicates are normal predicates evaluated when we reach
@@ -973,7 +973,7 @@ public class ParserATNSimulator extends ATNSimulator {
 		predicates, we can resolve them without failing over to full
 		LL despite their context sensitive nature. We make an
 		assumption that prec[-1] <= prec[0], meaning that the current
-		precedence level is greater than or equal to the precedence
+		precedence level is greater than or equals to the precedence
 		level of recursive invocations above us in the stack. For
 		example, if predicate {3>=prec}? is true of the current prec,
 		then one option is to enter the loop to match it now. The

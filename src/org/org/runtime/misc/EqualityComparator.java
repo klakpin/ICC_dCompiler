@@ -24,7 +24,7 @@ public interface EqualityComparator<T> {
     int hashCode(T obj);
 
     /**
-     * This method tests if two objects are equal.
+     * This method tests if two objects are equals.
      *
      * @param a The first object to compare.
      * @param b The second object to compare.

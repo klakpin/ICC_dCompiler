@@ -32,7 +32,7 @@ public interface ScopeStack {
      *
      * @param variable name of variable
      */
-    void add(String variable);
+    void add(String variable) throws Exception;
 
     /**
      * Assign value to variable

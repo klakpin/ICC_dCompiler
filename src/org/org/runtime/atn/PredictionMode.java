@@ -477,7 +477,7 @@ public enum PredictionMode {
      * Determines if every alternative subset in {@code altsets} is equivalent.
      *
      * @param altsets a collection of alternative subsets
-     * @return {@code true} if every member of {@code altsets} is equal to the
+     * @return {@code true} if every member of {@code altsets} is equals to the
      * others, otherwise {@code false}
      */
     public static boolean allSubsetsEqual(Collection<BitSet> altsets) {

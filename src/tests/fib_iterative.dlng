@@ -17,4 +17,5 @@ var fib:= func(n)
 
         return fib;
     end
-    print(fib(n))
+
+print(fib(5))

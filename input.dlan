@@ -1,12 +1,9 @@
-var euclidus := func (a, b)
-    while a /= b
-    loop
-      if a > b then a := a - b
-      else  b := b - a
-      end
+var fib := func(n)
+    if n <= 2 then
+    	return 1;
+    else
+	return fib(n-1) + fib(n-2);
     end
-    return a
 end
 
-var res := euclidus(5, 10)
-print res
+print fib(5)

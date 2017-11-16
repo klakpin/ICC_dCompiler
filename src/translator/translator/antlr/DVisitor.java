@@ -1,6 +1,5 @@
-// Generated from /home/ilya/Documents/Compilers/Compiler project/src/grammar/D.g4 by ANTLR 4.7
+// Generated from /home/ilya/Documents/Compilers/Compiler project/src/translator/translator/antlr/D.g4 by ANTLR 4.7
 package translator.antlr;
-
 import org.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -8,7 +7,7 @@ import org.runtime.tree.ParseTreeVisitor;
  * by {@link DParser}.
  *
  * @param <T> The return type of the visit operation. Use {@link Void} for
- *            operations with no return type.
+ * operations with no return type.
  */
 public interface DVisitor<T> extends ParseTreeVisitor<T> {
     /**
@@ -42,6 +41,14 @@ public interface DVisitor<T> extends ParseTreeVisitor<T> {
      * @return the visitor result
      */
     T visitStatement(DParser.StatementContext ctx);
+
+    /**
+     * Visit a parse tree produced by {@link DParser#invocation}.
+     *
+     * @param ctx the parse tree
+     * @return the visitor result
+     */
+    T visitInvocation(DParser.InvocationContext ctx);
 
     /**
      * Visit a parse tree produced by {@link DParser#r_if}.

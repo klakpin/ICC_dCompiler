@@ -30,7 +30,7 @@ public class ScopeStackImpl implements ScopeStack {
     }
 
     @Override
-    public void add(String name) {
+    public void add(String name) throws Exception {
         symTablesStack.get(symTablesStack.size() - 1).add(name);
     }
 

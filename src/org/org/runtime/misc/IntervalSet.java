@@ -462,7 +462,7 @@ public class IntervalSet implements IntSet {
     }
 
     /**
-     * Are two IntervalSets equal?  Because all intervals are sorted
+     * Are two IntervalSets equals?  Because all intervals are sorted
      * and disjoint, equals is a simple linear walk over both lists
      * to make sure they are the same.  Interval.equals() is used
      * by the List.equals() method to check the ranges.

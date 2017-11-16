@@ -173,7 +173,7 @@ public abstract class PredictionContext {
     /**
      * Merge two {@link SingletonPredictionContext} instances.
      * <p>
-     * <p>Stack tops equal, parents merge is same; return left graph.<br>
+     * <p>Stack tops equals, parents merge is same; return left graph.<br>
      * <embed src="images/SingletonMerge_SameRootSamePar.svg" type="image/svg+xml"/></p>
      * <p>
      * <p>Same stack top, parents differ; merge parents giving array node, then
@@ -370,7 +370,7 @@ public abstract class PredictionContext {
             PredictionContext a_parent = a.parents[i];
             PredictionContext b_parent = b.parents[j];
             if (a.returnStates[i] == b.returnStates[j]) {
-                // same payload (stack tops are equal), must yield merged singleton
+                // same payload (stack tops are equals), must yield merged singleton
                 int payload = a.returnStates[i];
                 // $+$ = $
                 boolean both$ = payload == EMPTY_RETURN_STATE &&

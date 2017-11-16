@@ -23,22 +23,17 @@ public interface Operations {
     // TODO Alyona
     Object multiply(Object var1, Object var2);
 
-    // TODO Milana
     Boolean equals(Object var1, Object var2);
 
-    // TODO Milana
     Boolean greater(Object var1, Object var2);
 
-    // TODO Milana
     Boolean less(Object var1, Object var2);
 
-    // TODO Milana
     Boolean notequal(Object var1, Object var2);
 
-    // TODO Milana
-    Boolean moreequals(Object var1, Object var2);
+    Boolean greaterequals(Object var1, Object var2);
 
-    Boolean lessequals(Object var1, Object var2);
+    Boolean lessequal(Object var1, Object var2);
 
     Boolean and(Object var1, Object var2);
 
@@ -46,5 +41,5 @@ public interface Operations {
 
     Boolean xor(Object var1, Object var2);
 
-    Boolean not(Object var1, Object var2);
+    Boolean not(Object var1);
 }

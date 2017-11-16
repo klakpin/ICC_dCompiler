@@ -29,7 +29,7 @@ import java.util.BitSet;
  * <p>
  * <p>
  * In some cases, the minimum represented alternative in the conflicting LL
- * configuration set is not equal to the minimum represented alternative in the
+ * configuration set is not equals to the minimum represented alternative in the
  * conflicting SLL configuration set. Grammars and inputs which result in this
  * scenario are unable to use {@link PredictionMode#SLL}, which in turn means
  * they cannot use the two-stage parsing strategy to improve parsing performance

@@ -3,6 +3,7 @@ package implementations;
 import Interfaces.*;
 import Interfaces.Runtime;
 import types.Cortaige;
+import types.Text;
 import types.Function;
 
 public class Output implements Runtime {
@@ -42,7 +43,7 @@ public class Output implements Runtime {
     }
 
     @Override
-    public void add(String name) {
+    public void add(String name) throws Exception {
         scopeStack.add(name);
     }
 
@@ -53,7 +54,7 @@ public class Output implements Runtime {
 
     @Override
     public void cprint() {
-        System.out.println(stack.pop());
+        System.out.println(stack.pop().toString());
     }
 
     @Override
@@ -96,8 +97,17 @@ public class Output implements Runtime {
     }
 
     @Override
+    public void equals() {
+        Object var1 = stack.pop();
+        Object var2 = stack.pop();
+        stack.push(op.equals(var1, var2));
+    }
+
+    @Override
     public void or() {
-        //TODO implement
+        Object var1 = stack.pop();
+        Object var2 = stack.pop();
+        stack.push(op.or(var1, var2));
     }
 
     @Override
@@ -191,6 +201,18 @@ public class Output implements Runtime {
     }
 
     @Override
+    public void moreequal() {
+        //TODO implement
+    }
+
+    @Override
+    public void lessequal() {
+        Object var1 = stack.pop();
+        Object var2 = stack.pop();
+        stack.push(op.lessequal(var1, var2));
+    }
+
+    @Override
     public void notequal() {
         Object var1 = stack.pop();
         Object var2 = stack.pop();
@@ -223,54 +245,45 @@ public class Output implements Runtime {
     @Override
     public void run() throws Exception {
         scopeStack.newScope();
-        add("euclidus");
+        add("fib");
         vpush(new Function(() -> {
-            add("b");
-            assign("b");
-            add("a");
-            assign("a");
-            vpush("b");
-            vpush("a");
-            notequal();
-            while (bpop()) {
+            add("n");
+            assign("n");
+            vpush(2);
+            vpush("n");
+            lessequal();
+            if (bpop()) {
                 enterScope();
-                vpush("b");
-                vpush("a");
-                greater();
-                if (bpop()) {
-                    enterScope();
-                    vpush("b");
-                    vpush("a");
-                    minus();
-                    assign("a");
-                    exitScope();
-                } else {
-                    enterScope();
-                    vpush("a");
-                    vpush("b");
-                    minus();
-                    assign("b");
-                    exitScope();
+                vpush(1);
+                exitfunc();
+                if (true) {
+                    return;
                 }
                 exitScope();
-                vpush("b");
-                vpush("a");
-                notequal();
-            }
-            vpush("a");
-            exitfunc();
-            if (true) {
-                return;
+            } else {
+                enterScope();
+                vpush(2);
+                vpush("n");
+                minus();
+                vpush("fib");
+                invoke();
+                vpush(1);
+                vpush("n");
+                minus();
+                vpush("fib");
+                invoke();
+                plus();
+                exitfunc();
+                if (true) {
+                    return;
+                }
+                exitScope();
             }
         }));
-        assign("euclidus");
-        add("res");
+        assign("fib");
         vpush(5);
-        vpush(10);
-        vpush("euclidus");
+        vpush("fib");
         invoke();
-        assign("res");
-        vpush("res");
         cprint();
         scopeStack.popScope();
     }

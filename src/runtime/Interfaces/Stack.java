@@ -7,4 +7,8 @@ public interface Stack {
     Object pop();
 
     void push(Object obj);
+
+    Object get();
+
+    void printStack();
 }

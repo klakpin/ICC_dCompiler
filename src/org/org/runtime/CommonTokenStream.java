@@ -54,7 +54,7 @@ public class CommonTokenStream extends BufferedTokenStream {
      * Constructs a new {@link CommonTokenStream} using the specified token
      * source and filtering tokens to the specified channel. Only tokens whose
      * {@link Token#getChannel} matches {@code channel} or have the
-     * {@link Token#getType} equal to {@link Token#EOF} will be returned by the
+     * {@link Token#getType} equals to {@link Token#EOF} will be returned by the
      * token stream lookahead methods.
      *
      * @param tokenSource The token source.

@@ -1,4 +1,5 @@
-package translator.antlr;// Generated from /home/ilya/Documents/Compilers/Compiler project/src/grammar/D.g4 by ANTLR 4.7
+// Generated from /home/ilya/Documents/Compilers/Compiler project/src/translator/translator/antlr/D.g4 by ANTLR 4.7
+package translator.antlr;
 
 import org.runtime.ParserRuleContext;
 import org.runtime.tree.ErrorNode;
@@ -80,6 +81,24 @@ public class DBaseListener implements DListener {
      */
     @Override
     public void exitStatement(DParser.StatementContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void enterInvocation(DParser.InvocationContext ctx) {
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * <p>The default implementation does nothing.</p>
+     */
+    @Override
+    public void exitInvocation(DParser.InvocationContext ctx) {
     }
 
     /**

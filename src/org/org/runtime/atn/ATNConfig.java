@@ -145,7 +145,7 @@ public class ATNConfig {
     }
 
     /**
-     * An ATN configuration is equal to another if both have
+     * An ATN configuration is equals to another if both have
      * the same state, they predict the same alternative, and
      * syntactic/semantic contexts are the same.
      */

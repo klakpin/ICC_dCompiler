@@ -1,13 +1,11 @@
+// Generated from /home/ilya/Documents/Compilers/Compiler project/src/translator/translator/antlr/D.g4 by ANTLR 4.7
 package translator.antlr;
 
-import org.runtime.tree.ParseTree;
-import translator.codegen.CodeGenerator;
-import translator.codegen.CodeGeneratorToFile;
 import org.runtime.tree.AbstractParseTreeVisitor;
 import org.runtime.tree.TerminalNode;
+import translator.codegen.CodeGenerator;
 
 import java.util.List;
-
 
 /**
  * This class provides an empty implementation of {@link DVisitor},
@@ -65,6 +63,26 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
         return visitChildren(ctx);
     }
 
+
+    @Override
+    public T visitInvocation(DParser.InvocationContext ctx) {
+
+        for (DParser.ExpressionContext expr : ctx.expression()) {
+            visitExpression(expr);
+        }
+        generator.add("vpush( " + ctx.IDENT() + " );");
+        generator.add("invoke();");
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+
+
     @Override
     public T visitR_if(DParser.R_ifContext ctx) {
 
@@ -98,12 +116,31 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
         switch (ctx.children.get(4).getText()) {
             case "..":
                 // for i in 1..10 loop %scope% end
+                generator.add("enterScope();");
+                generator.add("add(\"" + ctx.IDENT() + "\");");
+                visitExpression(ctx.expression(0));
+                generator.add("assign(\"" + ctx.IDENT() + "\");");
+
+                visitExpression(ctx.expression(1));
+                generator.add("vpush(\"" + ctx.IDENT() + "\");");
+                generator.add("lessequal();");
+                generator.add("while(bpop()) {");
+                visitScope(ctx.scope());
+                visitExpression(ctx.expression(1));
+
+                generator.add("vpush(\"" + ctx.IDENT() + "\");");
+                generator.add("vpush(1);");
+                generator.add("plus();");
+                generator.add("assign(\"" + ctx.IDENT() + "\");");
+                generator.add("vpush(\"" + ctx.IDENT() + "\");");
+                generator.add("lessequal();");
+                generator.add("}");
+                generator.add("enterScope();");
+
                 break;
             case "loop":
                 // for 1..10 loop %scope% end
-
                 //TODO implement
-                System.out.println("--------------------------------------------\ncase loop");
                 break;
             default:
                 // for i in loop %scope% end
@@ -111,7 +148,6 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
                 break;
         }
 //        return visitChildren(ctx);
-
         return null;
     }
 
@@ -248,13 +284,21 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
             visitSimple((DParser.SimpleContext) ctx.children.get(2));
             visitSimple((DParser.SimpleContext) ctx.children.get(0));
 
-            //TODO this switch is uncomplete, complete it
             switch (ctx.children.get(1).getText()) {
                 case ">":
                     generator.add("greater();");
                     break;
+                case ">=":
+                    generator.add("moreequal()");
+                    break;
                 case "<":
                     generator.add("less();");
+                    break;
+                case "<=":
+                    generator.add("lessequal();");
+                    break;
+                case "=":
+                    generator.add("equals();");
                     break;
                 case "/=":
                     generator.add("notequal();");
@@ -322,7 +366,26 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
 
     @Override
     public T visitFactor(DParser.FactorContext ctx) {
-        return visitChildren(ctx);
+        if (ctx.children.get(0).getText().equals("+") ||
+                ctx.children.get(0).getText().equals("-") ||
+                ctx.children.get(0).getText().equals("not")) {
+
+            visitChildren(ctx);
+
+            switch (ctx.children.get(0).getText()) {
+                case "+":
+                    break;
+                case "-":
+                    generator.add("vpush(-1);");
+                    generator.add("multiply();");
+                    break;
+                case "not":
+                    break;
+            }
+        } else {
+            visitChildren(ctx);
+        }
+        return null;
     }
 
     @Override
@@ -352,7 +415,7 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
     public T visitLiteral(DParser.LiteralContext ctx) {
 
         if (ctx.STRING() != null) {
-            generator.add("vpush( new String(" + ctx.getChild(0).getText() + "));");
+            generator.add("vpush( new Text(" + ctx.getChild(0).getText() + "));");
         } else {
             generator.add("vpush(" + ctx.getChild(0).getText() + ");");
 

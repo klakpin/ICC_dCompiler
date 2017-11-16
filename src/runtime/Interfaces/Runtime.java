@@ -23,7 +23,7 @@ public interface Runtime {
      *
      * @param name
      */
-    void add(String name);
+    void add(String name) throws Exception;
 
     /**
      * Assign to a variable with name value from top of the stack
@@ -114,7 +114,13 @@ public interface Runtime {
 
     void greater();
 
+    void moreequal();
+
     void less();
+
+    void lessequal();
+
+    void equals();
 
     void notequal();
 

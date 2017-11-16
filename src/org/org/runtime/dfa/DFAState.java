@@ -141,7 +141,7 @@ public class DFAState {
     }
 
     /**
-     * Two {@link DFAState} instances are equal if their ATN configuration sets
+     * Two {@link DFAState} instances are equals if their ATN configuration sets
      * are the same. This method is used to see if a state already exists.
      * <p>
      * <p>Because the number of alternatives and number of ATN configurations are

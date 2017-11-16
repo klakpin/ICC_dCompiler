@@ -15,7 +15,21 @@ public class StackImpl implements Stack {
     }
 
     @Override
+    public void printStack() {
+        System.out.println("-------------------------------------------------");
+        for (int i = stack.size() - 1; i >= 0; i--) {
+            System.out.print(stack.get(i) + " ");
+        }
+        System.out.println("-------------------------------------------------");
+    }
+
+    @Override
     public void push(Object obj) {
         stack.add(obj);
+    }
+
+    @Override
+    public Object get() {
+        return stack.get(stack.size() - 1);
     }
 }
