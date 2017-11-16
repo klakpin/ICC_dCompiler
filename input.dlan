@@ -1,9 +1,5 @@
-var fib := func(n)
-    if n <= 2 then
-    	return 1;
-    else
-	return fib(n-1) + fib(n-2);
-    end
-end
+var a := [1,2,3,4,5];
 
-print fib(5)
+for i in 1..5 loop
+print a[i];
+end

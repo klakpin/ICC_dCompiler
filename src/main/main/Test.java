@@ -29,9 +29,6 @@ public class Test {
         parser.parseArguments(args);
 
 
-        Operations op = new OperationsImpl();
-        System.out.println(op.equals(1, 1));
-
         System.out.println("----------------------------------------------");
         System.out.println("Welcome to compiler 3000!");
         System.out.println("----------------------------------------------");

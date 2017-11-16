@@ -53,6 +53,11 @@ public class Output implements Runtime {
     }
 
     @Override
+    public void assign(String name, Object val) throws Exception {
+        scopeStack.assign(name, val);
+    }
+
+    @Override
     public void cprint() {
         System.out.println(stack.pop().toString());
     }
@@ -120,11 +125,6 @@ public class Output implements Runtime {
     public void assignobj() {
         //TODO implement
 
-    }
-
-    @Override
-    public void assign(String name, Object val) throws Exception {
-        scopeStack.assign(name, val);
     }
 
     @Override
@@ -245,46 +245,52 @@ public class Output implements Runtime {
     @Override
     public void run() throws Exception {
         scopeStack.newScope();
-        add("fib");
-        vpush(new Function(() -> {
-            add("n");
-            assign("n");
-            vpush(2);
-            vpush("n");
-            lessequal();
-            if (bpop()) {
-                enterScope();
-                vpush(1);
-                exitfunc();
-                if (true) {
-                    return;
-                }
-                exitScope();
-            } else {
-                enterScope();
-                vpush(2);
-                vpush("n");
-                minus();
-                vpush("fib");
-                invoke();
-                vpush(1);
-                vpush("n");
-                minus();
-                vpush("fib");
-                invoke();
-                plus();
-                exitfunc();
-                if (true) {
-                    return;
-                }
-                exitScope();
-            }
-        }));
-        assign("fib");
+        add("a");
+        vpush(new Cortaige());
+        dup();
+        vpush(1);
+        vpush(1);
+        assigncort();
+        dup();
+        vpush(2);
+        vpush(2);
+        assigncort();
+        dup();
+        vpush(3);
+        vpush(3);
+        assigncort();
+        dup();
+        vpush(4);
+        vpush(4);
+        assigncort();
+        dup();
         vpush(5);
-        vpush("fib");
-        invoke();
-        cprint();
+        vpush(5);
+        assigncort();
+        assign("a");
+        enterScope();
+        add("i");
+        vpush(1);
+        assign("i");
+        vpush(5);
+        vpush("i");
+        lessequal();
+        while (bpop()) {
+            enterScope();
+            vpush("a");
+            vpush("i");
+            readcort();
+            cprint();
+            exitScope();
+            vpush(5);
+            vpush("i");
+            vpush(1);
+            plus();
+            assign("i");
+            vpush("i");
+            lessequal();
+        }
+        enterScope();
         scopeStack.popScope();
     }
 }

@@ -52,6 +52,11 @@ public class RuntimeImpl implements Runtime {
     }
 
     @Override
+    public void assign(String name, Object val) throws Exception {
+        scopeStack.assign(name, val);
+    }
+
+    @Override
     public void cprint() {
         System.out.println(stack.pop().toString());
     }
@@ -119,11 +124,6 @@ public class RuntimeImpl implements Runtime {
     public void assignobj() {
         //TODO implement
 
-    }
-
-    @Override
-    public void assign(String name, Object val) throws Exception {
-        scopeStack.assign(name, val);
     }
 
     @Override
