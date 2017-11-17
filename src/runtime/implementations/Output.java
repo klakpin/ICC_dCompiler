@@ -80,9 +80,9 @@ public class Output implements Runtime {
 
     @Override
     public void assigncort() throws Exception {
-        Object obj = stack.pop();
 
         Object indexObj = stack.pop();
+        Object obj = stack.pop();
 
         if (!(indexObj instanceof Integer)) {
             throw new Exception("Index of cortaige must be integer.");
@@ -256,7 +256,7 @@ public class Output implements Runtime {
         vpush(2);
         assigncort();
         dup();
-        vpush(3);
+        vpush(1);
         vpush(3);
         assigncort();
         dup();
@@ -266,23 +266,43 @@ public class Output implements Runtime {
         dup();
         vpush(5);
         vpush(5);
+        assigncort();
+        dup();
+        vpush(6);
+        vpush(6);
         assigncort();
         assign("a");
+        add("b");
+        vpush(new Cortaige());
+        dup();
+        vpush(7);
+        vpush(1);
+        assigncort();
+        dup();
+        vpush(8);
+        vpush(2);
+        assigncort();
+        assign("b");
+        add("c");
+        vpush("b");
+        vpush("a");
+        plus();
+        assign("c");
         enterScope();
         add("i");
         vpush(1);
         assign("i");
-        vpush(5);
+        vpush(8);
         vpush("i");
         lessequal();
         while (bpop()) {
             enterScope();
-            vpush("a");
+            vpush("c");
             vpush("i");
             readcort();
             cprint();
             exitScope();
-            vpush(5);
+            vpush(8);
             vpush("i");
             vpush(1);
             plus();

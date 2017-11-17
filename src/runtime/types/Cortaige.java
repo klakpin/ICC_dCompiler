@@ -13,6 +13,7 @@ public class Cortaige {
     public Object get(int number) {
         return objects.get(number);
     }
+
     public HashMap<Integer, Object> returnObjects() {
         return objects;
     }
