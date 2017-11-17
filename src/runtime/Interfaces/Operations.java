@@ -6,10 +6,10 @@ package Interfaces;
 public interface Operations {
 
     // TODO Alyona
-    Object plus(Object var1);
+    Object plusplus(Object var1);
 
     // TODO Alyona
-    Object minus(Object var1);
+    Object minusminus(Object var1);
 
     // TODO Alyona
     Object plus(Object var1, Object var2);

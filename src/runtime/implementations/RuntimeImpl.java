@@ -79,9 +79,9 @@ public class RuntimeImpl implements Runtime {
 
     @Override
     public void assigncort() throws Exception {
-        Object obj = stack.pop();
 
         Object indexObj = stack.pop();
+        Object obj = stack.pop();
 
         if (!(indexObj instanceof Integer)) {
             throw new Exception("Index of cortaige must be integer.");

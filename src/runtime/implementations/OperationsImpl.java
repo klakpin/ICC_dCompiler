@@ -10,12 +10,12 @@ import java.util.Objects;
 public class OperationsImpl implements Operations {
 
     @Override
-    public Object plus(Object var1) {
+    public Object plusplus(Object var1) {
         return null;
     }
 
     @Override
-    public Object minus(Object var1) {
+    public Object minusminus(Object var1) {
         return null;
     }
 
