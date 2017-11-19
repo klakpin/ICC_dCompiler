@@ -66,7 +66,6 @@ public class DLexer extends Lexer {
      */
     @Deprecated
     public static final String[] tokenNames;
-
     static {
         tokenNames = new String[_SYMBOLIC_NAMES.length];
         for (int i = 0; i < tokenNames.length; i++) {
@@ -230,7 +229,6 @@ public class DLexer extends Lexer {
                     "\u0108\u010e\u0114\u0122\u012e\u0134\3\b\2\2";
     public static final ATN _ATN =
             new ATNDeserializer().deserialize(_serializedATN.toCharArray());
-
     static {
         _decisionToDFA = new DFA[_ATN.getNumberOfDecisions()];
         for (int i = 0; i < _ATN.getNumberOfDecisions(); i++) {

@@ -1,10 +1,9 @@
 package implementations;
 
 import Interfaces.Operations;
-import types.Cortaige;
+import types.Cortege;
 import types.Structure;
-
-import java.util.Objects;
+import types.Text;
 
 //TODO implement everything
 public class OperationsImpl implements Operations {
@@ -50,22 +49,21 @@ public class OperationsImpl implements Operations {
             return sum;
         }
         //string+string
-        if (var1 instanceof String && var2 instanceof String) {
-            String a = (String) var1;
-            String b = (String) var2;
-            String sum=a+b;
-            return sum;
+        if (var1 instanceof Text && var2 instanceof Text) {
+            Text a = (Text) var1;
+            Text b = (Text) var2;
+            return new Text(a.toString() + b.toString());
         }
         //cortaige+cortaige
-        if (var1 instanceof Cortaige && var2 instanceof Cortaige) {
-            Cortaige a = (Cortaige) var1;
-            Cortaige b = (Cortaige) var2;
+        if (var1 instanceof Cortege && var2 instanceof Cortege) {
+            Cortege a = (Cortege) var1;
+            Cortege b = (Cortege) var2;
             a.concatination(b);
             return a;
         }
         //cortaige+object
-        if (var1 instanceof Cortaige && var2 instanceof Structure) {
-            Cortaige a = (Cortaige) var1;
+        if (var1 instanceof Cortege && var2 instanceof Structure) {
+            Cortege a = (Cortege) var1;
             Structure b = (Structure) var2;
             a.concatination(b.convertToCortaige());
             return a;

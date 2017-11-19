@@ -1,28 +1,20 @@
 package implementations;
 
 import Interfaces.*;
+import Interfaces.Runnable;
 import Interfaces.Runtime;
-import types.Cortaige;
+import types.Cortege;
 import types.Function;
+import types.Structure;
+import types.Text;
 
 public class RuntimeImpl implements Runtime {
 
-    final ScopeStack scopeStack = new ScopeStackImpl();
+    private final ScopeStack scopeStack = new ScopeStackImpl();
 
-    final Stack stack = new StackImpl();
+    private final Stack stack = new StackImpl();
 
-    final Operations op = new OperationsImpl();
-
-    @Override
-    public void and() {
-        //TODO implement
-    }
-
-    @Override
-    public void xor() {
-        //TODO implement
-
-    }
+    private final Operations op = new OperationsImpl();
 
     @Override
     public void dup() {
@@ -66,64 +58,76 @@ public class RuntimeImpl implements Runtime {
         Object indexObj = stack.pop();
 
         if (!(indexObj instanceof Integer)) {
-            throw new Exception("Index of cortaige must be integer.");
+            throw new Exception("Index of cortege must be integer.");
         }
         int index = (int) indexObj;
         Object cortObj = stack.pop();
-        if (!(cortObj instanceof Cortaige)) {
-            throw new Exception("Cortaige should be cortaige");
+        if (!(cortObj instanceof Cortege)) {
+            throw new Exception("Cortege should be cortege");
         }
-        Cortaige cortaige = (Cortaige) cortObj;
-        stack.push(cortaige.get(index));
+        Cortege cortege = (Cortege) cortObj;
+        stack.push(cortege.get(index));
     }
 
     @Override
     public void assigncort() throws Exception {
-
-        Object indexObj = stack.pop();
         Object obj = stack.pop();
+        Object indexObj = stack.pop();
 
         if (!(indexObj instanceof Integer)) {
-            throw new Exception("Index of cortaige must be integer.");
+            throw new Exception("Index of cortege must be integer.");
         }
 
         int index = (int) indexObj;
 
         Object cortObj = stack.pop();
 
-        if (!(cortObj instanceof Cortaige)) {
-            throw new Exception("Cortaige should be cortaige");
+        if (!(cortObj instanceof Cortege)) {
+            throw new Exception("Cortege should be cortege");
         }
 
-        Cortaige cortaige = (Cortaige) cortObj;
+        Cortege cortege = (Cortege) cortObj;
 
-        cortaige.set(index, obj);
+        cortege.set(index, obj);
     }
 
     @Override
-    public void equals() {
-        Object var1 = stack.pop();
-        Object var2 = stack.pop();
-        stack.push(op.equals(var1, var2));
+    public void readobj() throws Exception {
+        Object indexObj = stack.pop();
+        Object structObj = stack.pop();
+
+        if (!(indexObj instanceof Text)) {
+            throw new Exception("Index of Object must be Text");
+        }
+
+        Text index = (Text) indexObj;
+        if (!(structObj instanceof Structure)) {
+            throw new Exception("Structure should be structure");
+        }
+
+        Structure object = (Structure) structObj;
+        stack.push(object.get(index.toString()));
     }
 
     @Override
-    public void or() {
-        Object var1 = stack.pop();
-        Object var2 = stack.pop();
-        stack.push(op.or(var1, var2));
-    }
+    public void assignobj() throws Exception {
+        Object obj = stack.pop();
+        Object indexObj = stack.pop();
+        Object structObj = stack.pop();
 
-    @Override
-    public void readobj() {
-        //TODO implement
+        if (!(indexObj instanceof Text)) {
+            throw new Exception("Index of object must be text.");
+        }
 
-    }
+        Text index = (Text) indexObj;
 
-    @Override
-    public void assignobj() {
-        //TODO implement
+        if (!(structObj instanceof Structure)) {
+            throw new Exception("Object should be object");
+        }
 
+        Structure object = (Structure) structObj;
+
+        object.set(index.toString(), obj);
     }
 
     @Override
@@ -156,73 +160,95 @@ public class RuntimeImpl implements Runtime {
     }
 
     @Override
+    public void plusplus() {
+        stack.push(op.plusplus(stack.pop()));
+    }
+
+    @Override
+    public void minusminus() {
+        stack.push(op.minusminus(stack.pop()));
+    }
+
+    @Override
+    public void and() {
+        stack.push(op.and(stack.pop(), stack.pop()));
+    }
+
+    @Override
+    public void xor() {
+        stack.push(op.xor(stack.pop(), stack.pop()));
+    }
+
+    @Override
+    public void equals() {
+        stack.push(op.equals(stack.pop(), stack.pop()));
+    }
+
+    @Override
+    public void or() {
+        stack.push(op.or(stack.pop(), stack.pop()));
+    }
+
+    @Override
+    public void not() {
+        stack.push(op.not(stack.pop()));
+    }
+
+    @Override
     public void plus() {
-        Object var1 = stack.pop();
-        Object var2 = stack.pop();
-        stack.push(op.plus(var1, var2));
+        stack.push(op.plus(stack.pop(), stack.pop()));
     }
 
     @Override
     public void minus() {
-        Object var1 = stack.pop();
-        Object var2 = stack.pop();
-        stack.push(op.minus(var1, var2));
+        stack.push(op.minus(stack.pop(), stack.pop()));
     }
 
     @Override
     public void multiply() {
-        Object var1 = stack.pop();
-        Object var2 = stack.pop();
-        stack.push(op.multiply(var1, var2));
+        stack.push(op.multiply(stack.pop(), stack.pop()));
     }
 
 
     @Override
     public void divide() {
-        Object var1 = stack.pop();
-        Object var2 = stack.pop();
-        stack.push(op.divide(var1, var2));
+        stack.push(op.divide(stack.pop(), stack.pop()));
     }
 
 
     @Override
     public void greater() {
-        Object var1 = stack.pop();
-        Object var2 = stack.pop();
-        stack.push(op.greater(var1, var2));
+        stack.push(op.greater(stack.pop(), stack.pop()));
     }
 
     @Override
     public void less() {
-        Object var1 = stack.pop();
-        Object var2 = stack.pop();
-        stack.push(op.less(var1, var2));
+        stack.push(op.less(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void moreequal() {
-        //TODO implement
+    public void greaterequals() {
+        stack.push(op.greaterequals(stack.pop(), stack.pop()));
     }
 
     @Override
     public void lessequal() {
-        Object var1 = stack.pop();
-        Object var2 = stack.pop();
-        stack.push(op.lessequal(var1, var2));
+        stack.push(op.lessequal(stack.pop(), stack.pop()));
     }
 
     @Override
     public void notequal() {
-        Object var1 = stack.pop();
-        Object var2 = stack.pop();
-        stack.push(op.notequal(var1, var2));
+        stack.push(op.notequal(stack.pop(), stack.pop()));
     }
 
     @Override
-    public boolean bpop() {
+    public boolean bpop() throws Exception {
         Object res = stack.pop();
-        return (boolean) res;
-        //TODO check cast, can be wrong
+        if (res instanceof Boolean) {
+            return (boolean) res;
+        } else {
+            throw new Exception("Cannot convert " + res.getClass().toString() + " to boolean for condition check.");
+        }
     }
 
     @Override
@@ -242,10 +268,23 @@ public class RuntimeImpl implements Runtime {
     }
 
     @Override
+    public void forloop(Runnable runnable) throws Exception {
+        int begin = (Integer) stack.pop();
+        int end = (Integer) stack.pop();
+        for (int i = begin; i <= end; i++) {
+            runnable.run();
+        }
+    }
+    @Override
     public void run() throws Exception {
         scopeStack.newScope();
         add("a");
-
+        vpush(25);
+        assign("a");
+        forloop(() -> {
+            vpush("a");
+            cprint();
+        });
         scopeStack.popScope();
     }
 }

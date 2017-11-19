@@ -2,7 +2,7 @@ package implementations;
 
 import Interfaces.*;
 import Interfaces.Runtime;
-import types.Cortaige;
+import types.Cortege;
 import types.Function;
 
 public class Output implements Runtime {
@@ -61,15 +61,15 @@ public class Output implements Runtime {
         Object indexObj = stack.pop();
 
         if (!(indexObj instanceof Integer)) {
-            throw new Exception("Index of cortaige must be integer.");
+            throw new Exception("Index of cortege must be integer.");
         }
         int index = (int) indexObj;
         Object cortObj = stack.pop();
         if (!(cortObj instanceof Cortaige)) {
-            throw new Exception("Cortaige should be cortaige");
+            throw new Exception("Cortaige should be cortege");
         }
-        Cortaige cortaige = (Cortaige) cortObj;
-        stack.push(cortaige.get(index));
+        Cortaige cortege = (Cortaige) cortObj;
+        stack.push(cortege.get(index));
     }
 
     @Override
@@ -79,7 +79,7 @@ public class Output implements Runtime {
         Object indexObj = stack.pop();
 
         if (!(indexObj instanceof Integer)) {
-            throw new Exception("Index of cortaige must be integer.");
+            throw new Exception("Index of cortege must be integer.");
         }
 
         int index = (int) indexObj;
@@ -87,12 +87,12 @@ public class Output implements Runtime {
         Object cortObj = stack.pop();
 
         if (!(cortObj instanceof Cortaige)) {
-            throw new Exception("Cortaige should be cortaige");
+            throw new Exception("Cortaige should be cortege");
         }
 
-        Cortaige cortaige = (Cortaige) cortObj;
+        Cortaige cortege = (Cortaige) cortObj;
 
-        cortaige.set(index, obj);
+        cortege.set(index, obj);
     }
 
     @Override

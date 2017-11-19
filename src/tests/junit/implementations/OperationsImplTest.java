@@ -2,7 +2,7 @@ package implementations;
 
 import Interfaces.Operations;
 import org.junit.jupiter.api.Test;
-import types.Cortaige;
+import types.Cortege;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -48,8 +48,8 @@ class OperationsImplTest {
 
 
         //cortaige+cortaige
-        Cortaige cort1 = new Cortaige();
-        Cortaige cort2 = new Cortaige();
+        Cortege cort1 = new Cortege();
+        Cortege cort2 = new Cortege();
 
         //cortaige+object
 

@@ -5,22 +5,16 @@ package Interfaces;
  */
 public interface Operations {
 
-    // TODO Alyona
     Object plusplus(Object var1);
 
-    // TODO Alyona
     Object minusminus(Object var1);
 
-    // TODO Alyona
     Object plus(Object var1, Object var2);
 
-    // TODO Alyona
     Object minus(Object var1, Object var2);
 
-    // TODO Alyona
     Object divide(Object var1, Object var2);
 
-    // TODO Alyona
     Object multiply(Object var1, Object var2);
 
     Boolean equals(Object var1, Object var2);

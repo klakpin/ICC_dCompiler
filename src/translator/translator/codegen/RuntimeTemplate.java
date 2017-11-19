@@ -14,13 +14,15 @@ public class RuntimeTemplate {
         result.append("package implementations;\n" + "\n" +
                 "import Interfaces.*;\n" +
                 "import Interfaces.Runtime;\n" +
-                "import types.Cortaige;\n" +
+                "import Interfaces.Runnable;\n" +
+                "import types.Cortege;\n" +
+                "import types.Function;\n" +
+                "import types.Structure;\n" +
                 "import types.Text;\n" +
-                "import types.Function;\n" + "\n" +
                 "public class Output implements Runtime {\n");
 
         String fileName = "src/runtime/implementations/RuntimeImpl.java";
-        String line = null;
+        String line;
 
         try {
             FileReader fileReader =
