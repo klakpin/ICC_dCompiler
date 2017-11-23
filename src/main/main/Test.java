@@ -109,6 +109,11 @@ public class Test {
         addClass(ScopeStack.class, jarOutputStream);
         addClass(Stack.class, jarOutputStream);
         addClass(SymTable.class, jarOutputStream);
+//
+//        jarOutputStream.putNextEntry(new JarEntry("mapping"));
+//        jarOutputStream.write(Util.toByteArray());
+//        jarOutputStream.closeEntry();
+
 
         jarOutputStream.close();
     }
