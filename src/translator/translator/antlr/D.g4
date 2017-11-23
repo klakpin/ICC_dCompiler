@@ -55,7 +55,7 @@ var_definition : IDENT (':=' expression)?;
 // Ready
 reference : IDENT
           | reference '[' expression ']'
-          | reference '(' expression (',' expression)* ')'
+          | reference '(' (expression (',' expression)*)? ')'
           | reference '.' IDENT;
 
 // Ready
@@ -87,10 +87,8 @@ readInt    : '@int';
 readReal   : '@real';
 readString : '@string';
 
-// ready
 function_literal : 'func' ('(' IDENT (',' IDENT)* ')')? body;
 
-// ready
 body : scope 'end'
      | '=>' expression;
 

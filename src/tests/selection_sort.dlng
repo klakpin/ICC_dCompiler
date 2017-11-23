@@ -20,7 +20,8 @@ var selectionsort:=func(arr, size1)
       arr[i]:=arr[min];
       arr[min]:=temp;
     end
-  var res := print1(arr,size1);
+
+  print1(arr,size1);
   end
 
 var print1:=func(arr, size1)

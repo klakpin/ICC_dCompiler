@@ -11,5 +11,8 @@ var fact := func(n)
 
         return ans
     end
-var res := fact(5);
+
+var res := fact(7);
+
+// Should be 5040
 print res;

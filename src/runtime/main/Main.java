@@ -24,19 +24,17 @@ public class Main {
             Integer lineNumber=e.getStackTrace()[1].getLineNumber();
             boolean flag=false;
             while(scanner.hasNext()&&!flag){
-               if (str.contains(lineNumber.toString())){
-                   System.out.println(lineNumber.toString().length());
-                   System.out.println("Attention! Error in "+str.substring(lineNumber.toString().length()+1)+" line.");
+               if (str.substring(0,str.indexOf(':')).contains(lineNumber.toString())){
+                   System.out.println("Attention! Error in "+str.substring(str.indexOf(':')+1,str.length())+" line.");
                    flag=true;
                }
                 str=scanner.nextLine();
 //                System.out.println("STR="+str);
             }
-            System.out.println("Result"+str);
             e.printStackTrace();
-            System.out.println(e.getStackTrace()[1].getLineNumber());
-            System.out.println(e.getMessage());
-            e.getStackTrace().toString();
+//            System.out.println(e.getStackTrace()[1].getLineNumber());
+//            System.out.println(e.getMessage());
+//            e.getStackTrace().toString();
         }
     }
 }
