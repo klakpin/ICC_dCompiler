@@ -15,9 +15,6 @@ public class Main {
         try {
             run.run();
         } catch (Exception e) {
-            int compiledLine = e.getStackTrace()[e.getStackTrace().length].getLineNumber();
-            System.out.println("Error at line " + compiledLine);
-            System.out.println(e.getMessage());
         }
     }
 }

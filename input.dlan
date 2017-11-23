@@ -19,7 +19,7 @@ var bubbleSort := func
     end
 end
 
-//bubbleSort()
+bubbleSort()
 
 print "Final array is: "
 for i in 1..9 loop

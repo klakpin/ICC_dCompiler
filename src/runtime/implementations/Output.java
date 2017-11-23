@@ -4,7 +4,9 @@ import Interfaces.*;
 import Interfaces.Runtime;
 import Interfaces.Runnable;
 import types.*;
+
 import java.util.Scanner;
+
 public class Output implements Runtime {
 
     private final ScopeStack scopeStack = new ScopeStackImpl();
@@ -54,6 +56,7 @@ public class Output implements Runtime {
 
     @Override
     public void readcort() throws Exception {
+
         Object indexObj = stack.pop();
 
         if (!(indexObj instanceof Integer)) {
@@ -405,6 +408,7 @@ public class Output implements Runtime {
                 assign("i");
                 vpush(8);
                 vpush("i");
+                stack.printStack("before lessequal");
                 lessequal();
                 while (bpop()) {
                     enterScope();
@@ -459,6 +463,8 @@ public class Output implements Runtime {
             }
         }));
         assign("bubbleSort");
+        vpush("bubbleSort");
+        invoke();
         vpush(new Text("Final array is: "));
         cprint();
         enterScope();
