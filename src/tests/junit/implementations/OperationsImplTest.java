@@ -11,7 +11,7 @@ class OperationsImplTest {
     Operations op = new OperationsImpl();
 
     @Test
-    void plusplus() {
+    void plusplus() throws Exception {
         int var1 = 10;
         double var2 = 1.0;
         assertEquals(op.plusplus(var1), 11);
@@ -19,7 +19,7 @@ class OperationsImplTest {
     }
 
     @Test
-    void minusminus() {
+    void minusminus() throws Exception {
         int var1 = 10;
         double var2 = 1.0;
         assertEquals(op.minusminus(var1), 9);

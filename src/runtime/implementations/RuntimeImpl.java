@@ -3,10 +3,9 @@ package implementations;
 import Interfaces.*;
 import Interfaces.Runnable;
 import Interfaces.Runtime;
-import types.Cortege;
-import types.Function;
-import types.Structure;
-import types.Text;
+import types.*;
+
+import java.util.Scanner;
 
 public class RuntimeImpl implements Runtime {
 
@@ -131,6 +130,62 @@ public class RuntimeImpl implements Runtime {
     }
 
     @Override
+    public void checktype() {
+        Object objType = stack.pop();
+        Object object = stack.pop();
+
+        TypeIndicator strType = (TypeIndicator) objType;
+
+        switch (strType.getType()) {
+            case "int":
+                stack.push(object instanceof Integer);
+                break;
+            case "double":
+                stack.push(object instanceof Double);
+                break;
+            case "bool":
+                stack.push(object instanceof Boolean);
+                break;
+            case "string":
+                stack.push(object instanceof Text);
+                break;
+            case "empty":
+                stack.push(object == null);
+                break;
+            case "[]":
+                stack.push(object instanceof Cortege);
+                break;
+            case "{}":
+                stack.push(object instanceof Structure);
+                break;
+            case "func":
+                stack.push(object instanceof Function);
+                break;
+        }
+    }
+
+    @Override
+    public void readInt() {
+        Scanner in = new Scanner(System.in);
+        stack.push(in.nextInt());
+        in.close();
+    }
+
+    @Override
+    public void readDouble() {
+        Scanner in = new Scanner(System.in);
+        stack.push(in.nextDouble());
+        in.close();
+    }
+
+    @Override
+    public void readString() {
+        Scanner in = new Scanner(System.in);
+        stack.push(new Text(in.nextLine()));
+        in.close();
+    }
+
+    @Override
     public void invoke(Object object) throws Exception {
         Function runnable = (Function) object;
         SymTable origin = scopeStack.getScope();
@@ -160,12 +215,12 @@ public class RuntimeImpl implements Runtime {
     }
 
     @Override
-    public void plusplus() {
+    public void plusplus() throws Exception {
         stack.push(op.plusplus(stack.pop()));
     }
 
     @Override
-    public void minusminus() {
+    public void minusminus() throws Exception {
         stack.push(op.minusminus(stack.pop()));
     }
 
@@ -261,10 +316,11 @@ public class RuntimeImpl implements Runtime {
 
     @Override
     public void exitfunc() {
-        SymTable currTable = scopeStack.getScope();
-        while (currTable.getOrigin() != scopeStack.getScope()) {
+        SymTable currTable = scopeStack.getScope().getOrigin();
+        while (currTable != scopeStack.getScope()) {
             scopeStack.popScope();
         }
+        scopeStack.popScope();
     }
 
     @Override
@@ -275,6 +331,7 @@ public class RuntimeImpl implements Runtime {
             runnable.run();
         }
     }
+
     @Override
     public void run() throws Exception {
         scopeStack.newScope();

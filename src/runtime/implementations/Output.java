@@ -3,10 +3,9 @@ package implementations;
 import Interfaces.*;
 import Interfaces.Runtime;
 import Interfaces.Runnable;
-import types.Cortege;
-import types.Function;
-import types.Structure;
-import types.Text;
+import types.*;
+
+import java.util.Scanner;
 public class Output implements Runtime {
 
     private final ScopeStack scopeStack = new ScopeStackImpl();
@@ -130,6 +129,62 @@ public class Output implements Runtime {
     }
 
     @Override
+    public void checktype() {
+        Object objType = stack.pop();
+        Object object = stack.pop();
+
+        TypeIndicator strType = (TypeIndicator) objType;
+
+        switch (strType.getType()) {
+            case "int":
+                stack.push(object instanceof Integer);
+                break;
+            case "double":
+                stack.push(object instanceof Double);
+                break;
+            case "bool":
+                stack.push(object instanceof Boolean);
+                break;
+            case "string":
+                stack.push(object instanceof Text);
+                break;
+            case "empty":
+                stack.push(object == null);
+                break;
+            case "[]":
+                stack.push(object instanceof Cortege);
+                break;
+            case "{}":
+                stack.push(object instanceof Structure);
+                break;
+            case "func":
+                stack.push(object instanceof Function);
+                break;
+        }
+    }
+
+    @Override
+    public void readInt() {
+        Scanner in = new Scanner(System.in);
+        stack.push(in.nextInt());
+        in.close();
+    }
+
+    @Override
+    public void readDouble() {
+        Scanner in = new Scanner(System.in);
+        stack.push(in.nextDouble());
+        in.close();
+    }
+
+    @Override
+    public void readString() {
+        Scanner in = new Scanner(System.in);
+        stack.push(new Text(in.nextLine()));
+        in.close();
+    }
+
+    @Override
     public void invoke(Object object) throws Exception {
         Function runnable = (Function) object;
         SymTable origin = scopeStack.getScope();
@@ -159,12 +214,12 @@ public class Output implements Runtime {
     }
 
     @Override
-    public void plusplus() {
+    public void plusplus() throws Exception {
         stack.push(op.plusplus(stack.pop()));
     }
 
     @Override
-    public void minusminus() {
+    public void minusminus() throws Exception {
         stack.push(op.minusminus(stack.pop()));
     }
 
@@ -260,10 +315,11 @@ public class Output implements Runtime {
 
     @Override
     public void exitfunc() {
-        SymTable currTable = scopeStack.getScope();
-        while (currTable.getOrigin() != scopeStack.getScope()) {
+        SymTable currTable = scopeStack.getScope().getOrigin();
+        while (currTable != scopeStack.getScope()) {
             scopeStack.popScope();
         }
+        scopeStack.popScope();
     }
 
     @Override
@@ -274,33 +330,57 @@ public class Output implements Runtime {
             runnable.run();
         }
     }
+
     @Override
     public void run() throws Exception {
         scopeStack.newScope();
-        add("a");
-        vpush(new Structure());
-        dup();
-        vpush(new Text("b"));
-        vpush(25);
-        assignobj();
-        dup();
-        vpush(new Text("c"));
-        vpush(new Structure());
-        dup();
-        vpush(new Text("a"));
-        vpush(37);
-        assignobj();
-        assignobj();
-        assign("a");
-        vpush("a");
-        vpush(new Text("b"));
-        readobj();
-        cprint();
-        vpush("a");
-        vpush(new Text("c"));
-        readobj();
-        vpush(new Text("a"));
-        readobj();
+        add("fib");
+        vpush(new Function(() -> {
+            add("n");
+            assign("n");
+            vpush(new Text("fib"));
+            cprint();
+            vpush("n");
+            cprint();
+            vpush(2);
+            vpush("n");
+            equals();
+            vpush(1);
+            vpush("n");
+            equals();
+            or();
+            if (bpop()) {
+                enterScope();
+                vpush("n");
+                exitfunc();
+                if (true) {
+                    return;
+                }
+                exitScope();
+            } else {
+                enterScope();
+                vpush(2);
+                vpush("n");
+                minus();
+                vpush("fib");
+                invoke();
+                vpush(1);
+                vpush("n");
+                minus();
+                vpush("fib");
+                invoke();
+                plus();
+                exitfunc();
+                if (true) {
+                    return;
+                }
+                exitScope();
+            }
+        }));
+        assign("fib");
+        vpush(7);
+        vpush("fib");
+        invoke();
         cprint();
         scopeStack.popScope();
     }

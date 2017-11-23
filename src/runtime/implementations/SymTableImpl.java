@@ -27,7 +27,7 @@ public class SymTableImpl implements SymTable {
     @Override
     public void add(String name) throws Exception {
         if (values.containsKey(name)) {
-            throw new Exception("Variable is already defined in the scope");
+            throw new Exception("Variable is already defined in the scope: " + name);
         }
         values.put(name, null);
     }

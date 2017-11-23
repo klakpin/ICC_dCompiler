@@ -17,6 +17,11 @@ public class CodeGeneratorToStdout implements CodeGenerator {
     }
 
     @Override
+    public void add(int srcLine, String string) {
+
+    }
+
+    @Override
     public void end() throws IOException {
         System.out.println("---------------------------------------------------");
     }

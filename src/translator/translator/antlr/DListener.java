@@ -288,6 +288,48 @@ public interface DListener extends ParseTreeListener {
     void exitPrimary(DParser.PrimaryContext ctx);
 
     /**
+     * Enter a parse tree produced by {@link DParser#readInt}.
+     *
+     * @param ctx the parse tree
+     */
+    void enterReadInt(DParser.ReadIntContext ctx);
+
+    /**
+     * Exit a parse tree produced by {@link DParser#readInt}.
+     *
+     * @param ctx the parse tree
+     */
+    void exitReadInt(DParser.ReadIntContext ctx);
+
+    /**
+     * Enter a parse tree produced by {@link DParser#readReal}.
+     *
+     * @param ctx the parse tree
+     */
+    void enterReadReal(DParser.ReadRealContext ctx);
+
+    /**
+     * Exit a parse tree produced by {@link DParser#readReal}.
+     *
+     * @param ctx the parse tree
+     */
+    void exitReadReal(DParser.ReadRealContext ctx);
+
+    /**
+     * Enter a parse tree produced by {@link DParser#readString}.
+     *
+     * @param ctx the parse tree
+     */
+    void enterReadString(DParser.ReadStringContext ctx);
+
+    /**
+     * Exit a parse tree produced by {@link DParser#readString}.
+     *
+     * @param ctx the parse tree
+     */
+    void exitReadString(DParser.ReadStringContext ctx);
+
+    /**
      * Enter a parse tree produced by {@link DParser#function_literal}.
      *
      * @param ctx the parse tree

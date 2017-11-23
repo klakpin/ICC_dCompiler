@@ -4,5 +4,5 @@ var fib := func(n)
     end
 end
   
-print(fib(5))
+print fib(10)
 

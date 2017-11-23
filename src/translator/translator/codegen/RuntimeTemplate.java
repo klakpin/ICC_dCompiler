@@ -15,10 +15,8 @@ public class RuntimeTemplate {
                 "import Interfaces.*;\n" +
                 "import Interfaces.Runtime;\n" +
                 "import Interfaces.Runnable;\n" +
-                "import types.Cortege;\n" +
-                "import types.Function;\n" +
-                "import types.Structure;\n" +
-                "import types.Text;\n" +
+                "import types.*;\n" +
+                "import java.util.Scanner;\n" +
                 "public class Output implements Runtime {\n");
 
         String fileName = "src/runtime/implementations/RuntimeImpl.java";

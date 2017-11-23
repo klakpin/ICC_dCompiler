@@ -7,5 +7,7 @@ public interface CodeGenerator {
 
     void add(String string);
 
+    void add(int srcLine, String string);
+
     void end() throws IOException;
 }

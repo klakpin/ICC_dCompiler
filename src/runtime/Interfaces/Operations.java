@@ -5,9 +5,9 @@ package Interfaces;
  */
 public interface Operations {
 
-    Object plusplus(Object var1);
+    Object plusplus(Object var1) throws Exception;
 
-    Object minusminus(Object var1);
+    Object minusminus(Object var1) throws Exception;
 
     Object plus(Object var1, Object var2);
 

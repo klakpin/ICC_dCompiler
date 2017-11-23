@@ -1,5 +1,9 @@
-var a := {b := 25, c := {a := 37}};
+var fib := func(n)
+    print "fib", n;
+    if n = 1 or n = 2 then return n;
+    else return fib(n-1) + fib(n-2);
+    end
+end
 
-print a.b;
+print fib(7)
 
-print a.c.a;

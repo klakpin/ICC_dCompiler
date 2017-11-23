@@ -9,13 +9,33 @@ import types.Text;
 public class OperationsImpl implements Operations {
 
     @Override
-    public Object plusplus(Object var1) {
-        return null;
+    public Object plusplus(Object var1) throws Exception {
+        if (var1 instanceof Integer) {
+            int value = (Integer) var1;
+            value++;
+            return value;
+        } else if (var1 instanceof Double) {
+            double value = (Double) var1;
+            value++;
+            return value;
+        } else {
+            throw new Exception("Operation ++ cannot be applied to " + var1.getClass().getTypeName());
+        }
     }
 
     @Override
-    public Object minusminus(Object var1) {
-        return null;
+    public Object minusminus(Object var1) throws Exception {
+        if (var1 instanceof Integer) {
+            int value = (Integer) var1;
+            value--;
+            return value;
+        } else if (var1 instanceof Double) {
+            double value = (Double) var1;
+            value--;
+            return value;
+        } else {
+            throw new Exception("Operation -- cannot be applied to " + var1.getClass().getTypeName());
+        }
     }
 
     @Override
@@ -24,28 +44,28 @@ public class OperationsImpl implements Operations {
         if (var1 instanceof Integer && var2 instanceof Integer) {
             Integer a = (Integer) var1;
             Integer b = (Integer) var2;
-            Integer sum=a+b;
+            Integer sum = a + b;
             return sum;
         }
         //integer+double
         if (var1 instanceof Integer && var2 instanceof Double) {
             Integer a = (Integer) var1;
             Double b = (Double) var2;
-            Double sum=a+b;
+            Double sum = a + b;
             return sum;
         }
         //double+integer
         if (var1 instanceof Double && var2 instanceof Integer) {
             Double a = (Double) var1;
             Integer b = (Integer) var2;
-            Double sum=a+b;
+            Double sum = a + b;
             return sum;
         }
         //double+double
         if (var1 instanceof Double && var2 instanceof Double) {
             Double a = (Double) var1;
             Double b = (Double) var2;
-            Double sum=a+b;
+            Double sum = a + b;
             return sum;
         }
         //string+string
@@ -84,28 +104,28 @@ public class OperationsImpl implements Operations {
         if (var1 instanceof Integer && var2 instanceof Integer) {
             Integer a = (Integer) var1;
             Integer b = (Integer) var2;
-            Integer minus1=a-b;
+            Integer minus1 = a - b;
             return minus1;
         }
         //integer-double
         if (var1 instanceof Integer && var2 instanceof Double) {
             Integer a = (Integer) var1;
             Double b = (Double) var2;
-            Double minus1=a-b;
+            Double minus1 = a - b;
             return minus1;
         }
         //double-integer
         if (var1 instanceof Double && var2 instanceof Integer) {
             Double a = (Double) var1;
             Integer b = (Integer) var2;
-            Double minus1=a-b;
+            Double minus1 = a - b;
             return minus1;
         }
         //double-double
         if (var1 instanceof Double && var2 instanceof Double) {
             Double a = (Double) var1;
             Double b = (Double) var2;
-            Double minus1=a-b;
+            Double minus1 = a - b;
             return minus1;
         }
 
@@ -118,28 +138,28 @@ public class OperationsImpl implements Operations {
         if (var1 instanceof Integer && var2 instanceof Integer) {
             Integer a = (Integer) var1;
             Integer b = (Integer) var2;
-            Integer divide1=a/b;
+            Integer divide1 = a / b;
             return divide1;
         }
         //integer/double
         if (var1 instanceof Integer && var2 instanceof Double) {
             Integer a = (Integer) var1;
             Double b = (Double) var2;
-            Double divide1=a/b;
+            Double divide1 = a / b;
             return divide1;
         }
         //double/integer
         if (var1 instanceof Double && var2 instanceof Integer) {
             Double a = (Double) var1;
             Integer b = (Integer) var2;
-            Double divide1=a/b;
+            Double divide1 = a / b;
             return divide1;
         }
         //double/double
         if (var1 instanceof Double && var2 instanceof Double) {
             Double a = (Double) var1;
             Double b = (Double) var2;
-            Double divide1=a/b;
+            Double divide1 = a / b;
             return divide1;
         }
         return null;
@@ -244,28 +264,28 @@ public class OperationsImpl implements Operations {
         if (var1 instanceof Integer && var2 instanceof Integer) {
             Integer a = (Integer) var1;
             Integer b = (Integer) var2;
-            Integer multiply1=a*b;
+            Integer multiply1 = a * b;
             return multiply1;
         }
         //integer*double
         if (var1 instanceof Integer && var2 instanceof Double) {
             Integer a = (Integer) var1;
             Double b = (Double) var2;
-            Double multiply1=a*b;
+            Double multiply1 = a * b;
             return multiply1;
         }
         //double*integer
         if (var1 instanceof Double && var2 instanceof Integer) {
             Double a = (Double) var1;
             Integer b = (Integer) var2;
-            Double multiply1=a*b;
+            Double multiply1 = a * b;
             return multiply1;
         }
         //double*double
         if (var1 instanceof Double && var2 instanceof Double) {
             Double a = (Double) var1;
             Double b = (Double) var2;
-            Double multiply1=a*b;
+            Double multiply1 = a * b;
             return multiply1;
         }
         return null;

@@ -80,7 +80,12 @@ primary : literal
         | function_literal
         | 'size' expression
         | 'if' expression 'then' expression 'else' expression
+        | readInt | readReal | readString
         ;
+
+readInt    : '@int';
+readReal   : '@real';
+readString : '@string';
 
 // ready
 function_literal : 'func' ('(' IDENT (',' IDENT)* ')')? body;
@@ -89,7 +94,6 @@ function_literal : 'func' ('(' IDENT (',' IDENT)* ')')? body;
 body : scope 'end'
      | '=>' expression;
 
- // todo
 type_indicator : 'int' | 'real' | 'bool' | 'string'
                | 'empty'
                | '[' ']'

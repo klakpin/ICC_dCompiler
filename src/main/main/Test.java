@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.jar.JarOutputStream;
 
 public class Test {
 
@@ -29,7 +30,6 @@ public class Test {
 
         ArgumentParser parser = new ArgumentParser();
         parser.parseArguments(args);
-
 
         System.out.println("----------------------------------------------");
         System.out.println("Welcome to compiler 3000!");
@@ -50,7 +50,7 @@ public class Test {
                 createOutput(parser);
                 break;
             case "2":
-                runOutput();
+                compilationTest();
                 break;
             default:
                 System.out.println("Don't understand, goodbye.");
@@ -60,10 +60,6 @@ public class Test {
         input.close();
     }
 
-    public static void runOutput() throws Exception {
-        Output p = new Output();
-        p.run();
-    }
 
     public static void createOutput(ArgumentParser parser) throws Exception {
         Translator translator = new Translator(parser);
@@ -116,7 +112,6 @@ public class Test {
             /********************************************************************************************* Compilation Requirements **/
             if (task.call()) {
                 /** Load and execute *************************************************************************************************/
-                System.out.println("Yipe");
                 // Create a new custom class loader, pointing to the directory that contains the compiled
                 // classes, this should point to the top of the package structure!
                 URLClassLoader classLoader = new URLClassLoader(new URL[]{new File("./gen;").toURI().toURL()});
@@ -124,10 +119,15 @@ public class Test {
                 Class<?> loadedClass = classLoader.loadClass("implementations.Output");
                 // Create a new instance...
                 Object obj = loadedClass.newInstance();
-                // Santity check
+
                 if (obj instanceof Runtime) {
                     Runtime stuffToDo = (Runtime) obj;
-                    stuffToDo.run();
+
+                    try {
+                        stuffToDo.run();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
                 /************************************************************************************************* Load and execute **/
             } else {

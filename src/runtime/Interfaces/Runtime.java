@@ -58,6 +58,17 @@ public interface Runtime {
     void assignobj() throws Exception;
 
     /**
+     * Take type from top of stack, take variable from top of stack, check that types are same, put result on top of stack
+     */
+    void checktype();
+
+    void readInt();
+
+    void readDouble();
+
+    void readString();
+
+    /**
      * Assign value to variable in the scope, i.e. add it into current symbol table
      *
      * @param name
@@ -105,9 +116,9 @@ public interface Runtime {
      */
     void minus();
 
-    void plusplus();
+    void plusplus() throws Exception;
 
-    void minusminus();
+    void minusminus() throws Exception;
 
     /**
      * Multiply 2 variables from top of the stack and put result on top of the stack

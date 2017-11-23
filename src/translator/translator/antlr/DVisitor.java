@@ -171,6 +171,30 @@ public interface DVisitor<T> extends ParseTreeVisitor<T> {
     T visitPrimary(DParser.PrimaryContext ctx);
 
     /**
+     * Visit a parse tree produced by {@link DParser#readInt}.
+     *
+     * @param ctx the parse tree
+     * @return the visitor result
+     */
+    T visitReadInt(DParser.ReadIntContext ctx);
+
+    /**
+     * Visit a parse tree produced by {@link DParser#readReal}.
+     *
+     * @param ctx the parse tree
+     * @return the visitor result
+     */
+    T visitReadReal(DParser.ReadRealContext ctx);
+
+    /**
+     * Visit a parse tree produced by {@link DParser#readString}.
+     *
+     * @param ctx the parse tree
+     * @return the visitor result
+     */
+    T visitReadString(DParser.ReadStringContext ctx);
+
+    /**
      * Visit a parse tree produced by {@link DParser#function_literal}.
      *
      * @param ctx the parse tree
