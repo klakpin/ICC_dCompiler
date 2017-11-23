@@ -1,7 +1,9 @@
 package main;
 
+import Interfaces.*;
+import Interfaces.Runnable;
 import Interfaces.Runtime;
-import implementations.Output;
+import implementations.*;
 import org.runtime.CharStream;
 import org.runtime.CharStreams;
 import org.runtime.CommonTokenStream;
@@ -12,6 +14,7 @@ import translator.antlr.DBaseVisitor;
 import translator.antlr.DLexer;
 import translator.antlr.DParser;
 import translator.codegen.CodeGeneratorToStdout;
+import types.*;
 
 import javax.tools.*;
 import java.io.*;
@@ -85,9 +88,27 @@ public class Test {
 
         // Add the main class
         addClass(Main.class, jarOutputStream);
+        addClass(Cortege.class, jarOutputStream);
+        addClass(Function.class, jarOutputStream);
+        addClass(Structure.class, jarOutputStream);
+        addClass(Text.class, jarOutputStream);
+        addClass(TypeIndicator.class, jarOutputStream);
+        addClass(CallStackImpl.class, jarOutputStream);
+        addClass(OperationsImpl.class, jarOutputStream);
+        addClass(Output.class, jarOutputStream);
+        addClass(RuntimeImpl.class, jarOutputStream);
+        addClass(ScopeStackImpl.class, jarOutputStream);
+        addClass(SymTableImpl.class, jarOutputStream);
+        addClass(StackImpl.class, jarOutputStream);
 
-        // Add the Util class; Y uses it to read our secret message
-        addClass(Util.class, jarOutputStream);
+        addClass(CallStack.class, jarOutputStream);
+        addClass(InputOutput.class, jarOutputStream);
+        addClass(Operations.class, jarOutputStream);
+        addClass(Runnable.class, jarOutputStream);
+        addClass(Runtime.class, jarOutputStream);
+        addClass(ScopeStack.class, jarOutputStream);
+        addClass(Stack.class, jarOutputStream);
+        addClass(SymTable.class, jarOutputStream);
 
         jarOutputStream.close();
     }
