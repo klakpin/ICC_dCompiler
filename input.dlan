@@ -2,10 +2,6 @@ var a := [34, 203, 3, 746, 200, 984, 198, 764, 9];
 
 var bubbleSort := func
 
-<<<<<<< HEAD
-for i in 1..6 loop
-print c[i];
-=======
     var swapped := true;
 
     while swapped
@@ -15,7 +11,8 @@ print c[i];
         loop
             if a[i] > a[i+1] then
                 var temp := a[i];
-                a[i] := a[i+1];
+                a[i] := a[i+100000];
+                p := 88
                 a[i+1] := temp;
                 swapped := true;
             end
@@ -23,10 +20,9 @@ print c[i];
     end
 end
 
-//bubbleSort()
+bubbleSort()
 
 print "Final array is: "
 for i in 1..9 loop
     print a[i], " "
->>>>>>> 8e8804b22c1c64cff409ef48a6905acf58520db3
 end
