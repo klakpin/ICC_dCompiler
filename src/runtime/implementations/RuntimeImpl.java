@@ -242,7 +242,7 @@ public class RuntimeImpl implements Runtime {
     }
 
     @Override
-    public void equals() {
+    public void equals() throws Exception {
         stack.push(op.equals(stack.pop(), stack.pop()));
     }
 
@@ -299,7 +299,7 @@ public class RuntimeImpl implements Runtime {
     }
 
     @Override
-    public void notequal() {
+    public void notequal() throws Exception {
         stack.push(op.notequal(stack.pop(), stack.pop()));
     }
 

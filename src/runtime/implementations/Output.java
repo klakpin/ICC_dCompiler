@@ -4,9 +4,7 @@ import Interfaces.*;
 import Interfaces.Runtime;
 import Interfaces.Runnable;
 import types.*;
-
 import java.util.Scanner;
-
 public class Output implements Runtime {
 
     private final ScopeStack scopeStack = new ScopeStackImpl();
@@ -242,7 +240,7 @@ public class Output implements Runtime {
     }
 
     @Override
-    public void equals() {
+    public void equals() throws Exception {
         stack.push(op.equals(stack.pop(), stack.pop()));
     }
 
@@ -299,7 +297,7 @@ public class Output implements Runtime {
     }
 
     @Override
-    public void notequal() {
+    public void notequal() throws Exception {
         stack.push(op.notequal(stack.pop(), stack.pop()));
     }
 
@@ -440,10 +438,26 @@ public class Output implements Runtime {
             cprint();
             vpush(new Text("    3\n"));
             cprint();
-            vpush(new Text("_____:_____:_____\n"));
+            vpush(new Text("_____:_____:_____\n\n"));
             cprint();
         }));
         assign("printBoard");
+        add("printWinnerName");
+        vpush(new Function(() -> {
+            add("x");
+            assign("x");
+            vpush(new Text("----------------------------\n"));
+            cprint();
+            vpush(new Text("Congrats! Winner is: "));
+            cprint();
+            vpush("x");
+            cprint();
+            vpush(new Text("\n"));
+            cprint();
+            vpush(new Text("----------------------------\n"));
+            cprint();
+        }));
+        assign("printWinnerName");
         add("giveWinner");
         vpush(new Function(() -> {
             add("player1Count");
@@ -478,35 +492,45 @@ public class Output implements Runtime {
                 lessequal();
                 while (bpop()) {
                     enterScope();
-                    vpush(1);
                     vpush("board");
                     vpush("i");
                     readcort();
                     vpush("y");
                     readcort();
-                    stack.printStack("Before equals");
-                    equals();
+                    vpush(new TypeIndicator("int"));
+                    checktype();
                     if (bpop()) {
                         enterScope();
                         vpush(1);
-                        vpush("player1Count");
-                        plus();
-                        assign("player1Count");
-                        exitScope();
-                    }
-                    vpush(2);
-                    vpush("board");
-                    vpush("i");
-                    readcort();
-                    vpush("y");
-                    readcort();
-                    equals();
-                    if (bpop()) {
-                        enterScope();
-                        vpush(1);
-                        vpush("player2Count");
-                        plus();
-                        assign("player2Count");
+                        vpush("board");
+                        vpush("i");
+                        readcort();
+                        vpush("y");
+                        readcort();
+                        equals();
+                        if (bpop()) {
+                            enterScope();
+                            vpush(1);
+                            vpush("player1Count");
+                            plus();
+                            assign("player1Count");
+                            exitScope();
+                        }
+                        vpush(2);
+                        vpush("board");
+                        vpush("i");
+                        readcort();
+                        vpush("y");
+                        readcort();
+                        equals();
+                        if (bpop()) {
+                            enterScope();
+                            vpush(1);
+                            vpush("player2Count");
+                            plus();
+                            assign("player2Count");
+                            exitScope();
+                        }
                         exitScope();
                     }
                     exitScope();
@@ -573,34 +597,45 @@ public class Output implements Runtime {
                 lessequal();
                 while (bpop()) {
                     enterScope();
-                    vpush(1);
                     vpush("board");
                     vpush("i");
                     readcort();
                     vpush("y");
                     readcort();
-                    equals();
+                    vpush(new TypeIndicator("int"));
+                    checktype();
                     if (bpop()) {
                         enterScope();
                         vpush(1);
-                        vpush("player1Count");
-                        plus();
-                        assign("player1Count");
-                        exitScope();
-                    }
-                    vpush(2);
-                    vpush("board");
-                    vpush("i");
-                    readcort();
-                    vpush("y");
-                    readcort();
-                    equals();
-                    if (bpop()) {
-                        enterScope();
-                        vpush(1);
-                        vpush("player2Count");
-                        plus();
-                        assign("player2Count");
+                        vpush("board");
+                        vpush("i");
+                        readcort();
+                        vpush("y");
+                        readcort();
+                        equals();
+                        if (bpop()) {
+                            enterScope();
+                            vpush(1);
+                            vpush("player1Count");
+                            plus();
+                            assign("player1Count");
+                            exitScope();
+                        }
+                        vpush(2);
+                        vpush("board");
+                        vpush("i");
+                        readcort();
+                        vpush("y");
+                        readcort();
+                        equals();
+                        if (bpop()) {
+                            enterScope();
+                            vpush(1);
+                            vpush("player2Count");
+                            plus();
+                            assign("player2Count");
+                            exitScope();
+                        }
                         exitScope();
                     }
                     exitScope();
@@ -658,34 +693,45 @@ public class Output implements Runtime {
             lessequal();
             while (bpop()) {
                 enterScope();
-                vpush(1);
                 vpush("board");
                 vpush("i");
                 readcort();
                 vpush("i");
                 readcort();
-                equals();
+                vpush(new TypeIndicator("int"));
+                checktype();
                 if (bpop()) {
                     enterScope();
                     vpush(1);
-                    vpush("player1Count");
-                    plus();
-                    assign("player1Count");
-                    exitScope();
-                }
-                vpush(2);
-                vpush("board");
-                vpush("i");
-                readcort();
-                vpush("i");
-                readcort();
-                equals();
-                if (bpop()) {
-                    enterScope();
-                    vpush(1);
-                    vpush("player2Count");
-                    plus();
-                    assign("player2Count");
+                    vpush("board");
+                    vpush("i");
+                    readcort();
+                    vpush("i");
+                    readcort();
+                    equals();
+                    if (bpop()) {
+                        enterScope();
+                        vpush(1);
+                        vpush("player1Count");
+                        plus();
+                        assign("player1Count");
+                        exitScope();
+                    }
+                    vpush(2);
+                    vpush("board");
+                    vpush("i");
+                    readcort();
+                    vpush("i");
+                    readcort();
+                    equals();
+                    if (bpop()) {
+                        enterScope();
+                        vpush(1);
+                        vpush("player2Count");
+                        plus();
+                        assign("player2Count");
+                        exitScope();
+                    }
                     exitScope();
                 }
                 exitScope();
@@ -733,7 +779,6 @@ public class Output implements Runtime {
             lessequal();
             while (bpop()) {
                 enterScope();
-                vpush(1);
                 vpush("board");
                 vpush("i");
                 readcort();
@@ -741,30 +786,44 @@ public class Output implements Runtime {
                 vpush(4);
                 minus();
                 readcort();
-                equals();
+                vpush(new TypeIndicator("int"));
+                checktype();
                 if (bpop()) {
                     enterScope();
                     vpush(1);
-                    vpush("player1Count");
-                    plus();
-                    assign("player1Count");
-                    exitScope();
-                }
-                vpush(2);
-                vpush("board");
-                vpush("i");
-                readcort();
-                vpush("i");
-                vpush(4);
-                minus();
-                readcort();
-                equals();
-                if (bpop()) {
-                    enterScope();
-                    vpush(1);
-                    vpush("player2Count");
-                    plus();
-                    assign("player2Count");
+                    vpush("board");
+                    vpush("i");
+                    readcort();
+                    vpush("i");
+                    vpush(4);
+                    minus();
+                    readcort();
+                    equals();
+                    if (bpop()) {
+                        enterScope();
+                        vpush(1);
+                        vpush("player1Count");
+                        plus();
+                        assign("player1Count");
+                        exitScope();
+                    }
+                    vpush(2);
+                    vpush("board");
+                    vpush("i");
+                    readcort();
+                    vpush("i");
+                    vpush(4);
+                    minus();
+                    readcort();
+                    equals();
+                    if (bpop()) {
+                        enterScope();
+                        vpush(1);
+                        vpush("player2Count");
+                        plus();
+                        assign("player2Count");
+                        exitScope();
+                    }
                     exitScope();
                 }
                 exitScope();
@@ -890,13 +949,170 @@ public class Output implements Runtime {
         add("gameRunning");
         vpush(true);
         assign("gameRunning");
-        vpush("printBoard");
-        invoke();
-        vpush(new Text("Winner is player "));
-        cprint();
-        vpush("giveWinner");
-        invoke();
-        cprint();
+        add("moves");
+        vpush(0);
+        assign("moves");
+        add("currentPlayerMove");
+        vpush(1);
+        assign("currentPlayerMove");
+        add("moveX");
+        add("moveY");
+        add("winner");
+        vpush(9);
+        vpush("moves");
+        less();
+        vpush("gameRunning");
+        and();
+        while (bpop()) {
+            enterScope();
+            vpush("printBoard");
+            invoke();
+            vpush(1);
+            vpush("currentPlayerMove");
+            equals();
+            if (bpop()) {
+                enterScope();
+                vpush("player1Name");
+                cprint();
+                vpush(new Text(" it's your turn!\n"));
+                cprint();
+                exitScope();
+            } else {
+                enterScope();
+                vpush("player2Name");
+                cprint();
+                vpush(new Text(" it's your turn!\n"));
+                cprint();
+                exitScope();
+            }
+            readInt();
+            assign("moveY");
+            readInt();
+            assign("moveX");
+            vpush(4);
+            vpush("moveX");
+            less();
+            vpush(0);
+            vpush("moveX");
+            greater();
+            vpush(4);
+            vpush("moveY");
+            less();
+            vpush(0);
+            vpush("moveY");
+            greater();
+            and();
+            and();
+            and();
+            if (bpop()) {
+                enterScope();
+                vpush(new Text(" "));
+                vpush("board");
+                vpush("moveX");
+                readcort();
+                vpush("moveY");
+                readcort();
+                equals();
+                if (bpop()) {
+                    enterScope();
+                    vpush(1);
+                    vpush(-1);
+                    multiply();
+                    vpush("currentPlayerMove");
+                    multiply();
+                    assign("currentPlayerMove");
+                    vpush(1);
+                    vpush("moves");
+                    plus();
+                    assign("moves");
+                    vpush(1);
+                    vpush("currentPlayerMove");
+                    equals();
+                    if (bpop()) {
+                        enterScope();
+                        vpush(1);
+                        vpush("board");
+                        vpush("moveX");
+                        readcort();
+                        swap();
+                        vpush("moveY");
+                        assigncort();
+                        exitScope();
+                    } else {
+                        enterScope();
+                        vpush(2);
+                        vpush("board");
+                        vpush("moveX");
+                        readcort();
+                        swap();
+                        vpush("moveY");
+                        assigncort();
+                        exitScope();
+                    }
+                    vpush("giveWinner");
+                    invoke();
+                    assign("winner");
+                    vpush(0);
+                    vpush("winner");
+                    notequal();
+                    if (bpop()) {
+                        enterScope();
+                        vpush("printBoard");
+                        invoke();
+                        vpush(false);
+                        assign("gameRunning");
+                        vpush(0);
+                        vpush("winner");
+                        equals();
+                        if (bpop()) {
+                            enterScope();
+                            vpush(new Text("Draw!\n"));
+                            cprint();
+                            exitScope();
+                        }
+                        vpush(1);
+                        vpush("winner");
+                        equals();
+                        if (bpop()) {
+                            enterScope();
+                            vpush("player2Name");
+                            vpush("printWinnerName");
+                            invoke();
+                            exitScope();
+                        }
+                        vpush(2);
+                        vpush("winner");
+                        equals();
+                        if (bpop()) {
+                            enterScope();
+                            vpush("player1Name");
+                            vpush("printWinnerName");
+                            invoke();
+                            exitScope();
+                        }
+                        exitScope();
+                    }
+                    exitScope();
+                } else {
+                    enterScope();
+                    vpush(new Text("This cell is occupied, try again\n"));
+                    cprint();
+                    exitScope();
+                }
+                exitScope();
+            } else {
+                enterScope();
+                vpush(new Text("Hey, acceptable numbers are between 1 and 3\n"));
+                cprint();
+                exitScope();
+            }
+            exitScope();
+            vpush(9);
+            vpush("moves");
+            less();
+            vpush("gameRunning");
+            and();
+        }
         scopeStack.popScope();
     }
 }

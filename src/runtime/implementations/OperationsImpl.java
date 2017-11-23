@@ -202,7 +202,7 @@ public class OperationsImpl implements Operations {
     }
 
     @Override
-    public Boolean notequal(Object var1, Object var2) {
+    public Boolean notequal(Object var1, Object var2) throws Exception {
 
         if (var1 instanceof Integer && var2 instanceof Integer) {
             return var1 != var2;
@@ -221,7 +221,13 @@ public class OperationsImpl implements Operations {
         if (var1 instanceof Double && var2 instanceof Double) {
             return var1 != var2;
         }
-        return null;
+        if (var1 instanceof Text && var2 instanceof Text) {
+            Text v1 = (Text) var1;
+            Text v2 = (Text) var2;
+            return !v1.toString().equals(v2.toString());
+        }
+        return false;
+//        throw new Exception("Incompatible operations type, cannot apply operation notequal to types" + var1.getClass().getTypeName() + " and " + var2.getClass().getTypeName());
     }
 
     @Override
@@ -292,7 +298,7 @@ public class OperationsImpl implements Operations {
     }
 
     @Override
-    public Boolean equals(Object var1, Object var2) {
+    public Boolean equals(Object var1, Object var2) throws Exception {
         if (var1 instanceof Integer && var2 instanceof Integer) {
             return (Integer) var1 == (Integer) var2;
         }
@@ -311,7 +317,13 @@ public class OperationsImpl implements Operations {
         if (var1 instanceof Double && var2 instanceof Double) {
             return var1 == var2;
         }
-        return null;
+        if (var1 instanceof Text && var2 instanceof Text) {
+            Text v1 = (Text) var1;
+            Text v2 = (Text) var2;
+            return v1.toString().equals(v2.toString());
+        }
+        return false;
+//        throw new Exception("Incompatible operations type, cannot apply operation equals to types" + var1.getClass().getTypeName() + " and " + var2.getClass().getTypeName());
     }
 
     @Override

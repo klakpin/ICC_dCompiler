@@ -17,13 +17,13 @@ public interface Operations {
 
     Object multiply(Object var1, Object var2);
 
-    Boolean equals(Object var1, Object var2);
+    Boolean equals(Object var1, Object var2) throws Exception;
 
     Boolean greater(Object var1, Object var2);
 
     Boolean less(Object var1, Object var2);
 
-    Boolean notequal(Object var1, Object var2);
+    Boolean notequal(Object var1, Object var2) throws Exception;
 
     Boolean greaterequals(Object var1, Object var2);
 

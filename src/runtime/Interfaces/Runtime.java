@@ -150,9 +150,9 @@ public interface Runtime {
 
     void lessequal();
 
-    void equals();
+    void equals() throws Exception;
 
-    void notequal();
+    void notequal() throws Exception;
 
     void not();
 

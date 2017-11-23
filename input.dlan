@@ -4,16 +4,22 @@ var player2Name
 var board := []
 
 var printBoard := func
-print "  1     2     3  \n"
-print "     :     :     \n"
-print "  ", board[1][1] ,"  :  ", board[1][2], "  :  ", board[1][3] ,"    1\n"
-print "_____:_____:_____\n"
-print "     :     :     \n"
-print "  ", board[2][1] ,"  :  ", board[2][2], "  :  ", board[2][3] ,"    2\n"
-print "_____:_____:_____\n"
-print "     |     |     \n"
-print "  ", board[3][1] ,"  :  ", board[3][2], "  :  ", board[3][3] ,"    3\n"
-print "_____:_____:_____\n"
+    print "  1     2     3  \n"
+    print "     :     :     \n"
+    print "  ", board[1][1] ,"  :  ", board[1][2], "  :  ", board[1][3] ,"    1\n"
+    print "_____:_____:_____\n"
+    print "     :     :     \n"
+    print "  ", board[2][1] ,"  :  ", board[2][2], "  :  ", board[2][3] ,"    2\n"
+    print "_____:_____:_____\n"
+    print "     |     |     \n"
+    print "  ", board[3][1] ,"  :  ", board[3][2], "  :  ", board[3][3] ,"    3\n"
+    print "_____:_____:_____\n\n"
+end
+
+var printWinnerName := func(x)
+    print "----------------------------\n"
+    print "Congrats! Winner is: ", x, "\n"
+    print "----------------------------\n"
 end
 
 var giveWinner := func
@@ -29,9 +35,9 @@ var giveWinner := func
     // Check rows
     for i in 1..3 loop
         for y in 1..3 loop
-            if board[i][y] /= " " then
-            if board[i][y] = 1 then player1Count := player1Count + 1 end
-            if board[i][y] = 2 then player2Count := player2Count + 1 end
+            if board[i][y] is int then
+                if board[i][y] = 1 then player1Count := player1Count + 1 end
+                if board[i][y] = 2 then player2Count := player2Count + 1 end
             end
         end
     end
@@ -44,9 +50,9 @@ var giveWinner := func
     // Check columns
     for y in 1..3 loop
         for i in 1..3 loop
-            if board[i][y] /= " " then
-            if board[i][y] = 1 then player1Count := player1Count + 1 end
-            if board[i][y] = 2 then player2Count := player2Count + 1 end
+            if board[i][y] is int then
+                if board[i][y] = 1 then player1Count := player1Count + 1 end
+                if board[i][y] = 2 then player2Count := player2Count + 1 end
             end
         end
     end
@@ -58,8 +64,10 @@ var giveWinner := func
 
     // Check diag \
     for i in 1..3 loop
+        if board[i][i] is int then
             if board[i][i] = 1 then player1Count := player1Count + 1 end
             if board[i][i] = 2 then player2Count := player2Count + 1 end
+        end
     end
 
     if player1Count = 3 then return 1 end
@@ -69,8 +77,10 @@ var giveWinner := func
 
     // Check diag /
     for i in 1..3 loop
-        if board[i][4-i] = 1 then player1Count := player1Count + 1 end
-        if board[i][4-i] = 2 then player2Count := player2Count + 1 end
+        if board[i][4-i] is int then
+            if board[i][4-i] = 1 then player1Count := player1Count + 1 end
+            if board[i][4-i] = 2 then player2Count := player2Count + 1 end
+        end
     end
 
     if player1Count = 3 then return 1 end
@@ -98,7 +108,55 @@ player2Name := @string;
 print "\n"
 
 var gameRunning := true
+var moves := 0;
+var currentPlayerMove := 1;
 
-printBoard()
+var moveX;
+var moveY;
 
-print "Winner is player ", giveWinner()
+var winner;
+
+while gameRunning and moves < 9 loop
+
+    printBoard()
+
+    if currentPlayerMove = 1 then
+        print player1Name, " it's your turn!\n"
+    else
+        print player2Name, " it's your turn!\n"
+    end
+
+    moveY := @int
+    moveX := @int
+
+    if moveY > 0 and moveY < 4 and moveX > 0 and moveX < 4 then
+        if board[moveX][moveY] = " " then
+
+            currentPlayerMove := currentPlayerMove * -1
+            moves := moves + 1
+
+            if currentPlayerMove = 1
+                then board[moveX][moveY] := 1
+                else board[moveX][moveY] := 2
+            end
+
+            winner := giveWinner()
+
+            if winner /= 0 then
+
+                printBoard()
+
+                gameRunning := false
+                if winner = 0 then print "Draw!\n" end
+                if winner = 1 then printWinnerName(player2Name) end
+                if winner = 2 then printWinnerName(player1Name) end
+            end
+
+        else
+            print "This cell is occupied, try again\n"
+        end
+    else
+        print "Hey, acceptable numbers are between 1 and 3\n"
+    end
+
+end
