@@ -2,11 +2,11 @@ package types;
 
 import java.util.HashMap;
 
-public class Cortaige {
+public class Cortege {
 
     private HashMap<Integer, Object> objects = new HashMap<>();
 
-    public void concatination(Cortaige cortage1) {
+    public void concatination(Cortege cortage1) {
         objects.putAll(cortage1.returnObjects());
     }
 

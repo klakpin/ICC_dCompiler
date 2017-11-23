@@ -2,28 +2,18 @@ package implementations;
 
 import Interfaces.*;
 import Interfaces.Runtime;
-import types.Cortaige;
-import types.Text;
-import types.Function;
-
+import Interfaces.Runnable;
+import types.*;
+import java.util.Scanner;
 public class Output implements Runtime {
 
-    final ScopeStack scopeStack = new ScopeStackImpl();
+    private final ScopeStack scopeStack = new ScopeStackImpl();
 
-    final Stack stack = new StackImpl();
+    private final Stack stack = new StackImpl();
 
-    final Operations op = new OperationsImpl();
+    private final Operations op = new OperationsImpl();
 
-    @Override
-    public void and() {
-        //TODO implement
-    }
-
-    @Override
-    public void xor() {
-        //TODO implement
-
-    }
+    private final CallStack callStack = new CallStackImpl();
 
     @Override
     public void dup() {
@@ -59,7 +49,7 @@ public class Output implements Runtime {
 
     @Override
     public void cprint() {
-        System.out.println(stack.pop().toString());
+        System.out.print(stack.pop().toString());
     }
 
     @Override
@@ -67,64 +57,138 @@ public class Output implements Runtime {
         Object indexObj = stack.pop();
 
         if (!(indexObj instanceof Integer)) {
-            throw new Exception("Index of cortaige must be integer.");
+            throw new Exception("Index of cortege must be integer.");
         }
         int index = (int) indexObj;
         Object cortObj = stack.pop();
-        if (!(cortObj instanceof Cortaige)) {
-            throw new Exception("Cortaige should be cortaige");
+        if (!(cortObj instanceof Cortege)) {
+            throw new Exception("Cortege should be cortege");
         }
-        Cortaige cortaige = (Cortaige) cortObj;
-        stack.push(cortaige.get(index));
+        Cortege cortege = (Cortege) cortObj;
+        stack.push(cortege.get(index));
     }
 
     @Override
     public void assigncort() throws Exception {
-
         Object indexObj = stack.pop();
         Object obj = stack.pop();
 
         if (!(indexObj instanceof Integer)) {
-            throw new Exception("Index of cortaige must be integer.");
+            throw new Exception("Index of cortege must be integer.");
         }
 
         int index = (int) indexObj;
 
         Object cortObj = stack.pop();
 
-        if (!(cortObj instanceof Cortaige)) {
-            throw new Exception("Cortaige should be cortaige");
+        if (!(cortObj instanceof Cortege)) {
+            throw new Exception("Cortege should be cortege");
         }
 
-        Cortaige cortaige = (Cortaige) cortObj;
+        Cortege cortege = (Cortege) cortObj;
 
-        cortaige.set(index, obj);
+        cortege.set(index, obj);
     }
 
     @Override
-    public void equals() {
-        Object var1 = stack.pop();
-        Object var2 = stack.pop();
-        stack.push(op.equals(var1, var2));
+    public void readobj() throws Exception {
+        Object structObj = stack.pop();
+        Object indexObj = stack.pop();
+
+        if (!(indexObj instanceof Text)) {
+            throw new Exception("Index of Object must be Text, has " + indexObj.getClass().getTypeName());
+        }
+
+        Text index = (Text) indexObj;
+        if (!(structObj instanceof Structure)) {
+            throw new Exception("Structure should be structure, has " + structObj.getClass().getTypeName());
+        }
+
+        Structure object = (Structure) structObj;
+        stack.push(object.get(index.toString()));
     }
 
     @Override
-    public void or() {
-        Object var1 = stack.pop();
-        Object var2 = stack.pop();
-        stack.push(op.or(var1, var2));
+    public void assignobj() throws Exception {
+        Object obj = stack.pop();
+        Object indexObj = stack.pop();
+        Object structObj = stack.pop();
+
+        if (!(indexObj instanceof Text)) {
+            throw new Exception("Index of object must be text.");
+        }
+
+        Text index = (Text) indexObj;
+
+        if (!(structObj instanceof Structure)) {
+            throw new Exception("Object should be object");
+        }
+
+        Structure object = (Structure) structObj;
+
+        object.set(index.toString(), obj);
     }
 
     @Override
-    public void readobj() {
-        //TODO implement
+    public void checktype() {
+        Object objType = stack.pop();
+        Object object = stack.pop();
 
+        TypeIndicator strType = (TypeIndicator) objType;
+
+        switch (strType.getType()) {
+            case "int":
+                stack.push(object instanceof Integer);
+                break;
+            case "double":
+                stack.push(object instanceof Double);
+                break;
+            case "bool":
+                stack.push(object instanceof Boolean);
+                break;
+            case "string":
+                stack.push(object instanceof Text);
+                break;
+            case "empty":
+                stack.push(object == null);
+                break;
+            case "[]":
+                stack.push(object instanceof Cortege);
+                break;
+            case "{}":
+                stack.push(object instanceof Structure);
+                break;
+            case "func":
+                stack.push(object instanceof Function);
+                break;
+        }
     }
 
     @Override
-    public void assignobj() {
-        //TODO implement
+    public void evalsize() {
+        Object object = stack.pop();
+        stack.push(op.size(object));
+    }
 
+    @Override
+    public void readInt() {
+        Scanner in = new Scanner(System.in);
+        stack.push(in.nextInt());
+        in.close();
+    }
+
+    @Override
+    public void readDouble() {
+        Scanner in = new Scanner(System.in);
+        stack.push(in.nextDouble());
+        in.close();
+    }
+
+    @Override
+    public void readString() {
+        Scanner in = new Scanner(System.in);
+        stack.push(new Text(in.nextLine()));
+        in.close();
     }
 
     @Override
@@ -132,6 +196,9 @@ public class Output implements Runtime {
         Function runnable = (Function) object;
         SymTable origin = scopeStack.getScope();
         scopeStack.newScope(origin);
+
+        callStack.add(origin);
+
         runnable.run();
     }
 
@@ -157,73 +224,95 @@ public class Output implements Runtime {
     }
 
     @Override
+    public void plusplus() throws Exception {
+        stack.push(op.plusplus(stack.pop()));
+    }
+
+    @Override
+    public void minusminus() throws Exception {
+        stack.push(op.minusminus(stack.pop()));
+    }
+
+    @Override
+    public void and() {
+        stack.push(op.and(stack.pop(), stack.pop()));
+    }
+
+    @Override
+    public void xor() {
+        stack.push(op.xor(stack.pop(), stack.pop()));
+    }
+
+    @Override
+    public void equals() {
+        stack.push(op.equals(stack.pop(), stack.pop()));
+    }
+
+    @Override
+    public void or() {
+        stack.push(op.or(stack.pop(), stack.pop()));
+    }
+
+    @Override
+    public void not() {
+        stack.push(op.not(stack.pop()));
+    }
+
+    @Override
     public void plus() {
-        Object var1 = stack.pop();
-        Object var2 = stack.pop();
-        stack.push(op.plus(var1, var2));
+        stack.push(op.plus(stack.pop(), stack.pop()));
     }
 
     @Override
     public void minus() {
-        Object var1 = stack.pop();
-        Object var2 = stack.pop();
-        stack.push(op.minus(var1, var2));
+        stack.push(op.minus(stack.pop(), stack.pop()));
     }
 
     @Override
     public void multiply() {
-        Object var1 = stack.pop();
-        Object var2 = stack.pop();
-        stack.push(op.multiply(var1, var2));
+        stack.push(op.multiply(stack.pop(), stack.pop()));
     }
 
 
     @Override
     public void divide() {
-        Object var1 = stack.pop();
-        Object var2 = stack.pop();
-        stack.push(op.divide(var1, var2));
+        stack.push(op.divide(stack.pop(), stack.pop()));
     }
 
 
     @Override
     public void greater() {
-        Object var1 = stack.pop();
-        Object var2 = stack.pop();
-        stack.push(op.greater(var1, var2));
+        stack.push(op.greater(stack.pop(), stack.pop()));
     }
 
     @Override
     public void less() {
-        Object var1 = stack.pop();
-        Object var2 = stack.pop();
-        stack.push(op.less(var1, var2));
+        stack.push(op.less(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void moreequal() {
-        //TODO implement
+    public void greaterequals() {
+        stack.push(op.greaterequals(stack.pop(), stack.pop()));
     }
 
     @Override
     public void lessequal() {
-        Object var1 = stack.pop();
-        Object var2 = stack.pop();
-        stack.push(op.lessequal(var1, var2));
+        stack.push(op.lessequal(stack.pop(), stack.pop()));
     }
 
     @Override
     public void notequal() {
-        Object var1 = stack.pop();
-        Object var2 = stack.pop();
-        stack.push(op.notequal(var1, var2));
+        stack.push(op.notequal(stack.pop(), stack.pop()));
     }
 
     @Override
-    public boolean bpop() {
+    public boolean bpop() throws Exception {
         Object res = stack.pop();
-        return (boolean) res;
-        //TODO check cast, can be wrong
+        if (res instanceof Boolean) {
+            return (boolean) res;
+        } else {
+            throw new Exception("Cannot convert " + res.getClass().toString() + " to boolean for condition check.");
+        }
     }
 
     @Override
@@ -236,14 +325,31 @@ public class Output implements Runtime {
 
     @Override
     public void exitfunc() {
-        SymTable currTable = scopeStack.getScope();
-        while (currTable.getOrigin() != scopeStack.getScope()) {
+
+        SymTable target = callStack.pop();
+        while (target != scopeStack.getScope()) {
             scopeStack.popScope();
+        }
+//
+//        System.out.println(scopeStack.toString());
+//        if (scopeStack.getScope().getOrigin() != null) {
+//            scopeStack.popScope();
+//        }
+    }
+
+
+    @Override
+    public void forloop(Runnable runnable) throws Exception {
+        int begin = (Integer) stack.pop();
+        int end = (Integer) stack.pop();
+        for (int i = begin; i <= end; i++) {
+            runnable.run();
         }
     }
 
     @Override
     public void run() throws Exception {
+<<<<<<< HEAD
 scopeStack.newScope();
 add("a");
 vpush(new Cortaige());
@@ -313,4 +419,145 @@ lessequal();
 enterScope();
 scopeStack.popScope();
 }
+=======
+        scopeStack.newScope();
+        add("a");
+        vpush(new Cortege());
+        dup();
+        vpush(34);
+        vpush(1);
+        assigncort();
+        dup();
+        vpush(203);
+        vpush(2);
+        assigncort();
+        dup();
+        vpush(3);
+        vpush(3);
+        assigncort();
+        dup();
+        vpush(746);
+        vpush(4);
+        assigncort();
+        dup();
+        vpush(200);
+        vpush(5);
+        assigncort();
+        dup();
+        vpush(984);
+        vpush(6);
+        assigncort();
+        dup();
+        vpush(198);
+        vpush(7);
+        assigncort();
+        dup();
+        vpush(764);
+        vpush(8);
+        assigncort();
+        dup();
+        vpush(9);
+        vpush(9);
+        assigncort();
+        assign("a");
+        add("bubbleSort");
+        vpush(new Function(() -> {
+            add("swapped");
+            vpush(true);
+            assign("swapped");
+            vpush("swapped");
+            while (bpop()) {
+                enterScope();
+                vpush(false);
+                assign("swapped");
+                enterScope();
+                add("i");
+                vpush(1);
+                assign("i");
+                vpush(8);
+                vpush("i");
+                lessequal();
+                while (bpop()) {
+                    enterScope();
+                    vpush("a");
+                    vpush(1);
+                    vpush("i");
+                    plus();
+                    readcort();
+                    vpush("a");
+                    vpush("i");
+                    readcort();
+                    greater();
+                    if (bpop()) {
+                        enterScope();
+                        add("temp");
+                        vpush("a");
+                        vpush("i");
+                        readcort();
+                        assign("temp");
+                        vpush("a");
+                        vpush(1);
+                        vpush("i");
+                        plus();
+                        readcort();
+                        vpush("a");
+                        swap();
+                        vpush("i");
+                        assigncort();
+                        vpush("temp");
+                        vpush("a");
+                        swap();
+                        vpush(1);
+                        vpush("i");
+                        plus();
+                        assigncort();
+                        vpush(true);
+                        assign("swapped");
+                        exitScope();
+                    }
+                    exitScope();
+                    vpush(8);
+                    vpush("i");
+                    vpush(1);
+                    plus();
+                    assign("i");
+                    vpush("i");
+                    lessequal();
+                }
+                enterScope();
+                exitScope();
+                vpush("swapped");
+            }
+        }));
+        assign("bubbleSort");
+        vpush(new Text("Final array is: "));
+        cprint();
+        enterScope();
+        add("i");
+        vpush(1);
+        assign("i");
+        vpush(9);
+        vpush("i");
+        lessequal();
+        while (bpop()) {
+            enterScope();
+            vpush("a");
+            vpush("i");
+            readcort();
+            cprint();
+            vpush(new Text(" "));
+            cprint();
+            exitScope();
+            vpush(9);
+            vpush("i");
+            vpush(1);
+            plus();
+            assign("i");
+            vpush("i");
+            lessequal();
+        }
+        enterScope();
+        scopeStack.popScope();
+    }
+>>>>>>> 8e8804b22c1c64cff409ef48a6905acf58520db3
 }

@@ -5,22 +5,16 @@ package Interfaces;
  */
 public interface Operations {
 
-    // TODO Alyona
-    Object plusplus(Object var1);
+    Object plusplus(Object var1) throws Exception;
 
-    // TODO Alyona
-    Object minusminus(Object var1);
+    Object minusminus(Object var1) throws Exception;
 
-    // TODO Alyona
     Object plus(Object var1, Object var2);
 
-    // TODO Alyona
     Object minus(Object var1, Object var2);
 
-    // TODO Alyona
     Object divide(Object var1, Object var2);
 
-    // TODO Alyona
     Object multiply(Object var1, Object var2);
 
     Boolean equals(Object var1, Object var2);
@@ -42,4 +36,6 @@ public interface Operations {
     Boolean xor(Object var1, Object var2);
 
     Boolean not(Object var1);
+
+    Object size(Object var1);
 }

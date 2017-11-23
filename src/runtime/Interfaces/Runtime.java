@@ -48,14 +48,40 @@ public interface Runtime {
      * Takes value from object by index (string) and put result in stack.
      * First value on stack is index, second value is object itself.
      */
-    void readobj();
+    void readobj() throws Exception;
 
     /**
      * Takes object from stack, takes index name (string) from stack, takes structure from stack,
      * assign object to var in structure
      * with certain index
      */
-    void assignobj();
+    void assignobj() throws Exception;
+
+    /**
+     * Take type from top of stack, take variable from top of stack, check that types are same, put result on top of stack
+     */
+    void checktype();
+
+    /**
+     * Takes object from top of stack and calculate it's size. Size of basic types are size which they occupy at ram,
+     * size of cortege and structure is number of elements in it.
+     */
+    void evalsize();
+
+    /**
+     * Read integer from console and put it onto stack. Program is paused when it waits for input
+     */
+    void readInt();
+
+    /**
+     * Read double from console and put it onto stack. Program is paused when it waits for input
+     */
+    void readDouble();
+
+    /**
+     * Read string from console and put it onto stack. Program is paused when it waits for input
+     */
+    void readString();
 
     /**
      * Assign value to variable in the scope, i.e. add it into current symbol table
@@ -93,7 +119,7 @@ public interface Runtime {
      *
      * @return boolean variable of variable from top of stack
      */
-    boolean bpop();
+    boolean bpop() throws Exception;
 
     /**
      * Add 2 variables from top of the stack and put result on top of the stack
@@ -105,6 +131,10 @@ public interface Runtime {
      */
     void minus();
 
+    void plusplus() throws Exception;
+
+    void minusminus() throws Exception;
+
     /**
      * Multiply 2 variables from top of the stack and put result on top of the stack
      */
@@ -114,7 +144,7 @@ public interface Runtime {
 
     void greater();
 
-    void moreequal();
+    void greaterequals();
 
     void less();
 
@@ -123,6 +153,8 @@ public interface Runtime {
     void equals();
 
     void notequal();
+
+    void not();
 
     void or();
 
@@ -141,6 +173,14 @@ public interface Runtime {
     void swap();
 
     void cprint();
+
+    /**
+     * This is for x..y loop, x is first argument on stack, y is second argument
+     *
+     * @param runnable loop body
+     * @throws Exception exception that can be thrown while execution
+     */
+    void forloop(Runnable runnable) throws Exception;
 
     void run() throws Exception;
 }

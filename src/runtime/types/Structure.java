@@ -1,9 +1,7 @@
 package types;
 
-import Interfaces.Operations;
 import implementations.OperationsImpl;
 
-import java.util.Collection;
 import java.util.HashMap;
 
 public class Structure {
@@ -13,12 +11,12 @@ public class Structure {
         return objects.get(name);
     }
 
-    public Cortaige convertToCortaige() {
-        Cortaige cortaige=new Cortaige();
+    public Cortege convertToCortaige() {
+        Cortege cortege = new Cortege();
         for (int i=0;i<objects.size();i++){
-            cortaige.set(i,objects.values().toArray()[i]);
+            cortege.set(i, objects.values().toArray()[i]);
         }
-        return cortaige;
+        return cortege;
     }
     public void concatination(Structure structure1) {
         String[] strings=new String[this.getSize()];
