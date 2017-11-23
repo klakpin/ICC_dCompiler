@@ -36,6 +36,7 @@ public class ScopeStackImpl implements ScopeStack {
 
     @Override
     public void assign(String name, Object value) throws Exception {
+
         SymTable currentScope = symTablesStack.get(symTablesStack.size() - 1);
         while (!currentScope.contains(name) && currentScope.getOrigin() != null) {
             currentScope = currentScope.getOrigin();
@@ -64,5 +65,22 @@ public class ScopeStackImpl implements ScopeStack {
     @Override
     public SymTable getScope() {
         return symTablesStack.get(symTablesStack.size() - 1);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+
+        result.append("----------------------------\n");
+        result.append("--  Top of stack is here  --\n");
+
+        for (int i = symTablesStack.size() - 1; i >= 0; i--) {
+            result.append(symTablesStack.get(i).toString()).append("\n");
+        }
+
+        result.append("--  Bottom of stack is here  --\n");
+        result.append("-------------------------------\n");
+
+        return result.toString();
     }
 }

@@ -1,17 +1,27 @@
-var fib := func(n)
-    if n = 1 or n = 2 then return n;
-    else return fib(n-1) + fib(n-2);
+var a := [34, 203, 3, 746, 200, 984, 198, 764, 9];
+
+var bubbleSort := func
+
+    var swapped := true;
+
+    while swapped
+    loop
+        swapped := false;
+        for i in 1 .. 8
+        loop
+            if a[i] > a[i+1] then
+                var temp := a[i];
+                a[i] := a[i+1];
+                a[i+1] := temp;
+                swapped := true;
+            end
+        end
     end
 end
 
-var f := func(x) => if x <= 2 then 2 else f(x-1) + (x-2);
+bubbleSort()
 
-var a := 10;
-
-var b := func
-a := 5;
+print "Final array is: "
+for i in 1..9 loop
+    print a[i], " "
 end
-
-print a;
-b();
-print a;

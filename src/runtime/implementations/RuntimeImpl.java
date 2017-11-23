@@ -15,6 +15,8 @@ public class RuntimeImpl implements Runtime {
 
     private final Operations op = new OperationsImpl();
 
+    private final CallStack callStack = new CallStackImpl();
+
     @Override
     public void dup() {
         Object obj = stack.pop();
@@ -49,7 +51,7 @@ public class RuntimeImpl implements Runtime {
 
     @Override
     public void cprint() {
-        System.out.println(stack.pop().toString());
+        System.out.print(stack.pop().toString());
     }
 
     @Override
@@ -70,8 +72,8 @@ public class RuntimeImpl implements Runtime {
 
     @Override
     public void assigncort() throws Exception {
-        Object obj = stack.pop();
         Object indexObj = stack.pop();
+        Object obj = stack.pop();
 
         if (!(indexObj instanceof Integer)) {
             throw new Exception("Index of cortege must be integer.");
@@ -92,16 +94,16 @@ public class RuntimeImpl implements Runtime {
 
     @Override
     public void readobj() throws Exception {
-        Object indexObj = stack.pop();
         Object structObj = stack.pop();
+        Object indexObj = stack.pop();
 
         if (!(indexObj instanceof Text)) {
-            throw new Exception("Index of Object must be Text");
+            throw new Exception("Index of Object must be Text, has " + indexObj.getClass().getTypeName());
         }
 
         Text index = (Text) indexObj;
         if (!(structObj instanceof Structure)) {
-            throw new Exception("Structure should be structure");
+            throw new Exception("Structure should be structure, has " + structObj.getClass().getTypeName());
         }
 
         Structure object = (Structure) structObj;
@@ -196,6 +198,9 @@ public class RuntimeImpl implements Runtime {
         Function runnable = (Function) object;
         SymTable origin = scopeStack.getScope();
         scopeStack.newScope(origin);
+
+        callStack.add(origin);
+
         runnable.run();
     }
 
@@ -322,12 +327,18 @@ public class RuntimeImpl implements Runtime {
 
     @Override
     public void exitfunc() {
-        SymTable currTable = scopeStack.getScope().getOrigin();
-        while (currTable != scopeStack.getScope()) {
+
+        SymTable target = callStack.pop();
+        while (target != scopeStack.getScope()) {
             scopeStack.popScope();
         }
-        scopeStack.popScope();
+//
+//        System.out.println(scopeStack.toString());
+//        if (scopeStack.getScope().getOrigin() != null) {
+//            scopeStack.popScope();
+//        }
     }
+
 
     @Override
     public void forloop(Runnable runnable) throws Exception {

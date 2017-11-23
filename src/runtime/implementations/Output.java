@@ -13,6 +13,8 @@ public class Output implements Runtime {
 
     private final Operations op = new OperationsImpl();
 
+    private final CallStack callStack = new CallStackImpl();
+
     @Override
     public void dup() {
         Object obj = stack.pop();
@@ -47,7 +49,7 @@ public class Output implements Runtime {
 
     @Override
     public void cprint() {
-        System.out.println(stack.pop().toString());
+        System.out.print(stack.pop().toString());
     }
 
     @Override
@@ -68,8 +70,8 @@ public class Output implements Runtime {
 
     @Override
     public void assigncort() throws Exception {
-        Object obj = stack.pop();
         Object indexObj = stack.pop();
+        Object obj = stack.pop();
 
         if (!(indexObj instanceof Integer)) {
             throw new Exception("Index of cortege must be integer.");
@@ -90,16 +92,16 @@ public class Output implements Runtime {
 
     @Override
     public void readobj() throws Exception {
-        Object indexObj = stack.pop();
         Object structObj = stack.pop();
+        Object indexObj = stack.pop();
 
         if (!(indexObj instanceof Text)) {
-            throw new Exception("Index of Object must be Text");
+            throw new Exception("Index of Object must be Text, has " + indexObj.getClass().getTypeName());
         }
 
         Text index = (Text) indexObj;
         if (!(structObj instanceof Structure)) {
-            throw new Exception("Structure should be structure");
+            throw new Exception("Structure should be structure, has " + structObj.getClass().getTypeName());
         }
 
         Structure object = (Structure) structObj;
@@ -194,6 +196,9 @@ public class Output implements Runtime {
         Function runnable = (Function) object;
         SymTable origin = scopeStack.getScope();
         scopeStack.newScope(origin);
+
+        callStack.add(origin);
+
         runnable.run();
     }
 
@@ -320,12 +325,18 @@ public class Output implements Runtime {
 
     @Override
     public void exitfunc() {
-        SymTable currTable = scopeStack.getScope().getOrigin();
-        while (currTable != scopeStack.getScope()) {
+
+        SymTable target = callStack.pop();
+        while (target != scopeStack.getScope()) {
             scopeStack.popScope();
         }
-        scopeStack.popScope();
+//
+//        System.out.println(scopeStack.toString());
+//        if (scopeStack.getScope().getOrigin() != null) {
+//            scopeStack.popScope();
+//        }
     }
+
 
     @Override
     public void forloop(Runnable runnable) throws Exception {
@@ -339,88 +350,144 @@ public class Output implements Runtime {
     @Override
     public void run() throws Exception {
         scopeStack.newScope();
-        add("fib");
-        vpush(new Function(() -> {
-            add("n");
-            assign("n");
-            vpush(2);
-            vpush("n");
-            equals();
-            vpush(1);
-            vpush("n");
-            equals();
-            or();
-            if (bpop()) {
-                enterScope();
-                vpush("n");
-                exitfunc();
-                if (true) {
-                    return;
-                }
-                exitScope();
-            } else {
-                enterScope();
-                vpush(2);
-                vpush("n");
-                minus();
-                vpush("fib");
-                invoke();
-                vpush(1);
-                vpush("n");
-                minus();
-                vpush("fib");
-                invoke();
-                plus();
-                exitfunc();
-                if (true) {
-                    return;
-                }
-                exitScope();
-            }
-        }));
-        assign("fib");
-        add("f");
-        vpush(new Function(() -> {
-            add("x");
-            assign("x");
-            vpush(2);
-            vpush("x");
-            lessequal();
-            if (bpop()) {
-                vpush(2);
-            } else {
-                vpush(2);
-                vpush("x");
-                minus();
-                vpush(1);
-                vpush("x");
-                minus();
-                vpush("f");
-                invoke();
-                plus();
-            }
-            exitfunc();
-            if (true) {
-                return;
-            }
-        }));
-        assign("f");
         add("a");
-        vpush(10);
+        vpush(new Cortege());
+        dup();
+        vpush(34);
+        vpush(1);
+        assigncort();
+        dup();
+        vpush(203);
+        vpush(2);
+        assigncort();
+        dup();
+        vpush(3);
+        vpush(3);
+        assigncort();
+        dup();
+        vpush(746);
+        vpush(4);
+        assigncort();
+        dup();
+        vpush(200);
+        vpush(5);
+        assigncort();
+        dup();
+        vpush(984);
+        vpush(6);
+        assigncort();
+        dup();
+        vpush(198);
+        vpush(7);
+        assigncort();
+        dup();
+        vpush(764);
+        vpush(8);
+        assigncort();
+        dup();
+        vpush(9);
+        vpush(9);
+        assigncort();
         assign("a");
-        add("b");
+        add("bubbleSort");
         vpush(new Function(() -> {
-            vpush(5);
-            assign("a");
+            add("swapped");
+            vpush(true);
+            assign("swapped");
+            vpush("swapped");
+            while (bpop()) {
+                enterScope();
+                vpush(false);
+                assign("swapped");
+                enterScope();
+                add("i");
+                vpush(1);
+                assign("i");
+                vpush(8);
+                vpush("i");
+                lessequal();
+                while (bpop()) {
+                    enterScope();
+                    vpush("a");
+                    vpush(1);
+                    vpush("i");
+                    plus();
+                    readcort();
+                    vpush("a");
+                    vpush("i");
+                    readcort();
+                    greater();
+                    if (bpop()) {
+                        enterScope();
+                        add("temp");
+                        vpush("a");
+                        vpush("i");
+                        readcort();
+                        assign("temp");
+                        vpush("a");
+                        vpush(1);
+                        vpush("i");
+                        plus();
+                        readcort();
+                        vpush("a");
+                        swap();
+                        vpush("i");
+                        assigncort();
+                        vpush("temp");
+                        vpush("a");
+                        swap();
+                        vpush(1);
+                        vpush("i");
+                        plus();
+                        assigncort();
+                        vpush(true);
+                        assign("swapped");
+                        exitScope();
+                    }
+                    exitScope();
+                    vpush(8);
+                    vpush("i");
+                    vpush(1);
+                    plus();
+                    assign("i");
+                    vpush("i");
+                    lessequal();
+                }
+                enterScope();
+                exitScope();
+                vpush("swapped");
+            }
         }));
-        assign("b");
-        vpush("a");
-        cprint();
-        vpush("b");
+        assign("bubbleSort");
+        vpush("bubbleSort");
         invoke();
-        vpush("a");
+        vpush(new Text("Final array is: "));
         cprint();
-        stack.printStack("End of program");
+        enterScope();
+        add("i");
+        vpush(1);
+        assign("i");
+        vpush(9);
+        vpush("i");
+        lessequal();
+        while (bpop()) {
+            enterScope();
+            vpush("a");
+            vpush("i");
+            readcort();
+            cprint();
+            vpush(new Text(" "));
+            cprint();
+            exitScope();
+            vpush(9);
+            vpush("i");
+            vpush(1);
+            plus();
+            assign("i");
+            vpush("i");
+            lessequal();
+        }
+        enterScope();
         scopeStack.popScope();
     }
 }

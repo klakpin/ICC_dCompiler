@@ -40,6 +40,7 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
     }
 
     public T visitScopeFromFunction(DParser.ScopeContext ctx, List<TerminalNode> args) {
+
         if (args != null) {
             for (int i = args.size() - 1; i >= 0; i--) {
                 generator.add(ctx.start.getLine(), "add(\"" + args.get(i).getSymbol().getText() + "\");");
@@ -222,14 +223,12 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
                     visitReference(ctx.reference());
                     generator.add(ctx.start.getLine(), "swap();");
                     visitExpression(ctx.expression(0));
-                    generator.add(ctx.start.getLine(), "swap();");
                     generator.add(ctx.start.getLine(), "assigncort();");
                     break;
                 case ".":
                     visitReference(ctx.reference());
                     generator.add(ctx.start.getLine(), "swap();");
                     visitExpression(ctx.expression(0));
-                    generator.add(ctx.start.getLine(), "swap();");
                     generator.add(ctx.start.getLine(), "assignobj();");
                     break;
             }
