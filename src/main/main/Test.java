@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.jar.Attributes;
+import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
 import java.util.jar.Manifest;
 
@@ -77,18 +78,18 @@ public class Test {
      * @throws Exception
      */
     public static void compilationTest() throws Exception {
-        //prepare Manifest file
-        String version = "1.0.0";
-        String author = "Dreamteam";
         Manifest manifest = new Manifest();
-        Attributes global = manifest.getMainAttributes();
-        global.put(Attributes.Name.MANIFEST_VERSION, version);
-        global.put(new Attributes.Name("Created-By"), author);
-        global.put(Attributes.Name.MAIN_CLASS, "main.Main");
+        manifest.getMainAttributes().put(Attributes.Name.MANIFEST_VERSION, "1.0");
+        manifest.getMainAttributes().put(Attributes.Name.MAIN_CLASS, Main.class.getName());
+        JarOutputStream jarOutputStream = new JarOutputStream(new FileOutputStream("y.jar"), manifest);
 
-        JarOutputStream jos = new JarOutputStream(new BufferedOutputStream(new FileOutputStream("test.jar")), manifest);
+        // Add the main class
+        addClass(Main.class, jarOutputStream);
 
-        jos.close();
+        // Add the Util class; Y uses it to read our secret message
+        addClass(Util.class, jarOutputStream);
+
+        jarOutputStream.close();
     }
 
     public static void createOutput(ArgumentParser parser) throws Exception {
@@ -105,5 +106,29 @@ public class Test {
         DBaseVisitor visitor = new DBaseVisitor<>(new CodeGeneratorToStdout());
         tree.accept(visitor);
 
+    }
+
+    private static void addClass(Class c, JarOutputStream jarOutputStream) throws IOException
+    {
+        String path = c.getName().replace('.', '/') + ".class";
+        jarOutputStream.putNextEntry(new JarEntry(path));
+        jarOutputStream.write(Util.toByteArray(c.getClassLoader().getResourceAsStream(path)));
+        jarOutputStream.closeEntry();
+    }
+}
+
+class Util {
+
+    public static byte[] toByteArray(InputStream in) throws IOException {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        byte[] buf = new byte[0x1000];
+        while (true) {
+            int r = in.read(buf);
+            if (r == -1) {
+                break;
+            }
+            out.write(buf, 0, r);
+        }
+        return out.toByteArray();
     }
 }
