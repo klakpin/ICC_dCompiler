@@ -165,6 +165,12 @@ public class RuntimeImpl implements Runtime {
     }
 
     @Override
+    public void evalsize() {
+        Object object = stack.pop();
+        stack.push(op.size(object));
+    }
+
+    @Override
     public void readInt() {
         Scanner in = new Scanner(System.in);
         stack.push(in.nextInt());

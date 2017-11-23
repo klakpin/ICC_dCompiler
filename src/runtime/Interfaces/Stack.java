@@ -10,5 +10,5 @@ public interface Stack {
 
     Object get();
 
-    void printStack();
+    void printStack(String text);
 }

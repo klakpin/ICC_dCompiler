@@ -4,7 +4,6 @@ import Interfaces.*;
 import Interfaces.Runtime;
 import Interfaces.Runnable;
 import types.*;
-
 import java.util.Scanner;
 public class Output implements Runtime {
 
@@ -161,6 +160,12 @@ public class Output implements Runtime {
                 stack.push(object instanceof Function);
                 break;
         }
+    }
+
+    @Override
+    public void evalsize() {
+        Object object = stack.pop();
+        stack.push(op.size(object));
     }
 
     @Override
@@ -338,10 +343,6 @@ public class Output implements Runtime {
         vpush(new Function(() -> {
             add("n");
             assign("n");
-            vpush(new Text("fib"));
-            cprint();
-            vpush("n");
-            cprint();
             vpush(2);
             vpush("n");
             equals();
@@ -378,10 +379,48 @@ public class Output implements Runtime {
             }
         }));
         assign("fib");
-        vpush(7);
-        vpush("fib");
-        invoke();
+        add("f");
+        vpush(new Function(() -> {
+            add("x");
+            assign("x");
+            vpush(2);
+            vpush("x");
+            lessequal();
+            if (bpop()) {
+                vpush(2);
+            } else {
+                vpush(2);
+                vpush("x");
+                minus();
+                vpush(1);
+                vpush("x");
+                minus();
+                vpush("f");
+                invoke();
+                plus();
+            }
+            exitfunc();
+            if (true) {
+                return;
+            }
+        }));
+        assign("f");
+        add("a");
+        vpush(10);
+        assign("a");
+        add("b");
+        vpush(new Function(() -> {
+            vpush(5);
+            assign("a");
+        }));
+        assign("b");
+        vpush("a");
         cprint();
+        vpush("b");
+        invoke();
+        vpush("a");
+        cprint();
+        stack.printStack("End of program");
         scopeStack.popScope();
     }
 }

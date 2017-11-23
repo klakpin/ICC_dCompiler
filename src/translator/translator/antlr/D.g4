@@ -26,7 +26,7 @@ statement : declaration
           ;
 
 // Ready
-invocation : IDENT '(' expression (',' expression)* ')';
+invocation : IDENT '(' (expression (',' expression)*)? ')';
 
 // Ready
 r_if : 'if' expression 'then' scope ('else' scope)? 'end';
@@ -127,9 +127,9 @@ tuple : '[' (expression (',' expression)*)? ']';
 
 INTEGER : [0-9]+;
 REAL : [0-9]+'.'[0-9]+;
-STRING : '"'[a-zA-Z \n]*'"';
+STRING : ["] (~["\r\n] | '\\\\' | '\\"')* ["];
 BOOLEAN : 'true'|'false';
 EMPTY : 'empty';
-
 IDENT : [A-Za-z][_a-zA-Z0-9]*;
+Comment : ('//' ~[\r\n]* | '/*' .*? '*/') -> skip;
  WS: [\n\t\r ]+ -> skip;

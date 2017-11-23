@@ -1,9 +1,17 @@
 var fib := func(n)
-    print "fib", n;
     if n = 1 or n = 2 then return n;
     else return fib(n-1) + fib(n-2);
     end
 end
 
-print fib(7)
+var f := func(x) => if x <= 2 then 2 else f(x-1) + (x-2);
 
+var a := 10;
+
+var b := func
+a := 5;
+end
+
+print a;
+b();
+print a;

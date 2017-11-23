@@ -62,10 +62,25 @@ public interface Runtime {
      */
     void checktype();
 
+    /**
+     * Takes object from top of stack and calculate it's size. Size of basic types are size which they occupy at ram,
+     * size of cortege and structure is number of elements in it.
+     */
+    void evalsize();
+
+    /**
+     * Read integer from console and put it onto stack. Program is paused when it waits for input
+     */
     void readInt();
 
+    /**
+     * Read double from console and put it onto stack. Program is paused when it waits for input
+     */
     void readDouble();
 
+    /**
+     * Read string from console and put it onto stack. Program is paused when it waits for input
+     */
     void readString();
 
     /**

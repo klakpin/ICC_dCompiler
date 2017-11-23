@@ -15,11 +15,14 @@ public class StackImpl implements Stack {
     }
 
     @Override
-    public void printStack() {
+    public void printStack(String text) {
         System.out.println("-------------------------------------------------");
+        System.out.print(text + " : ");
+        System.out.print("Top of stack -> | ");
         for (int i = stack.size() - 1; i >= 0; i--) {
             System.out.print(stack.get(i) + " ");
         }
+        System.out.println("   |");
         System.out.println("-------------------------------------------------");
     }
 

@@ -359,5 +359,10 @@ public class OperationsImpl implements Operations {
         return null;
     }
 
+    @Override
+    public Object size(Object var1) {
+        return null;
+    }
+
 
 }

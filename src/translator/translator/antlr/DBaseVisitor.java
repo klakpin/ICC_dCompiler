@@ -40,9 +40,12 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
     }
 
     public T visitScopeFromFunction(DParser.ScopeContext ctx, List<TerminalNode> args) {
-        for (int i = args.size() - 1; i >= 0; i--) {
-            generator.add(ctx.start.getLine(), "add(\"" + args.get(i).getSymbol().getText() + "\");");
-            generator.add(ctx.start.getLine(), "assign(\"" + args.get(i).getSymbol().getText() + "\");");
+        if (args != null) {
+            for (int i = args.size() - 1; i >= 0; i--) {
+                generator.add(ctx.start.getLine(), "add(\"" + args.get(i).getSymbol().getText() + "\");");
+                generator.add(ctx.start.getLine(), "assign(\"" + args.get(i).getSymbol().getText() + "\");");
+            }
+
         }
         visitChildren(ctx);
         return null;
@@ -370,6 +373,8 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
             visitReference(ctx.reference());
             visitType_indicator(ctx.type_indicator());
             generator.add("checktype();");
+        } else if (ctx.children.get(0).getText().equals("size")) {
+
         } else {
             visitChildren(ctx);
         }
@@ -412,9 +417,24 @@ public class DBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements DVis
     @Override
     public T visitFunction_literal(DParser.Function_literalContext ctx) {
         generator.add(ctx.start.getLine(), "vpush(new Function(() -> {");
-        visitScopeFromFunction(ctx.body().scope(), ctx.IDENT());
+        visitBody(ctx.body(), ctx.IDENT());
         generator.add(ctx.start.getLine(), "}));");
         return null;
+    }
+
+    public void visitBody(DParser.BodyContext ctx, List<TerminalNode> args) {
+
+        if (ctx.scope() != null) {
+            visitScopeFromFunction(ctx.scope(), args);
+        } else {
+            for (int i = args.size() - 1; i >= 0; i--) {
+                generator.add(ctx.start.getLine(), "add(\"" + args.get(i).getSymbol().getText() + "\");");
+                generator.add(ctx.start.getLine(), "assign(\"" + args.get(i).getSymbol().getText() + "\");");
+            }
+            visitExpression(ctx.expression());
+            generator.add(ctx.start.getLine(), "exitfunc();");
+            generator.add(ctx.start.getLine(), "if (true) {return;}");
+        }
     }
 
     @Override
