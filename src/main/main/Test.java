@@ -1,7 +1,6 @@
 package main;
 
 import Interfaces.Runtime;
-import implementations.Output;
 import org.runtime.CharStream;
 import org.runtime.CharStreams;
 import org.runtime.CommonTokenStream;
@@ -14,15 +13,16 @@ import translator.antlr.DParser;
 import translator.codegen.CodeGeneratorToStdout;
 
 import javax.tools.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.jar.Attributes;
 import java.util.jar.JarOutputStream;
+import java.util.jar.Manifest;
 
 public class Test {
 
@@ -38,6 +38,7 @@ public class Test {
         System.out.println("0 - just look what will be result of translation of input file");
         System.out.println("1 - create runnable java file from input file");
         System.out.println("2 - run file that I've created in step 1");
+        System.out.println("3 - try to build jar executable");
         System.out.println("Your answer: ");
 
         Scanner input = new Scanner(System.in);
@@ -52,6 +53,8 @@ public class Test {
             case "2":
                 compilationTest();
                 break;
+            case "3":
+                break;
             default:
                 System.out.println("Don't understand, goodbye.");
                 break;
@@ -61,44 +64,38 @@ public class Test {
     }
 
 
-    public static void createOutput(ArgumentParser parser) throws Exception {
-        Translator translator = new Translator(parser);
-        translator.translate();
-
-    }
-
-
-    public static void antlrTesting() throws Exception {
-        CharStream stream = CharStreams.fromFileName("input.dlan");
-        DLexer lexer = new DLexer(stream);
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        DParser parser = new DParser(tokens);
-        ParseTree tree = parser.compilation_unit();
-        DBaseVisitor visitor = new DBaseVisitor<>(new CodeGeneratorToStdout());
-        tree.accept(visitor);
-
-    }
-
     /**
      * Creates class file
      *
      * @throws Exception
      */
     public static void compilationTest() throws Exception {
+        //prepare Manifest file
+        String version = "1.0.0";
+        String author = "Dreamteam";
+        Manifest manifest = new Manifest();
+        Attributes global = manifest.getMainAttributes();
+        global.put(Attributes.Name.MANIFEST_VERSION, version);
+        global.put(new Attributes.Name("Created-By"), author);
+        global.put(Attributes.Name.MAIN_CLASS, "main.Main");
+
+        JarOutputStream jos = new JarOutputStream(new BufferedOutputStream(new FileOutputStream("test.jar")), manifest);
+        jos.close();
+
 
         try {
             File helloWorldJava = new File("src/runtime/implementations/Output.java");
 
             /** Compilation Requirements *********************************************************************************************/
-            DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<JavaFileObject>();
+            DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<>();
             JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
             StandardJavaFileManager fileManager = compiler.getStandardFileManager(diagnostics, null, null);
 
             // This sets up the class path that the compiler will use.
             // I've added the .jar file that contains the DoStuff interface within in it...
-            List<String> optionList = new ArrayList<String>();
-            optionList.add("-d");
-            optionList.add("gen");
+            List<String> optionList = new ArrayList<>();
+//            optionList.add("-d");
+//            optionList.add("gen");
 
             Iterable<? extends JavaFileObject> compilationUnit
                     = fileManager.getJavaFileObjectsFromFiles(Arrays.asList(helloWorldJava));
@@ -141,5 +138,21 @@ public class Test {
         } catch (IOException | ClassNotFoundException | InstantiationException | IllegalAccessException exp) {
             exp.printStackTrace();
         }
+    }
+
+    public static void createOutput(ArgumentParser parser) throws Exception {
+        Translator translator = new Translator(parser);
+        translator.translate();
+    }
+
+    public static void antlrTesting() throws Exception {
+        CharStream stream = CharStreams.fromFileName("input.dlan");
+        DLexer lexer = new DLexer(stream);
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        DParser parser = new DParser(tokens);
+        ParseTree tree = parser.compilation_unit();
+        DBaseVisitor visitor = new DBaseVisitor<>(new CodeGeneratorToStdout());
+        tree.accept(visitor);
+
     }
 }
