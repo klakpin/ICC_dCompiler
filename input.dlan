@@ -3,6 +3,6 @@ var b := [7,8];
 
 var c := a + b;
 
-for i in 1..8 loop
+for i in 1..6 loop
 print c[i];
 end
