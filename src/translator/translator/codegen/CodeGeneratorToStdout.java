@@ -18,6 +18,7 @@ public class CodeGeneratorToStdout implements CodeGenerator {
 
     @Override
     public void add(int srcLine, String string) {
+        System.out.println(string);
 
     }
 
