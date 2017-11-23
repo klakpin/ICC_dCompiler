@@ -8,22 +8,7 @@ var euclidus := func (a, b)
     return a
 end
 
-var res := euclidus(5, 10)
+var res := euclidus(1071, 462)
 print res
 
-
-for i in 1..10
-loop
-i := i +1;
-end
-
-
-
-for 1..10
-loop
-i := i +1;
-end
-
-for i in
-loop
-end
+// Result should be 21

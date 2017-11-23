@@ -17,6 +17,8 @@ public class Output implements Runtime {
 
     private final CallStack callStack = new CallStackImpl();
 
+    private Scanner in = new Scanner(System.in);
+
     @Override
     public void dup() {
         Object obj = stack.pop();
@@ -56,7 +58,6 @@ public class Output implements Runtime {
 
     @Override
     public void readcort() throws Exception {
-
         Object indexObj = stack.pop();
 
         if (!(indexObj instanceof Integer)) {
@@ -175,23 +176,17 @@ public class Output implements Runtime {
 
     @Override
     public void readInt() {
-        Scanner in = new Scanner(System.in);
         stack.push(in.nextInt());
-        in.close();
     }
 
     @Override
     public void readDouble() {
-        Scanner in = new Scanner(System.in);
         stack.push(in.nextDouble());
-        in.close();
     }
 
     @Override
     public void readString() {
-        Scanner in = new Scanner(System.in);
         stack.push(new Text(in.nextLine()));
-        in.close();
     }
 
     @Override
@@ -333,11 +328,6 @@ public class Output implements Runtime {
         while (target != scopeStack.getScope()) {
             scopeStack.popScope();
         }
-//
-//        System.out.println(scopeStack.toString());
-//        if (scopeStack.getScope().getOrigin() != null) {
-//            scopeStack.popScope();
-//        }
     }
 
 
@@ -353,103 +343,268 @@ public class Output implements Runtime {
     @Override
     public void run() throws Exception {
         scopeStack.newScope();
-        add("a");
+        add("player1Name");
+        add("player2Name");
+        add("board");
         vpush(new Cortege());
-        dup();
-        vpush(34);
-        vpush(1);
-        assigncort();
-        dup();
-        vpush(203);
-        vpush(2);
-        assigncort();
-        dup();
-        vpush(3);
-        vpush(3);
-        assigncort();
-        dup();
-        vpush(746);
-        vpush(4);
-        assigncort();
-        dup();
-        vpush(200);
-        vpush(5);
-        assigncort();
-        dup();
-        vpush(984);
-        vpush(6);
-        assigncort();
-        dup();
-        vpush(198);
-        vpush(7);
-        assigncort();
-        dup();
-        vpush(764);
-        vpush(8);
-        assigncort();
-        dup();
-        vpush(9);
-        vpush(9);
-        assigncort();
-        assign("a");
-        add("bubbleSort");
+        assign("board");
+        add("printBoard");
         vpush(new Function(() -> {
-            add("swapped");
-            vpush(true);
-            assign("swapped");
-            vpush("swapped");
+            vpush(new Text("  1     2     3  \n"));
+            cprint();
+            vpush(new Text("     :     :     \n"));
+            cprint();
+            vpush(new Text("  "));
+            cprint();
+            vpush("board");
+            vpush(1);
+            readcort();
+            vpush(1);
+            readcort();
+            cprint();
+            vpush(new Text("  :  "));
+            cprint();
+            vpush("board");
+            vpush(1);
+            readcort();
+            vpush(2);
+            readcort();
+            cprint();
+            vpush(new Text("  :  "));
+            cprint();
+            vpush("board");
+            vpush(1);
+            readcort();
+            vpush(3);
+            readcort();
+            cprint();
+            vpush(new Text("    1\n"));
+            cprint();
+            vpush(new Text("_____:_____:_____\n"));
+            cprint();
+            vpush(new Text("     :     :     \n"));
+            cprint();
+            vpush(new Text("  "));
+            cprint();
+            vpush("board");
+            vpush(2);
+            readcort();
+            vpush(1);
+            readcort();
+            cprint();
+            vpush(new Text("  :  "));
+            cprint();
+            vpush("board");
+            vpush(2);
+            readcort();
+            vpush(2);
+            readcort();
+            cprint();
+            vpush(new Text("  :  "));
+            cprint();
+            vpush("board");
+            vpush(2);
+            readcort();
+            vpush(3);
+            readcort();
+            cprint();
+            vpush(new Text("    2\n"));
+            cprint();
+            vpush(new Text("_____:_____:_____\n"));
+            cprint();
+            vpush(new Text("     |     |     \n"));
+            cprint();
+            vpush(new Text("  "));
+            cprint();
+            vpush("board");
+            vpush(3);
+            readcort();
+            vpush(1);
+            readcort();
+            cprint();
+            vpush(new Text("  :  "));
+            cprint();
+            vpush("board");
+            vpush(3);
+            readcort();
+            vpush(2);
+            readcort();
+            cprint();
+            vpush(new Text("  :  "));
+            cprint();
+            vpush("board");
+            vpush(3);
+            readcort();
+            vpush(3);
+            readcort();
+            cprint();
+            vpush(new Text("    3\n"));
+            cprint();
+            vpush(new Text("_____:_____:_____\n"));
+            cprint();
+        }));
+        assign("printBoard");
+        add("giveWinner");
+        vpush(new Function(() -> {
+            add("player1Count");
+            vpush(0);
+            assign("player1Count");
+            add("player2Count");
+            vpush(0);
+            assign("player2Count");
+            add("nullifyVariables");
+            vpush(new Function(() -> {
+                vpush(0);
+                assign("player1Count");
+                vpush(0);
+                assign("player2Count");
+            }));
+            assign("nullifyVariables");
+            enterScope();
+            add("i");
+            vpush(1);
+            assign("i");
+            vpush(3);
+            vpush("i");
+            lessequal();
             while (bpop()) {
                 enterScope();
-                vpush(false);
-                assign("swapped");
+                enterScope();
+                add("y");
+                vpush(1);
+                assign("y");
+                vpush(3);
+                vpush("y");
+                lessequal();
+                while (bpop()) {
+                    enterScope();
+                    vpush(1);
+                    vpush("board");
+                    vpush("i");
+                    readcort();
+                    vpush("y");
+                    readcort();
+                    stack.printStack("Before equals");
+                    equals();
+                    if (bpop()) {
+                        enterScope();
+                        vpush(1);
+                        vpush("player1Count");
+                        plus();
+                        assign("player1Count");
+                        exitScope();
+                    }
+                    vpush(2);
+                    vpush("board");
+                    vpush("i");
+                    readcort();
+                    vpush("y");
+                    readcort();
+                    equals();
+                    if (bpop()) {
+                        enterScope();
+                        vpush(1);
+                        vpush("player2Count");
+                        plus();
+                        assign("player2Count");
+                        exitScope();
+                    }
+                    exitScope();
+                    vpush(3);
+                    vpush("y");
+                    vpush(1);
+                    plus();
+                    assign("y");
+                    vpush("y");
+                    lessequal();
+                }
+                enterScope();
+                exitScope();
+                vpush(3);
+                vpush("i");
+                vpush(1);
+                plus();
+                assign("i");
+                vpush("i");
+                lessequal();
+            }
+            enterScope();
+            vpush(3);
+            vpush("player1Count");
+            equals();
+            if (bpop()) {
+                enterScope();
+                vpush(1);
+                exitfunc();
+                if (true) {
+                    return;
+                }
+                exitScope();
+            }
+            vpush(3);
+            vpush("player2Count");
+            equals();
+            if (bpop()) {
+                enterScope();
+                vpush(2);
+                exitfunc();
+                if (true) {
+                    return;
+                }
+                exitScope();
+            }
+            vpush("nullifyVariables");
+            invoke();
+            enterScope();
+            add("y");
+            vpush(1);
+            assign("y");
+            vpush(3);
+            vpush("y");
+            lessequal();
+            while (bpop()) {
+                enterScope();
                 enterScope();
                 add("i");
                 vpush(1);
                 assign("i");
-                vpush(8);
+                vpush(3);
                 vpush("i");
-                stack.printStack("before lessequal");
                 lessequal();
                 while (bpop()) {
                     enterScope();
-                    vpush("a");
                     vpush(1);
-                    vpush("i");
-                    plus();
-                    readcort();
-                    vpush("a");
+                    vpush("board");
                     vpush("i");
                     readcort();
-                    greater();
+                    vpush("y");
+                    readcort();
+                    equals();
                     if (bpop()) {
                         enterScope();
-                        add("temp");
-                        vpush("a");
-                        vpush("i");
-                        readcort();
-                        assign("temp");
-                        vpush("a");
                         vpush(1);
-                        vpush("i");
+                        vpush("player1Count");
                         plus();
-                        readcort();
-                        vpush("a");
-                        swap();
-                        vpush("i");
-                        assigncort();
-                        vpush("temp");
-                        vpush("a");
-                        swap();
+                        assign("player1Count");
+                        exitScope();
+                    }
+                    vpush(2);
+                    vpush("board");
+                    vpush("i");
+                    readcort();
+                    vpush("y");
+                    readcort();
+                    equals();
+                    if (bpop()) {
+                        enterScope();
                         vpush(1);
-                        vpush("i");
+                        vpush("player2Count");
                         plus();
-                        assigncort();
-                        vpush(true);
-                        assign("swapped");
+                        assign("player2Count");
                         exitScope();
                     }
                     exitScope();
-                    vpush(8);
+                    vpush(3);
                     vpush("i");
                     vpush(1);
                     plus();
@@ -459,31 +614,216 @@ public class Output implements Runtime {
                 }
                 enterScope();
                 exitScope();
-                vpush("swapped");
+                vpush(3);
+                vpush("y");
+                vpush(1);
+                plus();
+                assign("y");
+                vpush("y");
+                lessequal();
+            }
+            enterScope();
+            vpush(3);
+            vpush("player1Count");
+            equals();
+            if (bpop()) {
+                enterScope();
+                vpush(1);
+                exitfunc();
+                if (true) {
+                    return;
+                }
+                exitScope();
+            }
+            vpush(3);
+            vpush("player2Count");
+            equals();
+            if (bpop()) {
+                enterScope();
+                vpush(2);
+                exitfunc();
+                if (true) {
+                    return;
+                }
+                exitScope();
+            }
+            vpush("nullifyVariables");
+            invoke();
+            enterScope();
+            add("i");
+            vpush(1);
+            assign("i");
+            vpush(3);
+            vpush("i");
+            lessequal();
+            while (bpop()) {
+                enterScope();
+                vpush(1);
+                vpush("board");
+                vpush("i");
+                readcort();
+                vpush("i");
+                readcort();
+                equals();
+                if (bpop()) {
+                    enterScope();
+                    vpush(1);
+                    vpush("player1Count");
+                    plus();
+                    assign("player1Count");
+                    exitScope();
+                }
+                vpush(2);
+                vpush("board");
+                vpush("i");
+                readcort();
+                vpush("i");
+                readcort();
+                equals();
+                if (bpop()) {
+                    enterScope();
+                    vpush(1);
+                    vpush("player2Count");
+                    plus();
+                    assign("player2Count");
+                    exitScope();
+                }
+                exitScope();
+                vpush(3);
+                vpush("i");
+                vpush(1);
+                plus();
+                assign("i");
+                vpush("i");
+                lessequal();
+            }
+            enterScope();
+            vpush(3);
+            vpush("player1Count");
+            equals();
+            if (bpop()) {
+                enterScope();
+                vpush(1);
+                exitfunc();
+                if (true) {
+                    return;
+                }
+                exitScope();
+            }
+            vpush(3);
+            vpush("player2Count");
+            equals();
+            if (bpop()) {
+                enterScope();
+                vpush(2);
+                exitfunc();
+                if (true) {
+                    return;
+                }
+                exitScope();
+            }
+            vpush("nullifyVariables");
+            invoke();
+            enterScope();
+            add("i");
+            vpush(1);
+            assign("i");
+            vpush(3);
+            vpush("i");
+            lessequal();
+            while (bpop()) {
+                enterScope();
+                vpush(1);
+                vpush("board");
+                vpush("i");
+                readcort();
+                vpush("i");
+                vpush(4);
+                minus();
+                readcort();
+                equals();
+                if (bpop()) {
+                    enterScope();
+                    vpush(1);
+                    vpush("player1Count");
+                    plus();
+                    assign("player1Count");
+                    exitScope();
+                }
+                vpush(2);
+                vpush("board");
+                vpush("i");
+                readcort();
+                vpush("i");
+                vpush(4);
+                minus();
+                readcort();
+                equals();
+                if (bpop()) {
+                    enterScope();
+                    vpush(1);
+                    vpush("player2Count");
+                    plus();
+                    assign("player2Count");
+                    exitScope();
+                }
+                exitScope();
+                vpush(3);
+                vpush("i");
+                vpush(1);
+                plus();
+                assign("i");
+                vpush("i");
+                lessequal();
+            }
+            enterScope();
+            vpush(3);
+            vpush("player1Count");
+            equals();
+            if (bpop()) {
+                enterScope();
+                vpush(1);
+                exitfunc();
+                if (true) {
+                    return;
+                }
+                exitScope();
+            }
+            vpush(3);
+            vpush("player2Count");
+            equals();
+            if (bpop()) {
+                enterScope();
+                vpush(2);
+                exitfunc();
+                if (true) {
+                    return;
+                }
+                exitScope();
+            }
+            vpush(0);
+            exitfunc();
+            if (true) {
+                return;
             }
         }));
-        assign("bubbleSort");
-        vpush("bubbleSort");
-        invoke();
-        vpush(new Text("Final array is: "));
-        cprint();
+        assign("giveWinner");
         enterScope();
         add("i");
         vpush(1);
         assign("i");
-        vpush(9);
+        vpush(3);
         vpush("i");
         lessequal();
         while (bpop()) {
             enterScope();
-            vpush("a");
+            vpush(new Cortege());
+            vpush("board");
+            swap();
             vpush("i");
-            readcort();
-            cprint();
-            vpush(new Text(" "));
-            cprint();
+            assigncort();
             exitScope();
-            vpush(9);
+            vpush(3);
             vpush("i");
             vpush(1);
             plus();
@@ -492,6 +832,71 @@ public class Output implements Runtime {
             lessequal();
         }
         enterScope();
+        enterScope();
+        add("i");
+        vpush(1);
+        assign("i");
+        vpush(3);
+        vpush("i");
+        lessequal();
+        while (bpop()) {
+            enterScope();
+            enterScope();
+            add("y");
+            vpush(1);
+            assign("y");
+            vpush(3);
+            vpush("y");
+            lessequal();
+            while (bpop()) {
+                enterScope();
+                vpush(new Text(" "));
+                vpush("board");
+                vpush("i");
+                readcort();
+                swap();
+                vpush("y");
+                assigncort();
+                exitScope();
+                vpush(3);
+                vpush("y");
+                vpush(1);
+                plus();
+                assign("y");
+                vpush("y");
+                lessequal();
+            }
+            enterScope();
+            exitScope();
+            vpush(3);
+            vpush("i");
+            vpush(1);
+            plus();
+            assign("i");
+            vpush("i");
+            lessequal();
+        }
+        enterScope();
+        vpush(new Text("Enter player 1 name: "));
+        cprint();
+        readString();
+        assign("player1Name");
+        vpush(new Text("\nEnter player 2 name: "));
+        cprint();
+        readString();
+        assign("player2Name");
+        vpush(new Text("\n"));
+        cprint();
+        add("gameRunning");
+        vpush(true);
+        assign("gameRunning");
+        vpush("printBoard");
+        invoke();
+        vpush(new Text("Winner is player "));
+        cprint();
+        vpush("giveWinner");
+        invoke();
+        cprint();
         scopeStack.popScope();
     }
 }

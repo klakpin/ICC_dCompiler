@@ -17,6 +17,8 @@ public class RuntimeImpl implements Runtime {
 
     private final CallStack callStack = new CallStackImpl();
 
+    private Scanner in = new Scanner(System.in);
+
     @Override
     public void dup() {
         Object obj = stack.pop();
@@ -174,23 +176,17 @@ public class RuntimeImpl implements Runtime {
 
     @Override
     public void readInt() {
-        Scanner in = new Scanner(System.in);
         stack.push(in.nextInt());
-        in.close();
     }
 
     @Override
     public void readDouble() {
-        Scanner in = new Scanner(System.in);
         stack.push(in.nextDouble());
-        in.close();
     }
 
     @Override
     public void readString() {
-        Scanner in = new Scanner(System.in);
         stack.push(new Text(in.nextLine()));
-        in.close();
     }
 
     @Override
@@ -332,11 +328,6 @@ public class RuntimeImpl implements Runtime {
         while (target != scopeStack.getScope()) {
             scopeStack.popScope();
         }
-//
-//        System.out.println(scopeStack.toString());
-//        if (scopeStack.getScope().getOrigin() != null) {
-//            scopeStack.popScope();
-//        }
     }
 
 

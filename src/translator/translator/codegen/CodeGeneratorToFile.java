@@ -11,7 +11,7 @@ import java.util.TreeMap;
 public class CodeGeneratorToFile implements CodeGenerator {
 
 
-    int startLine = 352;
+    int startLine = 344;
     Map<Integer, Integer> codeMapping = new TreeMap<>();
 
     RandomAccessFile outputFile;

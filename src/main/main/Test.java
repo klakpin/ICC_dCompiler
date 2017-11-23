@@ -16,13 +16,10 @@ import translator.antlr.DParser;
 import translator.codegen.CodeGeneratorToStdout;
 import types.*;
 
-import javax.tools.*;
-import java.io.*;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Scanner;
 import java.util.jar.Attributes;
 import java.util.jar.JarEntry;
@@ -46,6 +43,7 @@ public class Test {
         System.out.println("3 - try to build jar executable");
         System.out.println("Your answer: ");
 
+
         Scanner input = new Scanner(System.in);
 
         switch (input.next()) {
@@ -60,7 +58,6 @@ public class Test {
                 break;
             case "3":
                 compilationTest();
-
                 break;
             default:
                 System.out.println("Don't understand, goodbye.");
