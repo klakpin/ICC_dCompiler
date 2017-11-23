@@ -4,7 +4,9 @@ import Interfaces.*;
 import Interfaces.Runtime;
 import Interfaces.Runnable;
 import types.*;
+
 import java.util.Scanner;
+
 public class Output implements Runtime {
 
     private final ScopeStack scopeStack = new ScopeStackImpl();
@@ -54,6 +56,7 @@ public class Output implements Runtime {
 
     @Override
     public void readcort() throws Exception {
+
         Object indexObj = stack.pop();
 
         if (!(indexObj instanceof Integer)) {
@@ -349,6 +352,7 @@ public class Output implements Runtime {
 
     @Override
     public void run() throws Exception {
+<<<<<<< HEAD
 scopeStack.newScope();
 add("a");
 vpush(new Cortege());
@@ -492,4 +496,148 @@ lessequal();
 enterScope();
 scopeStack.popScope();
 }
+=======
+        scopeStack.newScope();
+        add("a");
+        vpush(new Cortege());
+        dup();
+        vpush(34);
+        vpush(1);
+        assigncort();
+        dup();
+        vpush(203);
+        vpush(2);
+        assigncort();
+        dup();
+        vpush(3);
+        vpush(3);
+        assigncort();
+        dup();
+        vpush(746);
+        vpush(4);
+        assigncort();
+        dup();
+        vpush(200);
+        vpush(5);
+        assigncort();
+        dup();
+        vpush(984);
+        vpush(6);
+        assigncort();
+        dup();
+        vpush(198);
+        vpush(7);
+        assigncort();
+        dup();
+        vpush(764);
+        vpush(8);
+        assigncort();
+        dup();
+        vpush(9);
+        vpush(9);
+        assigncort();
+        assign("a");
+        add("bubbleSort");
+        vpush(new Function(() -> {
+            add("swapped");
+            vpush(true);
+            assign("swapped");
+            vpush("swapped");
+            while (bpop()) {
+                enterScope();
+                vpush(false);
+                assign("swapped");
+                enterScope();
+                add("i");
+                vpush(1);
+                assign("i");
+                vpush(8);
+                vpush("i");
+                stack.printStack("before lessequal");
+                lessequal();
+                while (bpop()) {
+                    enterScope();
+                    vpush("a");
+                    vpush(1);
+                    vpush("i");
+                    plus();
+                    readcort();
+                    vpush("a");
+                    vpush("i");
+                    readcort();
+                    greater();
+                    if (bpop()) {
+                        enterScope();
+                        add("temp");
+                        vpush("a");
+                        vpush("i");
+                        readcort();
+                        assign("temp");
+                        vpush("a");
+                        vpush(1);
+                        vpush("i");
+                        plus();
+                        readcort();
+                        vpush("a");
+                        swap();
+                        vpush("i");
+                        assigncort();
+                        vpush("temp");
+                        vpush("a");
+                        swap();
+                        vpush(1);
+                        vpush("i");
+                        plus();
+                        assigncort();
+                        vpush(true);
+                        assign("swapped");
+                        exitScope();
+                    }
+                    exitScope();
+                    vpush(8);
+                    vpush("i");
+                    vpush(1);
+                    plus();
+                    assign("i");
+                    vpush("i");
+                    lessequal();
+                }
+                enterScope();
+                exitScope();
+                vpush("swapped");
+            }
+        }));
+        assign("bubbleSort");
+        vpush("bubbleSort");
+        invoke();
+        vpush(new Text("Final array is: "));
+        cprint();
+        enterScope();
+        add("i");
+        vpush(1);
+        assign("i");
+        vpush(9);
+        vpush("i");
+        lessequal();
+        while (bpop()) {
+            enterScope();
+            vpush("a");
+            vpush("i");
+            readcort();
+            cprint();
+            vpush(new Text(" "));
+            cprint();
+            exitScope();
+            vpush(9);
+            vpush("i");
+            vpush(1);
+            plus();
+            assign("i");
+            vpush("i");
+            lessequal();
+        }
+        enterScope();
+        scopeStack.popScope();
+    }
+>>>>>>> 3ea5f67d6d295e418f659b8acd5392ffe1915e95
 }

@@ -1,6 +1,7 @@
 package main;
 
 import Interfaces.Runtime;
+import implementations.Output;
 import org.runtime.CharStream;
 import org.runtime.CharStreams;
 import org.runtime.CommonTokenStream;
@@ -51,9 +52,11 @@ public class Test {
                 createOutput(parser);
                 break;
             case "2":
-                compilationTest();
+                runfile();
                 break;
             case "3":
+                compilationTest();
+
                 break;
             default:
                 System.out.println("Don't understand, goodbye.");
@@ -63,6 +66,10 @@ public class Test {
         input.close();
     }
 
+    public static void runfile() throws Exception {
+        Output output = new Output();
+        output.run();
+    }
 
     /**
      * Creates class file
@@ -80,64 +87,8 @@ public class Test {
         global.put(Attributes.Name.MAIN_CLASS, "main.Main");
 
         JarOutputStream jos = new JarOutputStream(new BufferedOutputStream(new FileOutputStream("test.jar")), manifest);
+
         jos.close();
-
-
-        try {
-            File helloWorldJava = new File("src/runtime/implementations/Output.java");
-
-            /** Compilation Requirements *********************************************************************************************/
-            DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<>();
-            JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-            StandardJavaFileManager fileManager = compiler.getStandardFileManager(diagnostics, null, null);
-
-            // This sets up the class path that the compiler will use.
-            // I've added the .jar file that contains the DoStuff interface within in it...
-            List<String> optionList = new ArrayList<>();
-//            optionList.add("-d");
-//            optionList.add("gen");
-
-            Iterable<? extends JavaFileObject> compilationUnit
-                    = fileManager.getJavaFileObjectsFromFiles(Arrays.asList(helloWorldJava));
-            JavaCompiler.CompilationTask task = compiler.getTask(
-                    null,
-                    fileManager,
-                    diagnostics,
-                    optionList,
-                    null,
-                    compilationUnit);
-            /********************************************************************************************* Compilation Requirements **/
-            if (task.call()) {
-                /** Load and execute *************************************************************************************************/
-                // Create a new custom class loader, pointing to the directory that contains the compiled
-                // classes, this should point to the top of the package structure!
-                URLClassLoader classLoader = new URLClassLoader(new URL[]{new File("./gen;").toURI().toURL()});
-                // Load the class from the classloader by name....
-                Class<?> loadedClass = classLoader.loadClass("implementations.Output");
-                // Create a new instance...
-                Object obj = loadedClass.newInstance();
-
-                if (obj instanceof Runtime) {
-                    Runtime stuffToDo = (Runtime) obj;
-
-                    try {
-                        stuffToDo.run();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-                /************************************************************************************************* Load and execute **/
-            } else {
-                for (Diagnostic<? extends JavaFileObject> diagnostic : diagnostics.getDiagnostics()) {
-                    System.out.format("Error on line %d in %s%n",
-                            diagnostic.getLineNumber(),
-                            diagnostic.getSource().toUri());
-                }
-            }
-            fileManager.close();
-        } catch (IOException | ClassNotFoundException | InstantiationException | IllegalAccessException exp) {
-            exp.printStackTrace();
-        }
     }
 
     public static void createOutput(ArgumentParser parser) throws Exception {
