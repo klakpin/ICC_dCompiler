@@ -16,10 +16,7 @@ import translator.antlr.DParser;
 import translator.codegen.CodeGeneratorToStdout;
 import types.*;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Scanner;
 import java.util.jar.Attributes;
 import java.util.jar.JarEntry;
@@ -106,11 +103,13 @@ public class Test {
         addClass(ScopeStack.class, jarOutputStream);
         addClass(Stack.class, jarOutputStream);
         addClass(SymTable.class, jarOutputStream);
-//
-//        jarOutputStream.putNextEntry(new JarEntry("mapping"));
-//        jarOutputStream.write(Util.toByteArray());
-//        jarOutputStream.closeEntry();
 
+        File file = new File("mapping");
+        FileInputStream fis = new FileInputStream(file);
+
+        jarOutputStream.putNextEntry(new JarEntry("mapping"));
+        jarOutputStream.write(Util.toByteArray(fis));
+        jarOutputStream.closeEntry();
 
         jarOutputStream.close();
     }
