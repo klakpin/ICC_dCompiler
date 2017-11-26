@@ -16,6 +16,8 @@ import translator.antlr.DParser;
 import translator.codegen.CodeGeneratorToStdout;
 import types.*;
 
+import javax.tools.JavaCompiler;
+import javax.tools.ToolProvider;
 import java.io.*;
 import java.util.Scanner;
 import java.util.jar.Attributes;
@@ -79,6 +81,15 @@ public class Test {
         manifest.getMainAttributes().put(Attributes.Name.MANIFEST_VERSION, "1.0");
         manifest.getMainAttributes().put(Attributes.Name.MAIN_CLASS, Main.class.getName());
         JarOutputStream jarOutputStream = new JarOutputStream(new FileOutputStream("y.jar"), manifest);
+
+        String fileToCompile = "src/runtime/main/Main.java";
+        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+        int compilationResult =	compiler.run(null, null, null, fileToCompile);
+        if(compilationResult == 0){
+            System.out.println("Compilation is successful");
+        }else{
+            System.out.println("Compilation Failed");
+        }
 
         // Add the main class
         addClass(Main.class, jarOutputStream);
