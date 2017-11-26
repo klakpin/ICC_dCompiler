@@ -39,12 +39,10 @@ public class CodeGeneratorToCodeBuffer implements CodeGenerator {
     private String beginning = "package implementations;\n" +
             "\n" +
             "import interfaces.*;\n" +
-            "import interfaces.Runnable;\n" +
             "import interfaces.Runtime;\n" +
+            "import interfaces.Runnable;\n" +
             "import types.*;\n" +
-            "\n" +
             "import java.util.Scanner;\n" +
-            "\n" +
             "public class Output implements Runtime {\n" +
             "\n" +
             "    private final ScopeStack scopeStack = new ScopeStackImpl();\n" +
@@ -138,14 +136,14 @@ public class CodeGeneratorToCodeBuffer implements CodeGenerator {
             "        Object indexObj = stack.pop();\n" +
             "\n" +
             "        if (!(indexObj instanceof Text)) {\n" +
-            "            throw new Exception(\"Index of Object must be Text, has \" + indexObj.getClass().getTypeName());\n" +
+            "            throw new Exception(\"Cannot read object with wrong index, has \" + indexObj.getClass().getTypeName());\n" +
+            "        }\n" +
+            "\n" +
+            "        if (!(structObj instanceof Structure)) {\n" +
+            "            throw new Exception(\"Cannot access to non object file as to object, has \" + structObj.getClass().getTypeName());\n" +
             "        }\n" +
             "\n" +
             "        Text index = (Text) indexObj;\n" +
-            "        if (!(structObj instanceof Structure)) {\n" +
-            "            throw new Exception(\"Structure should be structure, has \" + structObj.getClass().getTypeName());\n" +
-            "        }\n" +
-            "\n" +
             "        Structure object = (Structure) structObj;\n" +
             "        stack.push(object.get(index.toString()));\n" +
             "    }\n" +
@@ -270,12 +268,12 @@ public class CodeGeneratorToCodeBuffer implements CodeGenerator {
             "    }\n" +
             "\n" +
             "    @Override\n" +
-            "    public void and() {\n" +
+            "    public void and() throws Exception {\n" +
             "        stack.push(op.and(stack.pop(), stack.pop()));\n" +
             "    }\n" +
             "\n" +
             "    @Override\n" +
-            "    public void xor() {\n" +
+            "    public void xor() throws Exception {\n" +
             "        stack.push(op.xor(stack.pop(), stack.pop()));\n" +
             "    }\n" +
             "\n" +
@@ -285,54 +283,54 @@ public class CodeGeneratorToCodeBuffer implements CodeGenerator {
             "    }\n" +
             "\n" +
             "    @Override\n" +
-            "    public void or() {\n" +
+            "    public void or() throws Exception {\n" +
             "        stack.push(op.or(stack.pop(), stack.pop()));\n" +
             "    }\n" +
             "\n" +
             "    @Override\n" +
-            "    public void not() {\n" +
+            "    public void not() throws Exception {\n" +
             "        stack.push(op.not(stack.pop()));\n" +
             "    }\n" +
             "\n" +
             "    @Override\n" +
-            "    public void plus() {\n" +
+            "    public void plus() throws Exception {\n" +
             "        stack.push(op.plus(stack.pop(), stack.pop()));\n" +
             "    }\n" +
             "\n" +
             "    @Override\n" +
-            "    public void minus() {\n" +
+            "    public void minus() throws Exception {\n" +
             "        stack.push(op.minus(stack.pop(), stack.pop()));\n" +
             "    }\n" +
             "\n" +
             "    @Override\n" +
-            "    public void multiply() {\n" +
+            "    public void multiply() throws Exception {\n" +
             "        stack.push(op.multiply(stack.pop(), stack.pop()));\n" +
             "    }\n" +
             "\n" +
             "\n" +
             "    @Override\n" +
-            "    public void divide() {\n" +
+            "    public void divide() throws Exception {\n" +
             "        stack.push(op.divide(stack.pop(), stack.pop()));\n" +
             "    }\n" +
             "\n" +
             "\n" +
             "    @Override\n" +
-            "    public void greater() {\n" +
+            "    public void greater() throws Exception {\n" +
             "        stack.push(op.greater(stack.pop(), stack.pop()));\n" +
             "    }\n" +
             "\n" +
             "    @Override\n" +
-            "    public void less() {\n" +
+            "    public void less() throws Exception {\n" +
             "        stack.push(op.less(stack.pop(), stack.pop()));\n" +
             "    }\n" +
             "\n" +
             "    @Override\n" +
-            "    public void greaterequals() {\n" +
+            "    public void greaterequals() throws Exception {\n" +
             "        stack.push(op.greaterequals(stack.pop(), stack.pop()));\n" +
             "    }\n" +
             "\n" +
             "    @Override\n" +
-            "    public void lessequal() {\n" +
+            "    public void lessequal() throws Exception {\n" +
             "        stack.push(op.lessequal(stack.pop(), stack.pop()));\n" +
             "    }\n" +
             "\n" +
@@ -361,7 +359,6 @@ public class CodeGeneratorToCodeBuffer implements CodeGenerator {
             "\n" +
             "    @Override\n" +
             "    public void exitfunc() {\n" +
-            "\n" +
             "        SymTable target = callStack.pop();\n" +
             "        while (target != scopeStack.getScope()) {\n" +
             "            scopeStack.popScope();\n" +
@@ -379,5 +376,5 @@ public class CodeGeneratorToCodeBuffer implements CodeGenerator {
             "    }\n" +
             "\n" +
             "    @Override\n" +
-            "    public void run() throws Exception {\n";
+            "    public void run() throws Exception {";
 }

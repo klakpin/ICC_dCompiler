@@ -4,6 +4,8 @@ import interfaces.*;
 import interfaces.Runnable;
 import interfaces.Runtime;
 import implementations.*;
+import net.openhft.compiler.CompilerUtils;
+import translator.codegen.CodeGeneratorToCodeBuffer;
 import translator.runtime.CharStream;
 import translator.runtime.CharStreams;
 import translator.runtime.CommonTokenStream;
@@ -104,7 +106,7 @@ public class Test {
         addClass(TypeIndicator.class, jarOutputStream);
         addClass(CallStackImpl.class, jarOutputStream);
         addClass(OperationsImpl.class, jarOutputStream);
-        addClass(Output.class, jarOutputStream);
+//        addClass(Output.class, jarOutputStream);
         addClass(RuntimeImpl.class, jarOutputStream);
         addClass(ScopeStackImpl.class, jarOutputStream);
         addClass(SymTableImpl.class, jarOutputStream);
@@ -119,14 +121,39 @@ public class Test {
         addClass(Stack.class, jarOutputStream);
         addClass(SymTable.class, jarOutputStream);
 
-        String className = "implementations.Main";
 
+        CharStream stream = CharStreams.fromFileName("input.dlan");
+        DLexer lexer = new DLexer(stream);
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        DParser parser = new DParser(tokens);
+        ParseTree tree = parser.compilation_unit();
 
-        File file = new File("mapping");
-        FileInputStream fis = new FileInputStream(file);
+        CodeGeneratorToCodeBuffer generator = new CodeGeneratorToCodeBuffer();
+        generator.start();
+        DBaseVisitor visitor = new DBaseVisitor<>(generator);
+        tree.accept(visitor);
+        generator.end();
 
-        jarOutputStream.putNextEntry(new JarEntry("mapping"));
-        jarOutputStream.write(Util.toByteArray(fis));
+        String className = "implementations.Output";
+        String javaCode = generator.getResultClass();
+        Class aClass = CompilerUtils.CACHED_COMPILER.loadFromJava(className, javaCode);
+        Output output = (Output) aClass.newInstance();
+        System.out.println("------------------------------------");
+        System.out.println("Result of run of implemented class");
+        output.run();
+        System.out.println("------------------------------------");
+
+        String path = aClass.getName().replace('.', '/') + ".class";
+        jarOutputStream.putNextEntry(new JarEntry(path));
+        String path2 = "src/runtime/implementations/Output.class";
+        jarOutputStream.write(Util.toByteArray(aClass.getClassLoader().getResourceAsStream(path2)));
+        jarOutputStream.closeEntry();
+
+//        File file = new File("mapping");
+//        FileInputStream fis = new FileInputStream(file);
+
+//        jarOutputStream.putNextEntry(new JarEntry("mapping"));
+//        jarOutputStream.write(Util.toByteArray(fis));
         jarOutputStream.closeEntry();
 
         jarOutputStream.close();

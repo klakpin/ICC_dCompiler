@@ -44,7 +44,6 @@ var giveWinner := func
                 if board[i][y] = player1Symbol then player1Count := player1Count + 1 end
                 if board[i][y] = player2Symbol then player2Count := player2Count + 1 end
         end
-        print "Rows: player1Count = ", player1Count, " player2Count = ", player2Count, "\n";
         if player1Count = 3 then return 1 end
         if player2Count = 3 then return 2 end
         nullifyVariables()

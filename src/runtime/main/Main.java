@@ -27,7 +27,7 @@ public class Main {
                 }
             }
 
-            InputStream in = Output.class.getClassLoader().getResourceAsStream("/mapping");
+            InputStream in = Output.class.getClassLoader().getResourceAsStream("mapping");
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
             String str;
             boolean flag = false;
