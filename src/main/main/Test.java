@@ -1,13 +1,13 @@
 package main;
 
-import Interfaces.*;
-import Interfaces.Runnable;
-import Interfaces.Runtime;
+import interfaces.*;
+import interfaces.Runnable;
+import interfaces.Runtime;
 import implementations.*;
-import org.runtime.CharStream;
-import org.runtime.CharStreams;
-import org.runtime.CommonTokenStream;
-import org.runtime.tree.ParseTree;
+import translator.runtime.CharStream;
+import translator.runtime.CharStreams;
+import translator.runtime.CommonTokenStream;
+import translator.runtime.tree.ParseTree;
 import translator.ArgumentParser;
 import translator.Translator;
 import translator.antlr.DBaseVisitor;
@@ -45,7 +45,11 @@ public class Test {
 
         switch (input.next()) {
             case "0":
-                antlrTesting();
+                try {
+                    antlrTesting();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
             case "1":
                 createOutput(parser);
@@ -104,6 +108,9 @@ public class Test {
         addClass(Stack.class, jarOutputStream);
         addClass(SymTable.class, jarOutputStream);
 
+        String className = "implementations.Main";
+
+
         File file = new File("mapping");
         FileInputStream fis = new FileInputStream(file);
 
@@ -130,8 +137,7 @@ public class Test {
 
     }
 
-    private static void addClass(Class c, JarOutputStream jarOutputStream) throws IOException
-    {
+    private static void addClass(Class c, JarOutputStream jarOutputStream) throws IOException {
         String path = c.getName().replace('.', '/') + ".class";
         jarOutputStream.putNextEntry(new JarEntry(path));
         jarOutputStream.write(Util.toByteArray(c.getClassLoader().getResourceAsStream(path)));

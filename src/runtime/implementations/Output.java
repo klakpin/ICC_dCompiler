@@ -1,8 +1,8 @@
 package implementations;
 
-import Interfaces.*;
-import Interfaces.Runtime;
-import Interfaces.Runnable;
+import interfaces.*;
+import interfaces.Runtime;
+import interfaces.Runnable;
 import types.*;
 import java.util.Scanner;
 public class Output implements Runtime {
@@ -98,14 +98,14 @@ public class Output implements Runtime {
         Object indexObj = stack.pop();
 
         if (!(indexObj instanceof Text)) {
-            throw new Exception("Index of Object must be Text, has " + indexObj.getClass().getTypeName());
+            throw new Exception("Cannot read object with wrong index, has " + indexObj.getClass().getTypeName());
+        }
+
+        if (!(structObj instanceof Structure)) {
+            throw new Exception("Cannot access to non object file as to object, has " + structObj.getClass().getTypeName());
         }
 
         Text index = (Text) indexObj;
-        if (!(structObj instanceof Structure)) {
-            throw new Exception("Structure should be structure, has " + structObj.getClass().getTypeName());
-        }
-
         Structure object = (Structure) structObj;
         stack.push(object.get(index.toString()));
     }
@@ -230,12 +230,12 @@ public class Output implements Runtime {
     }
 
     @Override
-    public void and() {
+    public void and() throws Exception {
         stack.push(op.and(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void xor() {
+    public void xor() throws Exception {
         stack.push(op.xor(stack.pop(), stack.pop()));
     }
 
@@ -245,54 +245,54 @@ public class Output implements Runtime {
     }
 
     @Override
-    public void or() {
+    public void or() throws Exception {
         stack.push(op.or(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void not() {
+    public void not() throws Exception {
         stack.push(op.not(stack.pop()));
     }
 
     @Override
-    public void plus() {
+    public void plus() throws Exception {
         stack.push(op.plus(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void minus() {
+    public void minus() throws Exception {
         stack.push(op.minus(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void multiply() {
+    public void multiply() throws Exception {
         stack.push(op.multiply(stack.pop(), stack.pop()));
     }
 
 
     @Override
-    public void divide() {
+    public void divide() throws Exception {
         stack.push(op.divide(stack.pop(), stack.pop()));
     }
 
 
     @Override
-    public void greater() {
+    public void greater() throws Exception {
         stack.push(op.greater(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void less() {
+    public void less() throws Exception {
         stack.push(op.less(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void greaterequals() {
+    public void greaterequals() throws Exception {
         stack.push(op.greaterequals(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void lessequal() {
+    public void lessequal() throws Exception {
         stack.push(op.lessequal(stack.pop(), stack.pop()));
     }
 
@@ -321,7 +321,6 @@ public class Output implements Runtime {
 
     @Override
     public void exitfunc() {
-
         SymTable target = callStack.pop();
         while (target != scopeStack.getScope()) {
             scopeStack.popScope();
@@ -343,11 +342,23 @@ public class Output implements Runtime {
         scopeStack.newScope();
         add("player1Name");
         add("player2Name");
+        add("player1Symbol");
+        vpush(new Text("x"));
+        assign("player1Symbol");
+        add("player2Symbol");
+        vpush(new Text("o"));
+        assign("player2Symbol");
         add("board");
         vpush(new Cortege());
         assign("board");
         add("printBoard");
         vpush(new Function(() -> {
+            vpush(new Text("---------------------\n"));
+            cprint();
+            vpush(new Text("- - - - - - - - - - -\n"));
+            cprint();
+            vpush(new Text("---------------------\n"));
+            cprint();
             vpush(new Text("  1     2     3  \n"));
             cprint();
             vpush(new Text("     :     :     \n"));
@@ -492,45 +503,34 @@ public class Output implements Runtime {
                 lessequal();
                 while (bpop()) {
                     enterScope();
+                    vpush("player1Symbol");
                     vpush("board");
                     vpush("i");
                     readcort();
                     vpush("y");
                     readcort();
-                    vpush(new TypeIndicator("int"));
-                    checktype();
+                    equals();
                     if (bpop()) {
                         enterScope();
                         vpush(1);
-                        vpush("board");
-                        vpush("i");
-                        readcort();
-                        vpush("y");
-                        readcort();
-                        equals();
-                        if (bpop()) {
-                            enterScope();
-                            vpush(1);
-                            vpush("player1Count");
-                            plus();
-                            assign("player1Count");
-                            exitScope();
-                        }
-                        vpush(2);
-                        vpush("board");
-                        vpush("i");
-                        readcort();
-                        vpush("y");
-                        readcort();
-                        equals();
-                        if (bpop()) {
-                            enterScope();
-                            vpush(1);
-                            vpush("player2Count");
-                            plus();
-                            assign("player2Count");
-                            exitScope();
-                        }
+                        vpush("player1Count");
+                        plus();
+                        assign("player1Count");
+                        exitScope();
+                    }
+                    vpush("player2Symbol");
+                    vpush("board");
+                    vpush("i");
+                    readcort();
+                    vpush("y");
+                    readcort();
+                    equals();
+                    if (bpop()) {
+                        enterScope();
+                        vpush(1);
+                        vpush("player2Count");
+                        plus();
+                        assign("player2Count");
                         exitScope();
                     }
                     exitScope();
@@ -542,7 +542,43 @@ public class Output implements Runtime {
                     vpush("y");
                     lessequal();
                 }
-                enterScope();
+                exitScope();
+                vpush(new Text("Rows: player1Count = "));
+                cprint();
+                vpush("player1Count");
+                cprint();
+                vpush(new Text(" player2Count = "));
+                cprint();
+                vpush("player2Count");
+                cprint();
+                vpush(new Text("\n"));
+                cprint();
+                vpush(3);
+                vpush("player1Count");
+                equals();
+                if (bpop()) {
+                    enterScope();
+                    vpush(1);
+                    exitfunc();
+                    if (true) {
+                        return;
+                    }
+                    exitScope();
+                }
+                vpush(3);
+                vpush("player2Count");
+                equals();
+                if (bpop()) {
+                    enterScope();
+                    vpush(2);
+                    exitfunc();
+                    if (true) {
+                        return;
+                    }
+                    exitScope();
+                }
+                vpush("nullifyVariables");
+                invoke();
                 exitScope();
                 vpush(3);
                 vpush("i");
@@ -552,33 +588,7 @@ public class Output implements Runtime {
                 vpush("i");
                 lessequal();
             }
-            enterScope();
-            vpush(3);
-            vpush("player1Count");
-            equals();
-            if (bpop()) {
-                enterScope();
-                vpush(1);
-                exitfunc();
-                if (true) {
-                    return;
-                }
-                exitScope();
-            }
-            vpush(3);
-            vpush("player2Count");
-            equals();
-            if (bpop()) {
-                enterScope();
-                vpush(2);
-                exitfunc();
-                if (true) {
-                    return;
-                }
-                exitScope();
-            }
-            vpush("nullifyVariables");
-            invoke();
+            exitScope();
             enterScope();
             add("y");
             vpush(1);
@@ -597,45 +607,34 @@ public class Output implements Runtime {
                 lessequal();
                 while (bpop()) {
                     enterScope();
+                    vpush("player1Symbol");
                     vpush("board");
                     vpush("i");
                     readcort();
                     vpush("y");
                     readcort();
-                    vpush(new TypeIndicator("int"));
-                    checktype();
+                    equals();
                     if (bpop()) {
                         enterScope();
                         vpush(1);
-                        vpush("board");
-                        vpush("i");
-                        readcort();
-                        vpush("y");
-                        readcort();
-                        equals();
-                        if (bpop()) {
-                            enterScope();
-                            vpush(1);
-                            vpush("player1Count");
-                            plus();
-                            assign("player1Count");
-                            exitScope();
-                        }
-                        vpush(2);
-                        vpush("board");
-                        vpush("i");
-                        readcort();
-                        vpush("y");
-                        readcort();
-                        equals();
-                        if (bpop()) {
-                            enterScope();
-                            vpush(1);
-                            vpush("player2Count");
-                            plus();
-                            assign("player2Count");
-                            exitScope();
-                        }
+                        vpush("player1Count");
+                        plus();
+                        assign("player1Count");
+                        exitScope();
+                    }
+                    vpush("player2Symbol");
+                    vpush("board");
+                    vpush("i");
+                    readcort();
+                    vpush("y");
+                    readcort();
+                    equals();
+                    if (bpop()) {
+                        enterScope();
+                        vpush(1);
+                        vpush("player2Count");
+                        plus();
+                        assign("player2Count");
                         exitScope();
                     }
                     exitScope();
@@ -647,7 +646,33 @@ public class Output implements Runtime {
                     vpush("i");
                     lessequal();
                 }
-                enterScope();
+                exitScope();
+                vpush(3);
+                vpush("player1Count");
+                equals();
+                if (bpop()) {
+                    enterScope();
+                    vpush(1);
+                    exitfunc();
+                    if (true) {
+                        return;
+                    }
+                    exitScope();
+                }
+                vpush(3);
+                vpush("player2Count");
+                equals();
+                if (bpop()) {
+                    enterScope();
+                    vpush(2);
+                    exitfunc();
+                    if (true) {
+                        return;
+                    }
+                    exitScope();
+                }
+                vpush("nullifyVariables");
+                invoke();
                 exitScope();
                 vpush(3);
                 vpush("y");
@@ -657,33 +682,7 @@ public class Output implements Runtime {
                 vpush("y");
                 lessequal();
             }
-            enterScope();
-            vpush(3);
-            vpush("player1Count");
-            equals();
-            if (bpop()) {
-                enterScope();
-                vpush(1);
-                exitfunc();
-                if (true) {
-                    return;
-                }
-                exitScope();
-            }
-            vpush(3);
-            vpush("player2Count");
-            equals();
-            if (bpop()) {
-                enterScope();
-                vpush(2);
-                exitfunc();
-                if (true) {
-                    return;
-                }
-                exitScope();
-            }
-            vpush("nullifyVariables");
-            invoke();
+            exitScope();
             enterScope();
             add("i");
             vpush(1);
@@ -693,45 +692,34 @@ public class Output implements Runtime {
             lessequal();
             while (bpop()) {
                 enterScope();
+                vpush("player1Symbol");
                 vpush("board");
                 vpush("i");
                 readcort();
                 vpush("i");
                 readcort();
-                vpush(new TypeIndicator("int"));
-                checktype();
+                equals();
                 if (bpop()) {
                     enterScope();
                     vpush(1);
-                    vpush("board");
-                    vpush("i");
-                    readcort();
-                    vpush("i");
-                    readcort();
-                    equals();
-                    if (bpop()) {
-                        enterScope();
-                        vpush(1);
-                        vpush("player1Count");
-                        plus();
-                        assign("player1Count");
-                        exitScope();
-                    }
-                    vpush(2);
-                    vpush("board");
-                    vpush("i");
-                    readcort();
-                    vpush("i");
-                    readcort();
-                    equals();
-                    if (bpop()) {
-                        enterScope();
-                        vpush(1);
-                        vpush("player2Count");
-                        plus();
-                        assign("player2Count");
-                        exitScope();
-                    }
+                    vpush("player1Count");
+                    plus();
+                    assign("player1Count");
+                    exitScope();
+                }
+                vpush("player2Symbol");
+                vpush("board");
+                vpush("i");
+                readcort();
+                vpush("i");
+                readcort();
+                equals();
+                if (bpop()) {
+                    enterScope();
+                    vpush(1);
+                    vpush("player2Count");
+                    plus();
+                    assign("player2Count");
                     exitScope();
                 }
                 exitScope();
@@ -743,7 +731,7 @@ public class Output implements Runtime {
                 vpush("i");
                 lessequal();
             }
-            enterScope();
+            exitScope();
             vpush(3);
             vpush("player1Count");
             equals();
@@ -779,6 +767,7 @@ public class Output implements Runtime {
             lessequal();
             while (bpop()) {
                 enterScope();
+                vpush("player1Symbol");
                 vpush("board");
                 vpush("i");
                 readcort();
@@ -786,44 +775,30 @@ public class Output implements Runtime {
                 vpush(4);
                 minus();
                 readcort();
-                vpush(new TypeIndicator("int"));
-                checktype();
+                equals();
                 if (bpop()) {
                     enterScope();
                     vpush(1);
-                    vpush("board");
-                    vpush("i");
-                    readcort();
-                    vpush("i");
-                    vpush(4);
-                    minus();
-                    readcort();
-                    equals();
-                    if (bpop()) {
-                        enterScope();
-                        vpush(1);
-                        vpush("player1Count");
-                        plus();
-                        assign("player1Count");
-                        exitScope();
-                    }
-                    vpush(2);
-                    vpush("board");
-                    vpush("i");
-                    readcort();
-                    vpush("i");
-                    vpush(4);
-                    minus();
-                    readcort();
-                    equals();
-                    if (bpop()) {
-                        enterScope();
-                        vpush(1);
-                        vpush("player2Count");
-                        plus();
-                        assign("player2Count");
-                        exitScope();
-                    }
+                    vpush("player1Count");
+                    plus();
+                    assign("player1Count");
+                    exitScope();
+                }
+                vpush("player2Symbol");
+                vpush("board");
+                vpush("i");
+                readcort();
+                vpush("i");
+                vpush(4);
+                minus();
+                readcort();
+                equals();
+                if (bpop()) {
+                    enterScope();
+                    vpush(1);
+                    vpush("player2Count");
+                    plus();
+                    assign("player2Count");
                     exitScope();
                 }
                 exitScope();
@@ -835,7 +810,7 @@ public class Output implements Runtime {
                 vpush("i");
                 lessequal();
             }
-            enterScope();
+            exitScope();
             vpush(3);
             vpush("player1Count");
             equals();
@@ -890,7 +865,7 @@ public class Output implements Runtime {
             vpush("i");
             lessequal();
         }
-        enterScope();
+        exitScope();
         enterScope();
         add("i");
         vpush(1);
@@ -925,7 +900,7 @@ public class Output implements Runtime {
                 vpush("y");
                 lessequal();
             }
-            enterScope();
+            exitScope();
             exitScope();
             vpush(3);
             vpush("i");
@@ -935,7 +910,7 @@ public class Output implements Runtime {
             vpush("i");
             lessequal();
         }
-        enterScope();
+        exitScope();
         vpush(new Text("Enter player 1 name: "));
         cprint();
         readString();
@@ -985,10 +960,14 @@ public class Output implements Runtime {
                 cprint();
                 exitScope();
             }
+            vpush(new Text("Write coordinates (x and y): "));
+            cprint();
             readInt();
             assign("moveY");
             readInt();
             assign("moveX");
+            vpush(new Text("\n"));
+            cprint();
             vpush(4);
             vpush("moveX");
             less();
@@ -1030,7 +1009,7 @@ public class Output implements Runtime {
                     equals();
                     if (bpop()) {
                         enterScope();
-                        vpush(1);
+                        vpush("player1Symbol");
                         vpush("board");
                         vpush("moveX");
                         readcort();
@@ -1040,7 +1019,7 @@ public class Output implements Runtime {
                         exitScope();
                     } else {
                         enterScope();
-                        vpush(2);
+                        vpush("player2Symbol");
                         vpush("board");
                         vpush("moveX");
                         readcort();
@@ -1061,15 +1040,6 @@ public class Output implements Runtime {
                         invoke();
                         vpush(false);
                         assign("gameRunning");
-                        vpush(0);
-                        vpush("winner");
-                        equals();
-                        if (bpop()) {
-                            enterScope();
-                            vpush(new Text("Draw!\n"));
-                            cprint();
-                            exitScope();
-                        }
                         vpush(1);
                         vpush("winner");
                         equals();
@@ -1090,6 +1060,17 @@ public class Output implements Runtime {
                             invoke();
                             exitScope();
                         }
+                        exitScope();
+                    }
+                    vpush(9);
+                    vpush("moves");
+                    equals();
+                    if (bpop()) {
+                        enterScope();
+                        vpush("printBoard");
+                        invoke();
+                        vpush(new Text("Draw!"));
+                        cprint();
                         exitScope();
                     }
                     exitScope();

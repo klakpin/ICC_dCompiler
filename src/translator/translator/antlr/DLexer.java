@@ -1,13 +1,11 @@
 // Generated from /home/ilya/Documents/Compilers/Compiler project/src/translator/translator/antlr/D.g4 by ANTLR 4.7
 package translator.antlr;
-import org.runtime.Lexer;
-import org.runtime.CharStream;
-import org.runtime.Token;
-import org.runtime.TokenStream;
-import org.runtime.*;
-import org.runtime.atn.*;
-import org.runtime.dfa.DFA;
-import org.runtime.misc.*;
+
+import translator.runtime.Lexer;
+import translator.runtime.CharStream;
+import translator.runtime.*;
+import translator.runtime.atn.*;
+import translator.runtime.dfa.DFA;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class DLexer extends Lexer {

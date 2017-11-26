@@ -1,9 +1,9 @@
 // Generated from /home/ilya/Documents/Compilers/Compiler project/src/translator/translator/antlr/D.g4 by ANTLR 4.7
 package translator.antlr;
 
-import org.runtime.ParserRuleContext;
-import org.runtime.tree.ErrorNode;
-import org.runtime.tree.TerminalNode;
+import translator.runtime.ParserRuleContext;
+import translator.runtime.tree.ErrorNode;
+import translator.runtime.tree.TerminalNode;
 
 /**
  * This class provides an empty implementation of {@link DListener},

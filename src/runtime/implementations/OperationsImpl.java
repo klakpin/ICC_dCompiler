@@ -1,11 +1,12 @@
 package implementations;
 
-import Interfaces.Operations;
+import interfaces.Operations;
 import types.Cortege;
 import types.Structure;
 import types.Text;
 
-//TODO implement everything
+import java.lang.instrument.Instrumentation;
+
 public class OperationsImpl implements Operations {
 
     @Override
@@ -19,7 +20,7 @@ public class OperationsImpl implements Operations {
             value++;
             return value;
         } else {
-            throw new Exception("Operation ++ cannot be applied to " + var1.getClass().getTypeName());
+            throw new Exception("Operation '++' cannot be applied to " + var1.getClass().getTypeName());
         }
     }
 
@@ -34,12 +35,12 @@ public class OperationsImpl implements Operations {
             value--;
             return value;
         } else {
-            throw new Exception("Operation -- cannot be applied to " + var1.getClass().getTypeName());
+            throw new Exception("Operation '--' cannot be applied to " + var1.getClass().getTypeName());
         }
     }
 
     @Override
-    public Object plus(Object var1, Object var2) {
+    public Object plus(Object var1, Object var2) throws Exception {
         //integer+integer
         if (var1 instanceof Integer && var2 instanceof Integer) {
             Integer a = (Integer) var1;
@@ -88,18 +89,18 @@ public class OperationsImpl implements Operations {
             a.concatination(b.convertToCortaige());
             return a;
         }
-        //TODO object+object!!!!!!!
         if (var1 instanceof Structure && var2 instanceof Structure) {
             Structure a = (Structure) var1;
             Structure b = (Structure) var2;
             a.concatination(b);
             return a;
         }
-        return null;
+        throw new Exception("Incompatible operations type, cannot apply operation '+' to types "
+                + var1.getClass().getTypeName() + " and " + var2.getClass().getTypeName());
     }
 
     @Override
-    public Object minus(Object var1, Object var2) {
+    public Object minus(Object var1, Object var2) throws Exception {
         //integer-integer
         if (var1 instanceof Integer && var2 instanceof Integer) {
             Integer a = (Integer) var1;
@@ -128,12 +129,12 @@ public class OperationsImpl implements Operations {
             Double minus1 = a - b;
             return minus1;
         }
-
-        return null;
+        throw new Exception("Incompatible operations type, cannot apply operation '-' to types "
+                + var1.getClass().getTypeName() + " and " + var2.getClass().getTypeName());
     }
 
     @Override
-    public Object divide(Object var1, Object var2) {
+    public Object divide(Object var1, Object var2) throws Exception {
         //integer/integer
         if (var1 instanceof Integer && var2 instanceof Integer) {
             Integer a = (Integer) var1;
@@ -162,12 +163,12 @@ public class OperationsImpl implements Operations {
             Double divide1 = a / b;
             return divide1;
         }
-        return null;
-
+        throw new Exception("Incompatible operations type, cannot apply operation '/' to types "
+                + var1.getClass().getTypeName() + " and " + var2.getClass().getTypeName());
     }
 
     @Override
-    public Boolean greater(Object var1, Object var2) {
+    public Boolean greater(Object var1, Object var2) throws Exception {
         if (var1 instanceof Integer && var2 instanceof Integer) {
             return (Integer) var1 > (Integer) var2;
         }
@@ -180,12 +181,12 @@ public class OperationsImpl implements Operations {
         if (var1 instanceof Double && var2 instanceof Double) {
             return (Double) var1 > (Double) var2;
         }
-
-        return null;
+        throw new Exception("Incompatible operations type, cannot apply operation '>' to types"
+                + var1.getClass().getTypeName() + " and " + var2.getClass().getTypeName());
     }
 
     @Override
-    public Boolean less(Object var1, Object var2) {
+    public Boolean less(Object var1, Object var2) throws Exception {
         if (var1 instanceof Integer && var2 instanceof Integer) {
             return (Integer) var1 < (Integer) var2;
         }
@@ -198,7 +199,8 @@ public class OperationsImpl implements Operations {
         if (var1 instanceof Double && var2 instanceof Double) {
             return (Double) var1 < (Double) var2;
         }
-        return null;
+        throw new Exception("Incompatible operations type, cannot apply operation '<' to types "
+                + var1.getClass().getTypeName() + " and " + var2.getClass().getTypeName());
     }
 
     @Override
@@ -226,12 +228,12 @@ public class OperationsImpl implements Operations {
             Text v2 = (Text) var2;
             return !v1.toString().equals(v2.toString());
         }
-        return false;
-//        throw new Exception("Incompatible operations type, cannot apply operation notequal to types" + var1.getClass().getTypeName() + " and " + var2.getClass().getTypeName());
+        throw new Exception("Incompatible operations type, cannot apply operation '/=' to types"
+                + var1.getClass().getTypeName() + " and " + var2.getClass().getTypeName());
     }
 
     @Override
-    public Boolean greaterequals(Object var1, Object var2) {
+    public Boolean greaterequals(Object var1, Object var2) throws Exception {
         if (var1 instanceof Integer && var2 instanceof Integer) {
             return (Integer) var1 >= (Integer) var2;
         }
@@ -244,11 +246,12 @@ public class OperationsImpl implements Operations {
         if (var1 instanceof Double && var2 instanceof Double) {
             return (Double) var1 >= (Double) var2;
         }
-        return null;
+        throw new Exception("Incompatible operations type, cannot apply operation '>=' to types "
+                + var1.getClass().getTypeName() + " and " + var2.getClass().getTypeName());
     }
 
     @Override
-    public Boolean lessequal(Object var1, Object var2) {
+    public Boolean lessequal(Object var1, Object var2) throws Exception {
         if (var1 instanceof Integer && var2 instanceof Integer) {
             return (Integer) var1 <= (Integer) var2;
         }
@@ -261,11 +264,12 @@ public class OperationsImpl implements Operations {
         if (var1 instanceof Double && var2 instanceof Double) {
             return (Double) var1 <= (Double) var2;
         }
-        return null;
+        throw new Exception("Incompatible operations type, cannot apply operation '<=' to types"
+                + var1.getClass().getTypeName() + " and " + var2.getClass().getTypeName());
     }
 
     @Override
-    public Object multiply(Object var1, Object var2) {
+    public Object multiply(Object var1, Object var2) throws Exception {
         //integer*integer
         if (var1 instanceof Integer && var2 instanceof Integer) {
             Integer a = (Integer) var1;
@@ -294,7 +298,8 @@ public class OperationsImpl implements Operations {
             Double multiply1 = a * b;
             return multiply1;
         }
-        return null;
+        throw new Exception("Incompatible operations type, cannot apply operation '*' to types "
+                + var1.getClass().getTypeName() + " and " + var2.getClass().getTypeName());
     }
 
     @Override
@@ -322,58 +327,69 @@ public class OperationsImpl implements Operations {
             Text v2 = (Text) var2;
             return v1.toString().equals(v2.toString());
         }
-        return false;
-//        throw new Exception("Incompatible operations type, cannot apply operation equals to types" + var1.getClass().getTypeName() + " and " + var2.getClass().getTypeName());
+        throw new Exception("Incompatible operations type, cannot apply operation '=' to types "
+                + var1.getClass().getTypeName() + " and " + var2.getClass().getTypeName());
     }
 
     @Override
-    public Boolean and(Object var1, Object var2) {
+    public Boolean and(Object var1, Object var2) throws Exception {
         if (var1 instanceof Boolean && var2 instanceof Boolean) {
             if (var1.equals(true) && var2.equals(true)) {
                 return true;
             }
             return false;
         }
-        return null;
-
+        throw new Exception("Incompatible operations type, cannot apply operation 'and' to types "
+                + var1.getClass().getTypeName() + " and " + var2.getClass().getTypeName());
     }
 
     @Override
-    public Boolean or(Object var1, Object var2) {
+    public Boolean or(Object var1, Object var2) throws Exception {
         if (var1 instanceof Boolean && var2 instanceof Boolean) {
             if (var1.equals(false) && var2.equals(false)) {
                 return false;
             }
             return true;
         }
-        return null;
+        throw new Exception("Incompatible operations type, cannot apply operation 'or' to types "
+                + var1.getClass().getTypeName() + " and " + var2.getClass().getTypeName());
     }
 
     @Override
-    public Boolean xor(Object var1, Object var2) {
+    public Boolean xor(Object var1, Object var2) throws Exception {
         if (var1 instanceof Boolean && var2 instanceof Boolean) {
             if ((var1.equals(true) && var2.equals(true)) || (var1.equals(false) && var2.equals(false))) {
                 return false;
             }
             return true;
         }
-        return null;
+        throw new Exception("Incompatible operations type, cannot apply operation 'xor' to types "
+                + var1.getClass().getTypeName() + " and " + var2.getClass().getTypeName());
     }
 
     @Override
-    public Boolean not(Object var1) {
+    public Boolean not(Object var1) throws Exception {
         if (var1 instanceof Boolean) {
             if (var1.equals(true)) {
                 return false;
             }
             return true;
         }
-        return null;
+        throw new Exception("Incompatible operations type, cannot apply operation 'not' to type "
+                + var1.getClass().getTypeName());
     }
 
     @Override
     public Object size(Object var1) {
-        return null;
+        if (var1 instanceof Cortege) {
+            Cortege var = (Cortege) var1;
+            return var.getSize();
+        } else if (var1 instanceof Structure) {
+            Structure var = (Structure) var1;
+            return var.getSize();
+        } else {
+            return 1;
+        }
     }
 
 

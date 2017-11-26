@@ -18,7 +18,8 @@ public class Structure {
         }
         return cortege;
     }
-    public void concatination(Structure structure1) {
+
+    public void concatination(Structure structure1) throws Exception {
         String[] strings=new String[this.getSize()];
         strings=objects.keySet().toArray(new String[this.getSize()]);
         OperationsImpl op=new OperationsImpl();
