@@ -7,7 +7,9 @@ import java.io.IOException;
 
 public class RuntimeTemplate {
 
-    public static String getPart1() throws IOException {
+    public String fileName = "implementations/RuntimeImpl.java";
+
+    public String getPart1() throws IOException {
 
         StringBuilder result = new StringBuilder();
 
@@ -19,8 +21,8 @@ public class RuntimeTemplate {
                 "import java.util.Scanner;\n" +
                 "public class Output implements Runtime {\n");
 
-        String fileName = "implementations/RuntimeImpl.java";
         String line;
+
 
         try {
             FileReader fileReader =
@@ -51,7 +53,7 @@ public class RuntimeTemplate {
         return result.toString();
     }
 
-    public static String getPart2() {
+    public String getPart2() {
         String part2 = "}\n" +
                 "}";
         return part2;

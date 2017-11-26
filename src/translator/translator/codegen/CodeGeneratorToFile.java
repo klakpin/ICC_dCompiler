@@ -20,6 +20,12 @@ public class CodeGeneratorToFile implements CodeGenerator {
 
     private String mappingFilePath;
 
+    private RuntimeTemplate template = new RuntimeTemplate();
+
+    public void setTemplatePath(String string) {
+        template.fileName = string;
+    }
+
     public CodeGeneratorToFile(String outputPath, String mappingFilePath) throws Exception {
         this.outputPath = outputPath;
         this.mappingFilePath = mappingFilePath;
@@ -37,7 +43,7 @@ public class CodeGeneratorToFile implements CodeGenerator {
 
     @Override
     public void start() throws IOException {
-        outputFile.writeBytes(RuntimeTemplate.getPart1());
+        outputFile.writeBytes(template.getPart1());
     }
 
     @Override
@@ -54,10 +60,8 @@ public class CodeGeneratorToFile implements CodeGenerator {
 
     @Override
     public void end() throws IOException {
-        outputFile.writeBytes(RuntimeTemplate.getPart2());
+        outputFile.writeBytes(template.getPart2());
         outputFile.close();
-
-//        createMappingFile();
     }
 
     public void createMappingFile() throws IOException {

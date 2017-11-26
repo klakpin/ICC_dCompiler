@@ -4,6 +4,9 @@ import implementations.OperationsImpl;
 
 import java.util.HashMap;
 
+/**
+ * This class is the object structure
+ */
 public class Structure {
     private HashMap<String, Object> objects = new HashMap<>();
 
@@ -13,7 +16,7 @@ public class Structure {
 
     public Cortege convertToCortaige() {
         Cortege cortege = new Cortege();
-        for (int i=0;i<objects.size();i++){
+        for (int i = 0; i<objects.size(); i++){
             cortege.set(i, objects.values().toArray()[i]);
         }
         return cortege;
@@ -23,7 +26,7 @@ public class Structure {
         String[] strings=new String[this.getSize()];
         strings=objects.keySet().toArray(new String[this.getSize()]);
         OperationsImpl op=new OperationsImpl();
-        for (int i=0;i<structure1.getSize();i++) {
+        for (int i=0; i<structure1.getSize(); i++) {
             if (structure1.get(strings[i]) != null) {
                 objects.replace(strings[i], op.plus(objects.get(strings[i]), structure1.getObjects().get(strings[i])));
                 objects.remove(strings[i]);
@@ -31,6 +34,7 @@ public class Structure {
         }
         objects.putAll(structure1.getObjects());
     }
+
     public int getSize(){
         return objects.size();
     }

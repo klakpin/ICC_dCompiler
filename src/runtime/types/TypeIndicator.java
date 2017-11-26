@@ -1,5 +1,8 @@
 package types;
 
+/**
+ * Typeindicator used for operation 'is'
+ */
 public class TypeIndicator {
 
     String type;

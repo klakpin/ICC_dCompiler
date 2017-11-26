@@ -6,6 +6,7 @@ import interfaces.Runtime;
 import implementations.*;
 import net.openhft.compiler.CompilerUtils;
 import translator.codegen.CodeGeneratorToCodeBuffer;
+import translator.codegen.CodeGeneratorToFile;
 import translator.runtime.CharStream;
 import translator.runtime.CharStreams;
 import translator.runtime.CommonTokenStream;
@@ -27,6 +28,9 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
 import java.util.jar.Manifest;
 
+/**
+ * Class that can be used for running in IDE
+ */
 public class Test {
 
     public static void main(String[] args) throws Exception {
@@ -40,7 +44,7 @@ public class Test {
         System.out.println("What do you want? Chose wisely.");
         System.out.println("0 - just look what will be result of translation of input file");
         System.out.println("1 - create runnable java file from input file");
-        System.out.println("2 - run file that I've created in step 1");
+        System.out.println("2 - run file that I've created in step 1. Don't forget to rebuild the project!");
         System.out.println("3 - try to build jar executable");
         System.out.println("Your answer: ");
 
@@ -90,10 +94,10 @@ public class Test {
 
         String fileToCompile = "src/runtime/main/Main.java";
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-        int compilationResult =	compiler.run(null, null, null, fileToCompile);
-        if(compilationResult == 0){
+        int compilationResult = compiler.run(null, null, null, fileToCompile);
+        if (compilationResult == 0) {
             System.out.println("Compilation is successful");
-        }else{
+        } else {
             System.out.println("Compilation Failed");
         }
 
@@ -160,8 +164,18 @@ public class Test {
     }
 
     public static void createOutput(ArgumentParser parser) throws Exception {
-        Translator translator = new Translator(parser);
-        translator.translate();
+        try {
+            CodeGeneratorToFile generator = new CodeGeneratorToFile("src/runtime/implementations/Output.java", "mapping");
+            generator.setTemplatePath("src/runtime/implementations/RuntimeImpl.java");
+            Translator translator = new Translator(parser, generator);
+            translator.translate();
+        } catch (Exception e) {
+            CodeGeneratorToFile generator = new CodeGeneratorToFile("src/runtime/implementations/Output.java", "mapping");
+            generator.setTemplatePath("src/runtime/implementations/RuntimeImpl.java");
+            generator.start();
+            generator.end();
+
+        }
     }
 
     public static void antlrTesting() throws Exception {

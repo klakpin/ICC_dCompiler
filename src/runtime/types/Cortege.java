@@ -2,6 +2,9 @@ package types;
 
 import java.util.HashMap;
 
+/**
+ * Cortege is our arrays
+ */
 public class Cortege {
 
     private HashMap<Integer, Object> objects = new HashMap<>();
