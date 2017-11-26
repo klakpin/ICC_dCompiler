@@ -1,6 +1,6 @@
 package implementations;
 
-import Interfaces.SymTable;
+import interfaces.SymTable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,8 +39,12 @@ public class SymTableImpl implements SymTable {
     }
 
     @Override
-    public Object get(String name) {
-        return values.get(name);
+    public Object get(String name) throws Exception {
+        if (values.containsKey(name)) {
+            return values.get(name);
+        } else {
+            throw new Exception("Variable " + name + " was not defined.");
+        }
     }
 
     @Override

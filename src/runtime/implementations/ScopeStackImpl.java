@@ -1,7 +1,7 @@
 package implementations;
 
-import Interfaces.ScopeStack;
-import Interfaces.SymTable;
+import interfaces.ScopeStack;
+import interfaces.SymTable;
 
 import java.util.ArrayList;
 

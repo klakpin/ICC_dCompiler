@@ -1,9 +1,9 @@
 package translator;
 
-import org.runtime.CharStream;
-import org.runtime.CharStreams;
-import org.runtime.CommonTokenStream;
-import org.runtime.tree.ParseTree;
+import translator.runtime.CharStream;
+import translator.runtime.CharStreams;
+import translator.runtime.CommonTokenStream;
+import translator.runtime.tree.ParseTree;
 import translator.antlr.DBaseVisitor;
 import translator.antlr.DLexer;
 import translator.antlr.DParser;
@@ -26,7 +26,8 @@ public class Translator {
         DParser parser = new DParser(tokens);
         ParseTree tree = parser.compilation_unit();
 
-        CodeGeneratorToFile gen = new CodeGeneratorToFile();
+
+        CodeGeneratorToFile gen = new CodeGeneratorToFile("src/runtime/implementations/Output.java", "mapping");
         gen.start();
         DBaseVisitor visitor = new DBaseVisitor<>(gen);
         tree.accept(visitor);

@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Class-Path: opentest4j-1.0.0.jar asm-5.1.jar slf4j-jdk14-1.7.25.jar co
+ mpiler-2.3.0.jar hamcrest-core-1.1.jar slf4j-api-1.7.14.jar bcel-6.1.
+ jar json-simple-1.1.1.jar jcommander-1.60.jar junit-jupiter-api-5.1.0
+ -M1.jar junit-4.10.jar golo-3.2.0.jar junit-platform-commons-1.1.0-M1
+ .jar annotations-12.0.jar txtmark-0.13.jar
+Main-Class: main.Test
+

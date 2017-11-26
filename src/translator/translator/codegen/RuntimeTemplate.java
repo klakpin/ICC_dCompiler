@@ -12,14 +12,14 @@ public class RuntimeTemplate {
         StringBuilder result = new StringBuilder();
 
         result.append("package implementations;\n" + "\n" +
-                "import Interfaces.*;\n" +
-                "import Interfaces.Runtime;\n" +
-                "import Interfaces.Runnable;\n" +
+                "import interfaces.*;\n" +
+                "import interfaces.Runtime;\n" +
+                "import interfaces.Runnable;\n" +
                 "import types.*;\n" +
                 "import java.util.Scanner;\n" +
                 "public class Output implements Runtime {\n");
 
-        String fileName = "src/runtime/implementations/RuntimeImpl.java";
+        String fileName = "implementations/RuntimeImpl.java";
         String line;
 
         try {
