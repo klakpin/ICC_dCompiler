@@ -4,6 +4,7 @@ package main;
 import implementations.Output;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.Scanner;
 
 
@@ -23,6 +24,8 @@ public class Main {
             String str=scanner.nextLine();
             Integer lineNumber=e.getStackTrace()[1].getLineNumber();
             boolean flag=false;
+            InputStream fromx = Main.class.getClassLoader().getResourceAsStream("mapping");
+            System.out.println(new String(main.Util.toByteArray(fromx))+"HEY");
             while(scanner.hasNext()&&!flag){
                if (str.substring(0,str.indexOf(':')).contains(lineNumber.toString())){
                    System.out.println("Attention! Error in "+str.substring(str.indexOf(':')+1,str.length())+" line.");
