@@ -2,6 +2,9 @@ package translator.codegen;
 
 import java.io.IOException;
 
+/**
+ * Code generator that prints result code into stdout
+ */
 public class CodeGeneratorToStdout implements CodeGenerator {
 
     @Override
@@ -9,11 +12,6 @@ public class CodeGeneratorToStdout implements CodeGenerator {
         System.out.println("---------------------------------------------------");
         System.out.println("--  --  --  --  --  --  --  --  --  --  --  --  --");
         System.out.println("Code generation results:");
-    }
-
-    @Override
-    public void add(String string) {
-        System.out.println(string);
     }
 
     @Override

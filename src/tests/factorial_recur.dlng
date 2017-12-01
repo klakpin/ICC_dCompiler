@@ -1,0 +1,9 @@
+var factorial := func(val)
+ if val = 0 then return 1 end
+ return val*factorial(val-1)
+ end
+
+ var check := factorial(5)
+ print check
+
+// input 5 output 120

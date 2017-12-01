@@ -3,10 +3,10 @@ package main;
 
 import implementations.Output;
 
-import java.io.File;
-import java.io.InputStream;
-import java.util.Scanner;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 /**
  * Entry point in compiled program
@@ -20,24 +20,25 @@ public class Main {
         try {
             run.run();
         } catch (Exception e) {
-            Scanner scanner = new Scanner(new File("mapping"));
-            String str=scanner.nextLine();
-            Integer lineNumber=e.getStackTrace()[1].getLineNumber();
-            boolean flag=false;
-            InputStream fromx = Main.class.getClassLoader().getResourceAsStream("mapping");
-            System.out.println(new String(main.Util.toByteArray(fromx))+"HEY");
-            while(scanner.hasNext()&&!flag){
-               if (str.substring(0,str.indexOf(':')).contains(lineNumber.toString())){
-                   System.out.println("Attention! Error in "+str.substring(str.indexOf(':')+1,str.length())+" line.");
-                   flag=true;
-               }
-                str=scanner.nextLine();
-//                System.out.println("STR="+str);
+            Integer lineNumber = e.getStackTrace()[1].getLineNumber();
+            for (StackTraceElement element : e.getStackTrace()) {
+                if (element.getLineNumber() > 344) {
+                    lineNumber = element.getLineNumber();
+                    break;
+                }
             }
-            e.printStackTrace();
-//            System.out.println(e.getStackTrace()[1].getLineNumber());
-//            System.out.println(e.getMessage());
-//            e.getStackTrace().toString();
+
+            InputStream in = Output.class.getClassLoader().getResourceAsStream("mapping");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            String str;
+            boolean flag = false;
+            while (((str = reader.readLine()) != null) && !flag) {
+                if (str.substring(0, str.indexOf(':')).contains(lineNumber.toString())) {
+                    System.out.println("Attention! Error in " + str.substring(str.indexOf(':') + 1, str.length()) + " line.");
+                    System.out.println("Exception: " + e.getMessage());
+                    flag = true;
+                }
+            }
         }
     }
 }

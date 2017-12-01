@@ -1,0 +1,38 @@
+var arr :=[1,2,7,1,24,1,14,63,66,86,34]
+var arrsize := 10
+print "Enter upper bound of range"
+var upper := @int
+print "Enter lower bound of range"
+var down := @int
+print "Enter size of intervals"
+var interval := @int
+
+var number_of := (upper - down + 1)/interval
+print number_of
+var counter := -1
+
+upper := down
+for i in 1..number_of
+  loop
+    down := upper
+    upper := upper + interval
+    counter := 0;
+
+    for j in 1..arrsize
+      loop
+        if (down <= arr[j] ) and (arr[j] < upper) then counter := counter + 1; print arr[j] end
+      end
+
+      print "In interval "
+      print i
+      print " :"
+      print counter
+      print "( from "
+      print down
+      print " to "
+      print upper
+      print "). "
+  end
+
+  // input 100, 1, 20
+  //output

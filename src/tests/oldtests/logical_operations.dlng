@@ -1,0 +1,5 @@
+var b1:=true;
+var b2:=false;
+var result1:= b1 and b2;
+result1:= b1 or b2;
+result1:= b1 xor b2;

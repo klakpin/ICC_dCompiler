@@ -1,7 +1,7 @@
 package implementations;
 
-import Interfaces.CallStack;
-import Interfaces.SymTable;
+import interfaces.CallStack;
+import interfaces.SymTable;
 
 import java.util.ArrayList;
 

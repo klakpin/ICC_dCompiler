@@ -1,8 +1,8 @@
 package implementations;
 
-import Interfaces.*;
-import Interfaces.Runnable;
-import Interfaces.Runtime;
+import interfaces.*;
+import interfaces.Runnable;
+import interfaces.Runtime;
 import types.*;
 
 import java.util.Scanner;
@@ -232,74 +232,74 @@ public class RuntimeImpl implements Runtime {
     }
 
     @Override
-    public void and() {
+    public void and() throws Exception {
         stack.push(op.and(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void xor() {
+    public void xor() throws Exception {
         stack.push(op.xor(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void equals() {
+    public void equals() throws Exception {
         stack.push(op.equals(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void or() {
+    public void or() throws Exception {
         stack.push(op.or(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void not() {
+    public void not() throws Exception {
         stack.push(op.not(stack.pop()));
     }
 
     @Override
-    public void plus() {
+    public void plus() throws Exception {
         stack.push(op.plus(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void minus() {
+    public void minus() throws Exception {
         stack.push(op.minus(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void multiply() {
+    public void multiply() throws Exception {
         stack.push(op.multiply(stack.pop(), stack.pop()));
     }
 
 
     @Override
-    public void divide() {
+    public void divide() throws Exception {
         stack.push(op.divide(stack.pop(), stack.pop()));
     }
 
 
     @Override
-    public void greater() {
+    public void greater() throws Exception {
         stack.push(op.greater(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void less() {
+    public void less() throws Exception {
         stack.push(op.less(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void greaterequals() {
+    public void greaterequals() throws Exception {
         stack.push(op.greaterequals(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void lessequal() {
+    public void lessequal() throws Exception {
         stack.push(op.lessequal(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void notequal() {
+    public void notequal() throws Exception {
         stack.push(op.notequal(stack.pop(), stack.pop()));
     }
 
@@ -323,7 +323,6 @@ public class RuntimeImpl implements Runtime {
 
     @Override
     public void exitfunc() {
-
         SymTable target = callStack.pop();
         while (target != scopeStack.getScope()) {
             scopeStack.popScope();

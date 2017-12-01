@@ -1,9 +1,10 @@
 // Generated from /home/ilya/Documents/Compilers/Compiler project/src/translator/translator/antlr/D.g4 by ANTLR 4.7
 package translator.antlr;
-import org.runtime.atn.*;
-import org.runtime.dfa.DFA;
-import org.runtime.*;
-import org.runtime.tree.*;
+
+import translator.runtime.atn.*;
+import translator.runtime.dfa.DFA;
+import translator.runtime.*;
+import translator.runtime.tree.*;
 import java.util.List;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
@@ -122,8 +123,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitCompilation_unit(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitCompilation_unit(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitCompilation_unit(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -168,8 +169,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitProgram(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitProgram(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitProgram(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -215,8 +216,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitScope(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitScope(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitScope(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -303,8 +304,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitStatement(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitStatement(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -406,8 +407,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitInvocation(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitInvocation(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitInvocation(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -487,8 +488,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitR_if(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitR_if(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitR_if(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -555,8 +556,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitR_while(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitR_while(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitR_while(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -614,8 +615,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitR_for(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitR_for(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitR_for(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -685,8 +686,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitPrint(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitPrint(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitPrint(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -748,8 +749,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitR_return(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitR_return(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitR_return(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -805,8 +806,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitAssignment(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitAssignment(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitAssignment(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -856,8 +857,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitDeclaration(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitDeclaration(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitDeclaration(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -920,8 +921,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitVar_definition(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitVar_definition(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitVar_definition(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -984,8 +985,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitReference(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitReference(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitReference(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1014,8 +1015,8 @@ public class DParser extends Parser {
                 setState(181);
                 _errHandler.sync(this);
                 _alt = getInterpreter().adaptivePredict(_input, 14, _ctx);
-                while ( _alt!=2 && _alt!=org.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-				if ( _alt==1 ) {
+                while (_alt != 2 && _alt != translator.runtime.atn.ATN.INVALID_ALT_NUMBER) {
+                    if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
@@ -1126,8 +1127,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitExpression(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitExpression(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1145,8 +1146,8 @@ public class DParser extends Parser {
                 setState(189);
                 _errHandler.sync(this);
                 _alt = getInterpreter().adaptivePredict(_input, 15, _ctx);
-                while ( _alt!=2 && _alt!=org.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-				if ( _alt==1 ) {
+                while (_alt != 2 && _alt != translator.runtime.atn.ATN.INVALID_ALT_NUMBER) {
+                    if ( _alt==1 ) {
 					{
 					{
                         setState(185);
@@ -1201,8 +1202,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitRelation(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitRelation(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitRelation(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1269,8 +1270,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitSimple(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitSimple(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitSimple(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1288,8 +1289,8 @@ public class DParser extends Parser {
                 setState(202);
                 _errHandler.sync(this);
                 _alt = getInterpreter().adaptivePredict(_input, 17, _ctx);
-                while ( _alt!=2 && _alt!=org.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-				if ( _alt==1 ) {
+                while (_alt != 2 && _alt != translator.runtime.atn.ATN.INVALID_ALT_NUMBER) {
+                    if ( _alt==1 ) {
 					{
 					{
                         setState(198);
@@ -1344,8 +1345,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitSummand(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitSummand(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitSummand(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1363,8 +1364,8 @@ public class DParser extends Parser {
                 setState(210);
                 _errHandler.sync(this);
                 _alt = getInterpreter().adaptivePredict(_input, 18, _ctx);
-                while ( _alt!=2 && _alt!=org.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-				if ( _alt==1 ) {
+                while (_alt != 2 && _alt != translator.runtime.atn.ATN.INVALID_ALT_NUMBER) {
+                    if ( _alt==1 ) {
 					{
 					{
                         setState(206);
@@ -1425,8 +1426,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitFactor(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitFactor(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitFactor(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1545,8 +1546,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitPrimary(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitPrimary(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitPrimary(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1661,7 +1662,7 @@ public class DParser extends Parser {
         }
 
         @Override
-        public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
             if (visitor instanceof DVisitor) return ((DVisitor<? extends T>) visitor).visitReadInt(this);
             else return visitor.visitChildren(this);
         }
@@ -1707,7 +1708,7 @@ public class DParser extends Parser {
         }
 
         @Override
-        public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
             if (visitor instanceof DVisitor) return ((DVisitor<? extends T>) visitor).visitReadReal(this);
             else return visitor.visitChildren(this);
         }
@@ -1753,7 +1754,7 @@ public class DParser extends Parser {
         }
 
         @Override
-        public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
             if (visitor instanceof DVisitor) return ((DVisitor<? extends T>) visitor).visitReadString(this);
             else return visitor.visitChildren(this);
         }
@@ -1799,8 +1800,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitFunction_literal(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitFunction_literal(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitFunction_literal(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1879,8 +1880,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitBody(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitBody(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitBody(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1946,8 +1947,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitType_indicator(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitType_indicator(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitType_indicator(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2058,8 +2059,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitLiteral(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitLiteral(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitLiteral(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2155,8 +2156,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitObject(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitObject(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitObject(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2223,8 +2224,8 @@ public class DParser extends Parser {
 			if ( listener instanceof DListener ) ((DListener)listener).exitTuple(this);
 		}
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitTuple(this);
+        public <T> T accept(ParseTreeVisitor<? extends T> visitor) throws Exception {
+            if ( visitor instanceof DVisitor ) return ((DVisitor<? extends T>)visitor).visitTuple(this);
 			else return visitor.visitChildren(this);
 		}
 	}

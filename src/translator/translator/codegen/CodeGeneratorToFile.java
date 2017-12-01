@@ -4,47 +4,46 @@ import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.file.Files;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class CodeGeneratorToFile implements CodeGenerator {
 
 
-    int startLine = 344;
-    Map<Integer, Integer> codeMapping = new TreeMap<>();
+    private int startLine = 344;
 
-    RandomAccessFile outputFile;
+    private Map<Integer, Integer> codeMapping = new TreeMap<>();
 
-    String output = "src/runtime/implementations/Output.java";
+    private RandomAccessFile outputFile;
 
-    public String mapping = new String("mapping");
+    private String outputPath;
 
-    public void setOutput(String txt) {
-        output = txt;
+    private String mappingFilePath;
+
+    private RuntimeTemplate template = new RuntimeTemplate();
+
+    public void setTemplatePath(String string) {
+        template.fileName = string;
     }
 
-    public CodeGeneratorToFile() throws IOException {
-        File f = new File(output);
+    public CodeGeneratorToFile(String outputPath, String mappingFilePath) throws Exception {
+        this.outputPath = outputPath;
+        this.mappingFilePath = mappingFilePath;
+
+        File f = new File(outputPath);
+
         Files.deleteIfExists(f.toPath());
-        f.createNewFile();
-        outputFile = new RandomAccessFile(output, "rw");
+
+        if (!f.createNewFile()) {
+            throw new Exception("Cannot create outputPath file with destination: " + outputPath);
+        }
+
+        outputFile = new RandomAccessFile(outputPath, "rw");
     }
 
     @Override
     public void start() throws IOException {
-        outputFile.writeBytes(RuntimeTemplate.getPart1());
-    }
-
-    @Override
-    public void add(String string) {
-        try {
-            outputFile.writeBytes(string + "\n");
-            startLine++;
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Error while writing file");
-        }
+        outputFile.writeBytes(template.getPart1());
     }
 
     @Override
@@ -61,17 +60,18 @@ public class CodeGeneratorToFile implements CodeGenerator {
 
     @Override
     public void end() throws IOException {
-        outputFile.writeBytes(RuntimeTemplate.getPart2());
+        outputFile.writeBytes(template.getPart2());
         outputFile.close();
-
-        printMapping();
     }
 
-    public void printMapping() throws IOException {
-        File mappingFile = new File(this.mapping);
-
+    public void createMappingFile() throws IOException {
+        File mappingFile = new File(this.mappingFilePath);
         Files.deleteIfExists(mappingFile.toPath());
-        mappingFile.createNewFile();
+
+        if (!mappingFile.createNewFile()) {
+            throw new IOException("Cannot create mapping file to path " + mappingFilePath);
+        }
+
         RandomAccessFile outputRaf = new RandomAccessFile(mappingFile, "rw");
 
         for (Map.Entry<Integer, Integer> entry : codeMapping.entrySet()) {

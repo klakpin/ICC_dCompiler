@@ -1,9 +1,10 @@
 package translator;
 
-import org.runtime.CharStream;
-import org.runtime.CharStreams;
-import org.runtime.CommonTokenStream;
-import org.runtime.tree.ParseTree;
+import translator.codegen.CodeGenerator;
+import translator.runtime.CharStream;
+import translator.runtime.CharStreams;
+import translator.runtime.CommonTokenStream;
+import translator.runtime.tree.ParseTree;
 import translator.antlr.DBaseVisitor;
 import translator.antlr.DLexer;
 import translator.antlr.DParser;
@@ -13,8 +14,11 @@ public class Translator {
 
     ArgumentParser args;
 
-    public Translator(ArgumentParser args) throws Exception {
+    CodeGeneratorToFile gen;
+
+    public Translator(ArgumentParser args, CodeGeneratorToFile codegen) throws Exception {
         this.args = args;
+        gen = codegen;
     }
 
     public void translate() throws Exception {
@@ -26,12 +30,10 @@ public class Translator {
         DParser parser = new DParser(tokens);
         ParseTree tree = parser.compilation_unit();
 
-        CodeGeneratorToFile gen = new CodeGeneratorToFile();
         gen.start();
         DBaseVisitor visitor = new DBaseVisitor<>(gen);
         tree.accept(visitor);
         gen.end();
 
     }
-
 }

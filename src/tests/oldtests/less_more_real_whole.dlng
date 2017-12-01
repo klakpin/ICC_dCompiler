@@ -1,0 +1,8 @@
+var a:=5.4;
+var b:=5;
+var bool:=a>b;
+bool:=a<b;
+bool:=a>=b;
+bool:=a<=b;
+bool:=a=b;
+bool:=a/=b;

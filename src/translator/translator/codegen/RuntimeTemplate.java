@@ -7,20 +7,22 @@ import java.io.IOException;
 
 public class RuntimeTemplate {
 
-    public static String getPart1() throws IOException {
+    public String fileName = "implementations/RuntimeImpl.java";
+
+    public String getPart1() throws IOException {
 
         StringBuilder result = new StringBuilder();
 
         result.append("package implementations;\n" + "\n" +
-                "import Interfaces.*;\n" +
-                "import Interfaces.Runtime;\n" +
-                "import Interfaces.Runnable;\n" +
+                "import interfaces.*;\n" +
+                "import interfaces.Runtime;\n" +
+                "import interfaces.Runnable;\n" +
                 "import types.*;\n" +
                 "import java.util.Scanner;\n" +
                 "public class Output implements Runtime {\n");
 
-        String fileName = "src/runtime/implementations/RuntimeImpl.java";
         String line;
+
 
         try {
             FileReader fileReader =
@@ -51,7 +53,7 @@ public class RuntimeTemplate {
         return result.toString();
     }
 
-    public static String getPart2() {
+    public String getPart2() {
         String part2 = "}\n" +
                 "}";
         return part2;

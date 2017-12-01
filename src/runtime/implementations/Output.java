@@ -1,12 +1,10 @@
 package implementations;
 
-import Interfaces.*;
-import Interfaces.Runtime;
-import Interfaces.Runnable;
+import interfaces.*;
+import interfaces.Runtime;
+import interfaces.Runnable;
 import types.*;
-
 import java.util.Scanner;
-
 public class Output implements Runtime {
 
     private final ScopeStack scopeStack = new ScopeStackImpl();
@@ -232,74 +230,74 @@ public class Output implements Runtime {
     }
 
     @Override
-    public void and() {
+    public void and() throws Exception {
         stack.push(op.and(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void xor() {
+    public void xor() throws Exception {
         stack.push(op.xor(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void equals() {
+    public void equals() throws Exception {
         stack.push(op.equals(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void or() {
+    public void or() throws Exception {
         stack.push(op.or(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void not() {
+    public void not() throws Exception {
         stack.push(op.not(stack.pop()));
     }
 
     @Override
-    public void plus() {
+    public void plus() throws Exception {
         stack.push(op.plus(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void minus() {
+    public void minus() throws Exception {
         stack.push(op.minus(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void multiply() {
+    public void multiply() throws Exception {
         stack.push(op.multiply(stack.pop(), stack.pop()));
     }
 
 
     @Override
-    public void divide() {
+    public void divide() throws Exception {
         stack.push(op.divide(stack.pop(), stack.pop()));
     }
 
 
     @Override
-    public void greater() {
+    public void greater() throws Exception {
         stack.push(op.greater(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void less() {
+    public void less() throws Exception {
         stack.push(op.less(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void greaterequals() {
+    public void greaterequals() throws Exception {
         stack.push(op.greaterequals(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void lessequal() {
+    public void lessequal() throws Exception {
         stack.push(op.lessequal(stack.pop(), stack.pop()));
     }
 
     @Override
-    public void notequal() {
+    public void notequal() throws Exception {
         stack.push(op.notequal(stack.pop(), stack.pop()));
     }
 
@@ -323,7 +321,6 @@ public class Output implements Runtime {
 
     @Override
     public void exitfunc() {
-
         SymTable target = callStack.pop();
         while (target != scopeStack.getScope()) {
             scopeStack.popScope();
@@ -343,560 +340,9 @@ public class Output implements Runtime {
     @Override
     public void run() throws Exception {
         scopeStack.newScope();
-        add("player1Name");
-        add("player2Name");
-        add("board");
+        add("a");
         vpush(new Cortege());
-        assign("board");
-        add("printBoard");
-        vpush(new Function(() -> {
-            vpush(new Text("  1     2     3  \n"));
-            cprint();
-            vpush(new Text("     :     :     \n"));
-            cprint();
-            vpush(new Text("  "));
-            cprint();
-            vpush("board");
-            vpush(1);
-            readcort();
-            vpush(1);
-            readcort();
-            cprint();
-            vpush(new Text("  :  "));
-            cprint();
-            vpush("board");
-            vpush(1);
-            readcort();
-            vpush(2);
-            readcort();
-            cprint();
-            vpush(new Text("  :  "));
-            cprint();
-            vpush("board");
-            vpush(1);
-            readcort();
-            vpush(3);
-            readcort();
-            cprint();
-            vpush(new Text("    1\n"));
-            cprint();
-            vpush(new Text("_____:_____:_____\n"));
-            cprint();
-            vpush(new Text("     :     :     \n"));
-            cprint();
-            vpush(new Text("  "));
-            cprint();
-            vpush("board");
-            vpush(2);
-            readcort();
-            vpush(1);
-            readcort();
-            cprint();
-            vpush(new Text("  :  "));
-            cprint();
-            vpush("board");
-            vpush(2);
-            readcort();
-            vpush(2);
-            readcort();
-            cprint();
-            vpush(new Text("  :  "));
-            cprint();
-            vpush("board");
-            vpush(2);
-            readcort();
-            vpush(3);
-            readcort();
-            cprint();
-            vpush(new Text("    2\n"));
-            cprint();
-            vpush(new Text("_____:_____:_____\n"));
-            cprint();
-            vpush(new Text("     |     |     \n"));
-            cprint();
-            vpush(new Text("  "));
-            cprint();
-            vpush("board");
-            vpush(3);
-            readcort();
-            vpush(1);
-            readcort();
-            cprint();
-            vpush(new Text("  :  "));
-            cprint();
-            vpush("board");
-            vpush(3);
-            readcort();
-            vpush(2);
-            readcort();
-            cprint();
-            vpush(new Text("  :  "));
-            cprint();
-            vpush("board");
-            vpush(3);
-            readcort();
-            vpush(3);
-            readcort();
-            cprint();
-            vpush(new Text("    3\n"));
-            cprint();
-            vpush(new Text("_____:_____:_____\n"));
-            cprint();
-        }));
-        assign("printBoard");
-        add("giveWinner");
-        vpush(new Function(() -> {
-            add("player1Count");
-            vpush(0);
-            assign("player1Count");
-            add("player2Count");
-            vpush(0);
-            assign("player2Count");
-            add("nullifyVariables");
-            vpush(new Function(() -> {
-                vpush(0);
-                assign("player1Count");
-                vpush(0);
-                assign("player2Count");
-            }));
-            assign("nullifyVariables");
-            enterScope();
-            add("i");
-            vpush(1);
-            assign("i");
-            vpush(3);
-            vpush("i");
-            lessequal();
-            while (bpop()) {
-                enterScope();
-                enterScope();
-                add("y");
-                vpush(1);
-                assign("y");
-                vpush(3);
-                vpush("y");
-                lessequal();
-                while (bpop()) {
-                    enterScope();
-                    vpush(1);
-                    vpush("board");
-                    vpush("i");
-                    readcort();
-                    vpush("y");
-                    readcort();
-                    stack.printStack("Before equals");
-                    equals();
-                    if (bpop()) {
-                        enterScope();
-                        vpush(1);
-                        vpush("player1Count");
-                        plus();
-                        assign("player1Count");
-                        exitScope();
-                    }
-                    vpush(2);
-                    vpush("board");
-                    vpush("i");
-                    readcort();
-                    vpush("y");
-                    readcort();
-                    equals();
-                    if (bpop()) {
-                        enterScope();
-                        vpush(1);
-                        vpush("player2Count");
-                        plus();
-                        assign("player2Count");
-                        exitScope();
-                    }
-                    exitScope();
-                    vpush(3);
-                    vpush("y");
-                    vpush(1);
-                    plus();
-                    assign("y");
-                    vpush("y");
-                    lessequal();
-                }
-                enterScope();
-                exitScope();
-                vpush(3);
-                vpush("i");
-                vpush(1);
-                plus();
-                assign("i");
-                vpush("i");
-                lessequal();
-            }
-            enterScope();
-            vpush(3);
-            vpush("player1Count");
-            equals();
-            if (bpop()) {
-                enterScope();
-                vpush(1);
-                exitfunc();
-                if (true) {
-                    return;
-                }
-                exitScope();
-            }
-            vpush(3);
-            vpush("player2Count");
-            equals();
-            if (bpop()) {
-                enterScope();
-                vpush(2);
-                exitfunc();
-                if (true) {
-                    return;
-                }
-                exitScope();
-            }
-            vpush("nullifyVariables");
-            invoke();
-            enterScope();
-            add("y");
-            vpush(1);
-            assign("y");
-            vpush(3);
-            vpush("y");
-            lessequal();
-            while (bpop()) {
-                enterScope();
-                enterScope();
-                add("i");
-                vpush(1);
-                assign("i");
-                vpush(3);
-                vpush("i");
-                lessequal();
-                while (bpop()) {
-                    enterScope();
-                    vpush(1);
-                    vpush("board");
-                    vpush("i");
-                    readcort();
-                    vpush("y");
-                    readcort();
-                    equals();
-                    if (bpop()) {
-                        enterScope();
-                        vpush(1);
-                        vpush("player1Count");
-                        plus();
-                        assign("player1Count");
-                        exitScope();
-                    }
-                    vpush(2);
-                    vpush("board");
-                    vpush("i");
-                    readcort();
-                    vpush("y");
-                    readcort();
-                    equals();
-                    if (bpop()) {
-                        enterScope();
-                        vpush(1);
-                        vpush("player2Count");
-                        plus();
-                        assign("player2Count");
-                        exitScope();
-                    }
-                    exitScope();
-                    vpush(3);
-                    vpush("i");
-                    vpush(1);
-                    plus();
-                    assign("i");
-                    vpush("i");
-                    lessequal();
-                }
-                enterScope();
-                exitScope();
-                vpush(3);
-                vpush("y");
-                vpush(1);
-                plus();
-                assign("y");
-                vpush("y");
-                lessequal();
-            }
-            enterScope();
-            vpush(3);
-            vpush("player1Count");
-            equals();
-            if (bpop()) {
-                enterScope();
-                vpush(1);
-                exitfunc();
-                if (true) {
-                    return;
-                }
-                exitScope();
-            }
-            vpush(3);
-            vpush("player2Count");
-            equals();
-            if (bpop()) {
-                enterScope();
-                vpush(2);
-                exitfunc();
-                if (true) {
-                    return;
-                }
-                exitScope();
-            }
-            vpush("nullifyVariables");
-            invoke();
-            enterScope();
-            add("i");
-            vpush(1);
-            assign("i");
-            vpush(3);
-            vpush("i");
-            lessequal();
-            while (bpop()) {
-                enterScope();
-                vpush(1);
-                vpush("board");
-                vpush("i");
-                readcort();
-                vpush("i");
-                readcort();
-                equals();
-                if (bpop()) {
-                    enterScope();
-                    vpush(1);
-                    vpush("player1Count");
-                    plus();
-                    assign("player1Count");
-                    exitScope();
-                }
-                vpush(2);
-                vpush("board");
-                vpush("i");
-                readcort();
-                vpush("i");
-                readcort();
-                equals();
-                if (bpop()) {
-                    enterScope();
-                    vpush(1);
-                    vpush("player2Count");
-                    plus();
-                    assign("player2Count");
-                    exitScope();
-                }
-                exitScope();
-                vpush(3);
-                vpush("i");
-                vpush(1);
-                plus();
-                assign("i");
-                vpush("i");
-                lessequal();
-            }
-            enterScope();
-            vpush(3);
-            vpush("player1Count");
-            equals();
-            if (bpop()) {
-                enterScope();
-                vpush(1);
-                exitfunc();
-                if (true) {
-                    return;
-                }
-                exitScope();
-            }
-            vpush(3);
-            vpush("player2Count");
-            equals();
-            if (bpop()) {
-                enterScope();
-                vpush(2);
-                exitfunc();
-                if (true) {
-                    return;
-                }
-                exitScope();
-            }
-            vpush("nullifyVariables");
-            invoke();
-            enterScope();
-            add("i");
-            vpush(1);
-            assign("i");
-            vpush(3);
-            vpush("i");
-            lessequal();
-            while (bpop()) {
-                enterScope();
-                vpush(1);
-                vpush("board");
-                vpush("i");
-                readcort();
-                vpush("i");
-                vpush(4);
-                minus();
-                readcort();
-                equals();
-                if (bpop()) {
-                    enterScope();
-                    vpush(1);
-                    vpush("player1Count");
-                    plus();
-                    assign("player1Count");
-                    exitScope();
-                }
-                vpush(2);
-                vpush("board");
-                vpush("i");
-                readcort();
-                vpush("i");
-                vpush(4);
-                minus();
-                readcort();
-                equals();
-                if (bpop()) {
-                    enterScope();
-                    vpush(1);
-                    vpush("player2Count");
-                    plus();
-                    assign("player2Count");
-                    exitScope();
-                }
-                exitScope();
-                vpush(3);
-                vpush("i");
-                vpush(1);
-                plus();
-                assign("i");
-                vpush("i");
-                lessequal();
-            }
-            enterScope();
-            vpush(3);
-            vpush("player1Count");
-            equals();
-            if (bpop()) {
-                enterScope();
-                vpush(1);
-                exitfunc();
-                if (true) {
-                    return;
-                }
-                exitScope();
-            }
-            vpush(3);
-            vpush("player2Count");
-            equals();
-            if (bpop()) {
-                enterScope();
-                vpush(2);
-                exitfunc();
-                if (true) {
-                    return;
-                }
-                exitScope();
-            }
-            vpush(0);
-            exitfunc();
-            if (true) {
-                return;
-            }
-        }));
-        assign("giveWinner");
-        enterScope();
-        add("i");
-        vpush(1);
-        assign("i");
-        vpush(3);
-        vpush("i");
-        lessequal();
-        while (bpop()) {
-            enterScope();
-            vpush(new Cortege());
-            vpush("board");
-            swap();
-            vpush("i");
-            assigncort();
-            exitScope();
-            vpush(3);
-            vpush("i");
-            vpush(1);
-            plus();
-            assign("i");
-            vpush("i");
-            lessequal();
-        }
-        enterScope();
-        enterScope();
-        add("i");
-        vpush(1);
-        assign("i");
-        vpush(3);
-        vpush("i");
-        lessequal();
-        while (bpop()) {
-            enterScope();
-            enterScope();
-            add("y");
-            vpush(1);
-            assign("y");
-            vpush(3);
-            vpush("y");
-            lessequal();
-            while (bpop()) {
-                enterScope();
-                vpush(new Text(" "));
-                vpush("board");
-                vpush("i");
-                readcort();
-                swap();
-                vpush("y");
-                assigncort();
-                exitScope();
-                vpush(3);
-                vpush("y");
-                vpush(1);
-                plus();
-                assign("y");
-                vpush("y");
-                lessequal();
-            }
-            enterScope();
-            exitScope();
-            vpush(3);
-            vpush("i");
-            vpush(1);
-            plus();
-            assign("i");
-            vpush("i");
-            lessequal();
-        }
-        enterScope();
-        vpush(new Text("Enter player 1 name: "));
-        cprint();
-        readString();
-        assign("player1Name");
-        vpush(new Text("\nEnter player 2 name: "));
-        cprint();
-        readString();
-        assign("player2Name");
-        vpush(new Text("\n"));
-        cprint();
-        add("gameRunning");
-        vpush(true);
-        assign("gameRunning");
-        vpush("printBoard");
-        invoke();
-        vpush(new Text("Winner is player "));
-        cprint();
-        vpush("giveWinner");
-        invoke();
-        cprint();
+        assign("a");
         scopeStack.popScope();
     }
 }
